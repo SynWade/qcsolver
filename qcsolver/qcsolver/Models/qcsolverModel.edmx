@@ -1,0 +1,1170 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="onsightDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AssignedSubContractor">
+          <Key>
+            <PropertyRef Name="assignedSubId" />
+          </Key>
+          <Property Name="assignedSubId" Type="int" Nullable="false" />
+          <Property Name="contractor" Type="int" Nullable="false" />
+          <Property Name="subContractor" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AssignedWorker">
+          <Key>
+            <PropertyRef Name="assignedId" />
+          </Key>
+          <Property Name="assignedId" Type="int" Nullable="false" />
+          <Property Name="asignDate" Type="date" Nullable="false" />
+          <Property Name="unassignDate" Type="date" />
+          <Property Name="constructionSite" Type="int" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="certificateId" />
+          </Key>
+          <Property Name="certificateId" Type="int" Nullable="false" />
+          <Property Name="certificateName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dateIssued" Type="date" Nullable="false" />
+          <Property Name="fileLocation" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="companyId" />
+          </Key>
+          <Property Name="companyId" Type="int" Nullable="false" />
+          <Property Name="companyName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="contactNumber" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="contactEmail" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="postalCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="country" Type="int" Nullable="false" />
+          <Property Name="province" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ConstructionSite">
+          <Key>
+            <PropertyRef Name="constructionSiteId" />
+          </Key>
+          <Property Name="constructionSiteId" Type="int" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="startDate" Type="date" Nullable="false" />
+          <Property Name="endDate" Type="date" />
+          <Property Name="city" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="company" Type="int" Nullable="false" />
+          <Property Name="country" Type="int" Nullable="false" />
+          <Property Name="province" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="countryId" />
+          </Key>
+          <Property Name="countryId" Type="int" Nullable="false" />
+          <Property Name="countryName" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="licenseId" />
+          </Key>
+          <Property Name="licenseId" Type="int" Nullable="false" />
+          <Property Name="licenseName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="dateIssued" Type="date" Nullable="false" />
+          <Property Name="expirationDate" Type="date" />
+          <Property Name="fileLocation" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="int" Nullable="false" />
+          <Property Name="firstName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="lastName" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="city" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="address" Type="varchar" MaxLength="25" Nullable="false" />
+          <Property Name="pictureLocation" Type="varchar" MaxLength="255" />
+          <Property Name="contractLocation" Type="varchar" MaxLength="255" />
+          <Property Name="postalCode" Type="varchar" MaxLength="6" Nullable="false" />
+          <Property Name="phone" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="online" Type="bit" Nullable="false" />
+          <Property Name="type" Type="int" Nullable="false" />
+          <Property Name="company" Type="int" Nullable="false" />
+          <Property Name="country" Type="int" Nullable="false" />
+          <Property Name="province" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="personTypeId" />
+          </Key>
+          <Property Name="personTypeId" Type="int" Nullable="false" />
+          <Property Name="type" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="provinceId" />
+          </Key>
+          <Property Name="provinceId" Type="int" Nullable="false" />
+          <Property Name="provinceName" Type="varchar" MaxLength="25" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="scheduleId" />
+          </Key>
+          <Property Name="scheduleId" Type="int" Nullable="false" />
+          <Property Name="startDateTime" Type="datetime" Nullable="false" />
+          <Property Name="duration" Type="int" Nullable="false" />
+          <Property Name="person" Type="int" Nullable="false" />
+          <Property Name="constructionSite" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskDetail">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="int" Nullable="false" />
+          <Property Name="details" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="assigned" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Timestamp">
+          <Key>
+            <PropertyRef Name="timestampId" />
+          </Key>
+          <Property Name="timestampId" Type="int" Nullable="false" />
+          <Property Name="timeIn" Type="datetime" Nullable="false" />
+          <Property Name="timeOut" Type="datetime" />
+          <Property Name="person" Type="int" Nullable="false" />
+          <Property Name="constructionSite" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK__AssignedS__contr__1FCDBCEB">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedSubContractor" Type="Self.AssignedSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedSubContractor">
+              <PropertyRef Name="contractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedS__subCo__20C1E124">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedSubContractor" Type="Self.AssignedSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedSubContractor">
+              <PropertyRef Name="subContractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedW__const__2C3393D0">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="AssignedWorker">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedW__perso__2D27B809">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedWorker">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Certifica__perso__35BCFE0A">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__country__164452B1">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__provinc__173876EA">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__compa__239E4DCF">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__count__24927208">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__provi__25869641">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__License__person__32E0915F">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__company__1B0907CE">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__country__1BFD2C07">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__province__1CF15040">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__type__1A14E395">
+          <End Role="PersonType" Type="Self.PersonType" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonType">
+              <PropertyRef Name="personTypeId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__constr__398D8EEE">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__person__38996AB5">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskDetai__assig__300424B4">
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="1" />
+          <End Role="TaskDetail" Type="Self.TaskDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignedWorker">
+              <PropertyRef Name="assignedId" />
+            </Principal>
+            <Dependent Role="TaskDetail">
+              <PropertyRef Name="assigned" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timestamp__const__29572725">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="Timestamp" Type="Self.Timestamp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="Timestamp">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timestamp__perso__286302EC">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Timestamp" Type="Self.Timestamp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Timestamp">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="onsightDBModelStoreContainer">
+          <EntitySet Name="AssignedSubContractor" EntityType="Self.AssignedSubContractor" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AssignedWorker" EntityType="Self.AssignedWorker" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Certificate" EntityType="Self.Certificate" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Company" EntityType="Self.Company" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ConstructionSite" EntityType="Self.ConstructionSite" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Country" EntityType="Self.Country" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="License" EntityType="Self.License" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Person" EntityType="Self.Person" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PersonType" EntityType="Self.PersonType" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Province" EntityType="Self.Province" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Schedule" EntityType="Self.Schedule" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskDetail" EntityType="Self.TaskDetail" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Timestamp" EntityType="Self.Timestamp" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__AssignedS__contr__1FCDBCEB" Association="Self.FK__AssignedS__contr__1FCDBCEB">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="AssignedSubContractor" EntitySet="AssignedSubContractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedS__subCo__20C1E124" Association="Self.FK__AssignedS__subCo__20C1E124">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="AssignedSubContractor" EntitySet="AssignedSubContractor" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedW__const__2C3393D0" Association="Self.FK__AssignedW__const__2C3393D0">
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+            <End Role="AssignedWorker" EntitySet="AssignedWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedW__perso__2D27B809" Association="Self.FK__AssignedW__perso__2D27B809">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="AssignedWorker" EntitySet="AssignedWorker" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Certifica__perso__35BCFE0A" Association="Self.FK__Certifica__perso__35BCFE0A">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Certificate" EntitySet="Certificate" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__country__164452B1" Association="Self.FK__Company__country__164452B1">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__provinc__173876EA" Association="Self.FK__Company__provinc__173876EA">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Company" EntitySet="Company" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__compa__239E4DCF" Association="Self.FK__Construct__compa__239E4DCF">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__count__24927208" Association="Self.FK__Construct__count__24927208">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__provi__25869641" Association="Self.FK__Construct__provi__25869641">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+          </AssociationSet>
+          <AssociationSet Name="FK__License__person__32E0915F" Association="Self.FK__License__person__32E0915F">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="License" EntitySet="License" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__company__1B0907CE" Association="Self.FK__Person__company__1B0907CE">
+            <End Role="Company" EntitySet="Company" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__country__1BFD2C07" Association="Self.FK__Person__country__1BFD2C07">
+            <End Role="Country" EntitySet="Country" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__province__1CF15040" Association="Self.FK__Person__province__1CF15040">
+            <End Role="Province" EntitySet="Province" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__type__1A14E395" Association="Self.FK__Person__type__1A14E395">
+            <End Role="PersonType" EntitySet="PersonType" />
+            <End Role="Person" EntitySet="Person" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__constr__398D8EEE" Association="Self.FK__Schedule__constr__398D8EEE">
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__person__38996AB5" Association="Self.FK__Schedule__person__38996AB5">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Schedule" EntitySet="Schedule" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskDetai__assig__300424B4" Association="Self.FK__TaskDetai__assig__300424B4">
+            <End Role="AssignedWorker" EntitySet="AssignedWorker" />
+            <End Role="TaskDetail" EntitySet="TaskDetail" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timestamp__const__29572725" Association="Self.FK__Timestamp__const__29572725">
+            <End Role="ConstructionSite" EntitySet="ConstructionSite" />
+            <End Role="Timestamp" EntitySet="Timestamp" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timestamp__perso__286302EC" Association="Self.FK__Timestamp__perso__286302EC">
+            <End Role="Person" EntitySet="Person" />
+            <End Role="Timestamp" EntitySet="Timestamp" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="onsightDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AssignedSubContractor">
+          <Key>
+            <PropertyRef Name="assignedSubId" />
+          </Key>
+          <Property Name="assignedSubId" Type="Int32" Nullable="false" />
+          <Property Name="contractor" Type="Int32" Nullable="false" />
+          <Property Name="subContractor" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person" Relationship="Self.FK__AssignedS__contr__1FCDBCEB" FromRole="AssignedSubContractor" ToRole="Person" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__AssignedS__subCo__20C1E124" FromRole="AssignedSubContractor" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="AssignedWorker">
+          <Key>
+            <PropertyRef Name="assignedId" />
+          </Key>
+          <Property Name="assignedId" Type="Int32" Nullable="false" />
+          <Property Name="asignDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="unassignDate" Type="DateTime" Precision="0" />
+          <Property Name="constructionSite" Type="Int32" Nullable="false" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__AssignedW__const__2C3393D0" FromRole="AssignedWorker" ToRole="ConstructionSite" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__AssignedW__perso__2D27B809" FromRole="AssignedWorker" ToRole="Person" />
+          <NavigationProperty Name="TaskDetails" Relationship="Self.FK__TaskDetai__assig__300424B4" FromRole="AssignedWorker" ToRole="TaskDetail" />
+        </EntityType>
+        <EntityType Name="Certificate">
+          <Key>
+            <PropertyRef Name="certificateId" />
+          </Key>
+          <Property Name="certificateId" Type="Int32" Nullable="false" />
+          <Property Name="certificateName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateIssued" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="fileLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__Certifica__perso__35BCFE0A" FromRole="Certificate" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="companyId" />
+          </Key>
+          <Property Name="companyId" Type="Int32" Nullable="false" />
+          <Property Name="companyName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contactNumber" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="contactEmail" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="postalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="country" Type="Int32" Nullable="false" />
+          <Property Name="province" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Country1" Relationship="Self.FK__Company__country__164452B1" FromRole="Company" ToRole="Country" />
+          <NavigationProperty Name="Province1" Relationship="Self.FK__Company__provinc__173876EA" FromRole="Company" ToRole="Province" />
+          <NavigationProperty Name="ConstructionSites" Relationship="Self.FK__Construct__compa__239E4DCF" FromRole="Company" ToRole="ConstructionSite" />
+          <NavigationProperty Name="People" Relationship="Self.FK__Person__company__1B0907CE" FromRole="Company" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="ConstructionSite">
+          <Key>
+            <PropertyRef Name="constructionSiteId" />
+          </Key>
+          <Property Name="constructionSiteId" Type="Int32" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="endDate" Type="DateTime" Precision="0" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="company" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="Int32" Nullable="false" />
+          <Property Name="province" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__const__2C3393D0" FromRole="ConstructionSite" ToRole="AssignedWorker" />
+          <NavigationProperty Name="Company1" Relationship="Self.FK__Construct__compa__239E4DCF" FromRole="ConstructionSite" ToRole="Company" />
+          <NavigationProperty Name="Country1" Relationship="Self.FK__Construct__count__24927208" FromRole="ConstructionSite" ToRole="Country" />
+          <NavigationProperty Name="Province1" Relationship="Self.FK__Construct__provi__25869641" FromRole="ConstructionSite" ToRole="Province" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__constr__398D8EEE" FromRole="ConstructionSite" ToRole="Schedule" />
+          <NavigationProperty Name="Timestamps" Relationship="Self.FK__Timestamp__const__29572725" FromRole="ConstructionSite" ToRole="Timestamp" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="countryId" />
+          </Key>
+          <Property Name="countryId" Type="Int32" Nullable="false" />
+          <Property Name="countryName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK__Company__country__164452B1" FromRole="Country" ToRole="Company" />
+          <NavigationProperty Name="ConstructionSites" Relationship="Self.FK__Construct__count__24927208" FromRole="Country" ToRole="ConstructionSite" />
+          <NavigationProperty Name="People" Relationship="Self.FK__Person__country__1BFD2C07" FromRole="Country" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="License">
+          <Key>
+            <PropertyRef Name="licenseId" />
+          </Key>
+          <Property Name="licenseId" Type="Int32" Nullable="false" />
+          <Property Name="licenseName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="dateIssued" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="expirationDate" Type="DateTime" Precision="0" />
+          <Property Name="fileLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__License__person__32E0915F" FromRole="License" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Person">
+          <Key>
+            <PropertyRef Name="personId" />
+          </Key>
+          <Property Name="personId" Type="Int32" Nullable="false" />
+          <Property Name="firstName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="lastName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="city" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="pictureLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="contractLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="postalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="online" Type="Boolean" Nullable="false" />
+          <Property Name="type" Type="Int32" Nullable="false" />
+          <Property Name="company" Type="Int32" Nullable="false" />
+          <Property Name="country" Type="Int32" Nullable="false" />
+          <Property Name="province" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AssignedSubContractors" Relationship="Self.FK__AssignedS__contr__1FCDBCEB" FromRole="Person" ToRole="AssignedSubContractor" />
+          <NavigationProperty Name="AssignedSubContractors1" Relationship="Self.FK__AssignedS__subCo__20C1E124" FromRole="Person" ToRole="AssignedSubContractor" />
+          <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__perso__2D27B809" FromRole="Person" ToRole="AssignedWorker" />
+          <NavigationProperty Name="Certificates" Relationship="Self.FK__Certifica__perso__35BCFE0A" FromRole="Person" ToRole="Certificate" />
+          <NavigationProperty Name="Company1" Relationship="Self.FK__Person__company__1B0907CE" FromRole="Person" ToRole="Company" />
+          <NavigationProperty Name="Country1" Relationship="Self.FK__Person__country__1BFD2C07" FromRole="Person" ToRole="Country" />
+          <NavigationProperty Name="Licenses" Relationship="Self.FK__License__person__32E0915F" FromRole="Person" ToRole="License" />
+          <NavigationProperty Name="Province1" Relationship="Self.FK__Person__province__1CF15040" FromRole="Person" ToRole="Province" />
+          <NavigationProperty Name="PersonType" Relationship="Self.FK__Person__type__1A14E395" FromRole="Person" ToRole="PersonType" />
+          <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__person__38996AB5" FromRole="Person" ToRole="Schedule" />
+          <NavigationProperty Name="Timestamps" Relationship="Self.FK__Timestamp__perso__286302EC" FromRole="Person" ToRole="Timestamp" />
+        </EntityType>
+        <EntityType Name="PersonType">
+          <Key>
+            <PropertyRef Name="personTypeId" />
+          </Key>
+          <Property Name="personTypeId" Type="Int32" Nullable="false" />
+          <Property Name="type" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="People" Relationship="Self.FK__Person__type__1A14E395" FromRole="PersonType" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Province">
+          <Key>
+            <PropertyRef Name="provinceId" />
+          </Key>
+          <Property Name="provinceId" Type="Int32" Nullable="false" />
+          <Property Name="provinceName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
+          <NavigationProperty Name="Companies" Relationship="Self.FK__Company__provinc__173876EA" FromRole="Province" ToRole="Company" />
+          <NavigationProperty Name="ConstructionSites" Relationship="Self.FK__Construct__provi__25869641" FromRole="Province" ToRole="ConstructionSite" />
+          <NavigationProperty Name="People" Relationship="Self.FK__Person__province__1CF15040" FromRole="Province" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="Schedule">
+          <Key>
+            <PropertyRef Name="scheduleId" />
+          </Key>
+          <Property Name="scheduleId" Type="Int32" Nullable="false" />
+          <Property Name="startDateTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="duration" Type="Int32" Nullable="false" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <Property Name="constructionSite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__Schedule__constr__398D8EEE" FromRole="Schedule" ToRole="ConstructionSite" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__Schedule__person__38996AB5" FromRole="Schedule" ToRole="Person" />
+        </EntityType>
+        <EntityType Name="TaskDetail">
+          <Key>
+            <PropertyRef Name="detailId" />
+          </Key>
+          <Property Name="detailId" Type="Int32" Nullable="false" />
+          <Property Name="details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="assigned" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="AssignedWorker" Relationship="Self.FK__TaskDetai__assig__300424B4" FromRole="TaskDetail" ToRole="AssignedWorker" />
+        </EntityType>
+        <EntityType Name="Timestamp">
+          <Key>
+            <PropertyRef Name="timestampId" />
+          </Key>
+          <Property Name="timestampId" Type="Int32" Nullable="false" />
+          <Property Name="timeIn" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="timeOut" Type="DateTime" Precision="3" />
+          <Property Name="person" Type="Int32" Nullable="false" />
+          <Property Name="constructionSite" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__Timestamp__const__29572725" FromRole="Timestamp" ToRole="ConstructionSite" />
+          <NavigationProperty Name="Person1" Relationship="Self.FK__Timestamp__perso__286302EC" FromRole="Timestamp" ToRole="Person" />
+        </EntityType>
+        <Association Name="FK__AssignedS__contr__1FCDBCEB">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedSubContractor" Type="Self.AssignedSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedSubContractor">
+              <PropertyRef Name="contractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedS__subCo__20C1E124">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedSubContractor" Type="Self.AssignedSubContractor" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedSubContractor">
+              <PropertyRef Name="subContractor" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedW__const__2C3393D0">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="AssignedWorker">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__AssignedW__perso__2D27B809">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="AssignedWorker">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__TaskDetai__assig__300424B4">
+          <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="1" />
+          <End Role="TaskDetail" Type="Self.TaskDetail" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AssignedWorker">
+              <PropertyRef Name="assignedId" />
+            </Principal>
+            <Dependent Role="TaskDetail">
+              <PropertyRef Name="assigned" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Certifica__perso__35BCFE0A">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Certificate">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__country__164452B1">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Company__provinc__173876EA">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Company" Type="Self.Company" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="Company">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__compa__239E4DCF">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__company__1B0907CE">
+          <End Role="Company" Type="Self.Company" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Company">
+              <PropertyRef Name="companyId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="company" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__count__24927208">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Construct__provi__25869641">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="ConstructionSite">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__constr__398D8EEE">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timestamp__const__29572725">
+          <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
+          <End Role="Timestamp" Type="Self.Timestamp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ConstructionSite">
+              <PropertyRef Name="constructionSiteId" />
+            </Principal>
+            <Dependent Role="Timestamp">
+              <PropertyRef Name="constructionSite" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__country__1BFD2C07">
+          <End Role="Country" Type="Self.Country" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Country">
+              <PropertyRef Name="countryId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="country" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__License__person__32E0915F">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="License" Type="Self.License" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="License">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__province__1CF15040">
+          <End Role="Province" Type="Self.Province" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Province">
+              <PropertyRef Name="provinceId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="province" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Person__type__1A14E395">
+          <End Role="PersonType" Type="Self.PersonType" Multiplicity="1" />
+          <End Role="Person" Type="Self.Person" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="PersonType">
+              <PropertyRef Name="personTypeId" />
+            </Principal>
+            <Dependent Role="Person">
+              <PropertyRef Name="type" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Schedule__person__38996AB5">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Schedule">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Timestamp__perso__286302EC">
+          <End Role="Person" Type="Self.Person" Multiplicity="1" />
+          <End Role="Timestamp" Type="Self.Timestamp" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Person">
+              <PropertyRef Name="personId" />
+            </Principal>
+            <Dependent Role="Timestamp">
+              <PropertyRef Name="person" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="onsightdbEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AssignedSubContractors" EntityType="Self.AssignedSubContractor" />
+          <EntitySet Name="AssignedWorkers" EntityType="Self.AssignedWorker" />
+          <EntitySet Name="Certificates" EntityType="Self.Certificate" />
+          <EntitySet Name="Companies" EntityType="Self.Company" />
+          <EntitySet Name="ConstructionSites" EntityType="Self.ConstructionSite" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="Licenses" EntityType="Self.License" />
+          <EntitySet Name="People" EntityType="Self.Person" />
+          <EntitySet Name="PersonTypes" EntityType="Self.PersonType" />
+          <EntitySet Name="Provinces" EntityType="Self.Province" />
+          <EntitySet Name="Schedules" EntityType="Self.Schedule" />
+          <EntitySet Name="TaskDetails" EntityType="Self.TaskDetail" />
+          <EntitySet Name="Timestamps" EntityType="Self.Timestamp" />
+          <AssociationSet Name="FK__AssignedS__contr__1FCDBCEB" Association="Self.FK__AssignedS__contr__1FCDBCEB">
+            <End Role="Person" EntitySet="People" />
+            <End Role="AssignedSubContractor" EntitySet="AssignedSubContractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedS__subCo__20C1E124" Association="Self.FK__AssignedS__subCo__20C1E124">
+            <End Role="Person" EntitySet="People" />
+            <End Role="AssignedSubContractor" EntitySet="AssignedSubContractors" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedW__const__2C3393D0" Association="Self.FK__AssignedW__const__2C3393D0">
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+            <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__AssignedW__perso__2D27B809" Association="Self.FK__AssignedW__perso__2D27B809">
+            <End Role="Person" EntitySet="People" />
+            <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
+          </AssociationSet>
+          <AssociationSet Name="FK__TaskDetai__assig__300424B4" Association="Self.FK__TaskDetai__assig__300424B4">
+            <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
+            <End Role="TaskDetail" EntitySet="TaskDetails" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Certifica__perso__35BCFE0A" Association="Self.FK__Certifica__perso__35BCFE0A">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Certificate" EntitySet="Certificates" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__country__164452B1" Association="Self.FK__Company__country__164452B1">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Company__provinc__173876EA" Association="Self.FK__Company__provinc__173876EA">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Company" EntitySet="Companies" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__compa__239E4DCF" Association="Self.FK__Construct__compa__239E4DCF">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__company__1B0907CE" Association="Self.FK__Person__company__1B0907CE">
+            <End Role="Company" EntitySet="Companies" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__count__24927208" Association="Self.FK__Construct__count__24927208">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Construct__provi__25869641" Association="Self.FK__Construct__provi__25869641">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__constr__398D8EEE" Association="Self.FK__Schedule__constr__398D8EEE">
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timestamp__const__29572725" Association="Self.FK__Timestamp__const__29572725">
+            <End Role="ConstructionSite" EntitySet="ConstructionSites" />
+            <End Role="Timestamp" EntitySet="Timestamps" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__country__1BFD2C07" Association="Self.FK__Person__country__1BFD2C07">
+            <End Role="Country" EntitySet="Countries" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK__License__person__32E0915F" Association="Self.FK__License__person__32E0915F">
+            <End Role="Person" EntitySet="People" />
+            <End Role="License" EntitySet="Licenses" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__province__1CF15040" Association="Self.FK__Person__province__1CF15040">
+            <End Role="Province" EntitySet="Provinces" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Person__type__1A14E395" Association="Self.FK__Person__type__1A14E395">
+            <End Role="PersonType" EntitySet="PersonTypes" />
+            <End Role="Person" EntitySet="People" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Schedule__person__38996AB5" Association="Self.FK__Schedule__person__38996AB5">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Schedule" EntitySet="Schedules" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Timestamp__perso__286302EC" Association="Self.FK__Timestamp__perso__286302EC">
+            <End Role="Person" EntitySet="People" />
+            <End Role="Timestamp" EntitySet="Timestamps" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="onsightDBModelStoreContainer" CdmEntityContainer="onsightdbEntities">
+          <EntitySetMapping Name="AssignedSubContractors">
+            <EntityTypeMapping TypeName="onsightDBModel.AssignedSubContractor">
+              <MappingFragment StoreEntitySet="AssignedSubContractor">
+                <ScalarProperty Name="assignedSubId" ColumnName="assignedSubId" />
+                <ScalarProperty Name="contractor" ColumnName="contractor" />
+                <ScalarProperty Name="subContractor" ColumnName="subContractor" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AssignedWorkers">
+            <EntityTypeMapping TypeName="onsightDBModel.AssignedWorker">
+              <MappingFragment StoreEntitySet="AssignedWorker">
+                <ScalarProperty Name="assignedId" ColumnName="assignedId" />
+                <ScalarProperty Name="asignDate" ColumnName="asignDate" />
+                <ScalarProperty Name="unassignDate" ColumnName="unassignDate" />
+                <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+                <ScalarProperty Name="person" ColumnName="person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Certificates">
+            <EntityTypeMapping TypeName="onsightDBModel.Certificate">
+              <MappingFragment StoreEntitySet="Certificate">
+                <ScalarProperty Name="certificateId" ColumnName="certificateId" />
+                <ScalarProperty Name="certificateName" ColumnName="certificateName" />
+                <ScalarProperty Name="dateIssued" ColumnName="dateIssued" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="person" ColumnName="person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="onsightDBModel.Company">
+              <MappingFragment StoreEntitySet="Company">
+                <ScalarProperty Name="companyId" ColumnName="companyId" />
+                <ScalarProperty Name="companyName" ColumnName="companyName" />
+                <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+                <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ConstructionSites">
+            <EntityTypeMapping TypeName="onsightDBModel.ConstructionSite">
+              <MappingFragment StoreEntitySet="ConstructionSite">
+                <ScalarProperty Name="constructionSiteId" ColumnName="constructionSiteId" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="startDate" ColumnName="startDate" />
+                <ScalarProperty Name="endDate" ColumnName="endDate" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="onsightDBModel.Country">
+              <MappingFragment StoreEntitySet="Country">
+                <ScalarProperty Name="countryId" ColumnName="countryId" />
+                <ScalarProperty Name="countryName" ColumnName="countryName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Licenses">
+            <EntityTypeMapping TypeName="onsightDBModel.License">
+              <MappingFragment StoreEntitySet="License">
+                <ScalarProperty Name="licenseId" ColumnName="licenseId" />
+                <ScalarProperty Name="licenseName" ColumnName="licenseName" />
+                <ScalarProperty Name="dateIssued" ColumnName="dateIssued" />
+                <ScalarProperty Name="expirationDate" ColumnName="expirationDate" />
+                <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+                <ScalarProperty Name="person" ColumnName="person" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="People">
+            <EntityTypeMapping TypeName="onsightDBModel.Person">
+              <MappingFragment StoreEntitySet="Person">
+                <ScalarProperty Name="personId" ColumnName="personId" />
+                <ScalarProperty Name="firstName" ColumnName="firstName" />
+                <ScalarProperty Name="lastName" ColumnName="lastName" />
+                <ScalarProperty Name="city" ColumnName="city" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="pictureLocation" ColumnName="pictureLocation" />
+                <ScalarProperty Name="contractLocation" ColumnName="contractLocation" />
+                <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+                <ScalarProperty Name="phone" ColumnName="phone" />
+                <ScalarProperty Name="email" ColumnName="email" />
+                <ScalarProperty Name="online" ColumnName="online" />
+                <ScalarProperty Name="type" ColumnName="type" />
+                <ScalarProperty Name="company" ColumnName="company" />
+                <ScalarProperty Name="country" ColumnName="country" />
+                <ScalarProperty Name="province" ColumnName="province" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PersonTypes">
+            <EntityTypeMapping TypeName="onsightDBModel.PersonType">
+              <MappingFragment StoreEntitySet="PersonType">
+                <ScalarProperty Name="personTypeId" ColumnName="personTypeId" />
+                <ScalarProperty Name="type" ColumnName="type" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Provinces">
+            <EntityTypeMapping TypeName="onsightDBModel.Province">
+              <MappingFragment StoreEntitySet="Province">
+                <ScalarProperty Name="provinceId" ColumnName="provinceId" />
+                <ScalarProperty Name="provinceName" ColumnName="provinceName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Schedules">
+            <EntityTypeMapping TypeName="onsightDBModel.Schedule">
+              <MappingFragment StoreEntitySet="Schedule">
+                <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
+                <ScalarProperty Name="startDateTime" ColumnName="startDateTime" />
+                <ScalarProperty Name="duration" ColumnName="duration" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskDetails">
+            <EntityTypeMapping TypeName="onsightDBModel.TaskDetail">
+              <MappingFragment StoreEntitySet="TaskDetail">
+                <ScalarProperty Name="detailId" ColumnName="detailId" />
+                <ScalarProperty Name="details" ColumnName="details" />
+                <ScalarProperty Name="assigned" ColumnName="assigned" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Timestamps">
+            <EntityTypeMapping TypeName="onsightDBModel.Timestamp">
+              <MappingFragment StoreEntitySet="Timestamp">
+                <ScalarProperty Name="timestampId" ColumnName="timestampId" />
+                <ScalarProperty Name="timeIn" ColumnName="timeIn" />
+                <ScalarProperty Name="timeOut" ColumnName="timeOut" />
+                <ScalarProperty Name="person" ColumnName="person" />
+                <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>
