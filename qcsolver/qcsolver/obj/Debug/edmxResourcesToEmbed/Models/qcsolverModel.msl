@@ -1,0 +1,153 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="onsightDBModelStoreContainer" CdmEntityContainer="onsightdbEntities">
+    <EntitySetMapping Name="AssignedSubContractors">
+      <EntityTypeMapping TypeName="onsightDBModel.AssignedSubContractor">
+        <MappingFragment StoreEntitySet="AssignedSubContractor">
+          <ScalarProperty Name="assignedSubId" ColumnName="assignedSubId" />
+          <ScalarProperty Name="contractor" ColumnName="contractor" />
+          <ScalarProperty Name="subContractor" ColumnName="subContractor" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="AssignedWorkers">
+      <EntityTypeMapping TypeName="onsightDBModel.AssignedWorker">
+        <MappingFragment StoreEntitySet="AssignedWorker">
+          <ScalarProperty Name="assignedId" ColumnName="assignedId" />
+          <ScalarProperty Name="asignDate" ColumnName="asignDate" />
+          <ScalarProperty Name="unassignDate" ColumnName="unassignDate" />
+          <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+          <ScalarProperty Name="person" ColumnName="person" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Certificates">
+      <EntityTypeMapping TypeName="onsightDBModel.Certificate">
+        <MappingFragment StoreEntitySet="Certificate">
+          <ScalarProperty Name="certificateId" ColumnName="certificateId" />
+          <ScalarProperty Name="certificateName" ColumnName="certificateName" />
+          <ScalarProperty Name="dateIssued" ColumnName="dateIssued" />
+          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+          <ScalarProperty Name="person" ColumnName="person" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="onsightDBModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="companyId" ColumnName="companyId" />
+          <ScalarProperty Name="companyName" ColumnName="companyName" />
+          <ScalarProperty Name="contactNumber" ColumnName="contactNumber" />
+          <ScalarProperty Name="contactEmail" ColumnName="contactEmail" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="province" ColumnName="province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ConstructionSites">
+      <EntityTypeMapping TypeName="onsightDBModel.ConstructionSite">
+        <MappingFragment StoreEntitySet="ConstructionSite">
+          <ScalarProperty Name="constructionSiteId" ColumnName="constructionSiteId" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="startDate" ColumnName="startDate" />
+          <ScalarProperty Name="endDate" ColumnName="endDate" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="province" ColumnName="province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Countries">
+      <EntityTypeMapping TypeName="onsightDBModel.Country">
+        <MappingFragment StoreEntitySet="Country">
+          <ScalarProperty Name="countryId" ColumnName="countryId" />
+          <ScalarProperty Name="countryName" ColumnName="countryName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Licenses">
+      <EntityTypeMapping TypeName="onsightDBModel.License">
+        <MappingFragment StoreEntitySet="License">
+          <ScalarProperty Name="licenseId" ColumnName="licenseId" />
+          <ScalarProperty Name="licenseName" ColumnName="licenseName" />
+          <ScalarProperty Name="dateIssued" ColumnName="dateIssued" />
+          <ScalarProperty Name="expirationDate" ColumnName="expirationDate" />
+          <ScalarProperty Name="fileLocation" ColumnName="fileLocation" />
+          <ScalarProperty Name="person" ColumnName="person" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="People">
+      <EntityTypeMapping TypeName="onsightDBModel.Person">
+        <MappingFragment StoreEntitySet="Person">
+          <ScalarProperty Name="personId" ColumnName="personId" />
+          <ScalarProperty Name="firstName" ColumnName="firstName" />
+          <ScalarProperty Name="lastName" ColumnName="lastName" />
+          <ScalarProperty Name="city" ColumnName="city" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="pictureLocation" ColumnName="pictureLocation" />
+          <ScalarProperty Name="contractLocation" ColumnName="contractLocation" />
+          <ScalarProperty Name="postalCode" ColumnName="postalCode" />
+          <ScalarProperty Name="phone" ColumnName="phone" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="online" ColumnName="online" />
+          <ScalarProperty Name="type" ColumnName="type" />
+          <ScalarProperty Name="company" ColumnName="company" />
+          <ScalarProperty Name="country" ColumnName="country" />
+          <ScalarProperty Name="province" ColumnName="province" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PersonTypes">
+      <EntityTypeMapping TypeName="onsightDBModel.PersonType">
+        <MappingFragment StoreEntitySet="PersonType">
+          <ScalarProperty Name="personTypeId" ColumnName="personTypeId" />
+          <ScalarProperty Name="type" ColumnName="type" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Provinces">
+      <EntityTypeMapping TypeName="onsightDBModel.Province">
+        <MappingFragment StoreEntitySet="Province">
+          <ScalarProperty Name="provinceId" ColumnName="provinceId" />
+          <ScalarProperty Name="provinceName" ColumnName="provinceName" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Schedules">
+      <EntityTypeMapping TypeName="onsightDBModel.Schedule">
+        <MappingFragment StoreEntitySet="Schedule">
+          <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
+          <ScalarProperty Name="startDateTime" ColumnName="startDateTime" />
+          <ScalarProperty Name="duration" ColumnName="duration" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TaskDetails">
+      <EntityTypeMapping TypeName="onsightDBModel.TaskDetail">
+        <MappingFragment StoreEntitySet="TaskDetail">
+          <ScalarProperty Name="detailId" ColumnName="detailId" />
+          <ScalarProperty Name="details" ColumnName="details" />
+          <ScalarProperty Name="assigned" ColumnName="assigned" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Timestamps">
+      <EntityTypeMapping TypeName="onsightDBModel.Timestamp">
+        <MappingFragment StoreEntitySet="Timestamp">
+          <ScalarProperty Name="timestampId" ColumnName="timestampId" />
+          <ScalarProperty Name="timeIn" ColumnName="timeIn" />
+          <ScalarProperty Name="timeOut" ColumnName="timeOut" />
+          <ScalarProperty Name="person" ColumnName="person" />
+          <ScalarProperty Name="constructionSite" ColumnName="constructionSite" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
