@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-  <EntityContainerMapping StorageEntityContainer="onsightDBModelStoreContainer" CdmEntityContainer="onsightdbEntities">
+  <EntityContainerMapping StorageEntityContainer="onsightdbModelStoreContainer" CdmEntityContainer="onsightdbEntities">
     <EntitySetMapping Name="AssignedSubContractors">
-      <EntityTypeMapping TypeName="onsightDBModel.AssignedSubContractor">
+      <EntityTypeMapping TypeName="onsightdbModel.AssignedSubContractor">
         <MappingFragment StoreEntitySet="AssignedSubContractor">
           <ScalarProperty Name="assignedSubId" ColumnName="assignedSubId" />
           <ScalarProperty Name="contractor" ColumnName="contractor" />
@@ -11,7 +11,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="AssignedWorkers">
-      <EntityTypeMapping TypeName="onsightDBModel.AssignedWorker">
+      <EntityTypeMapping TypeName="onsightdbModel.AssignedWorker">
         <MappingFragment StoreEntitySet="AssignedWorker">
           <ScalarProperty Name="assignedId" ColumnName="assignedId" />
           <ScalarProperty Name="asignDate" ColumnName="asignDate" />
@@ -22,7 +22,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Certificates">
-      <EntityTypeMapping TypeName="onsightDBModel.Certificate">
+      <EntityTypeMapping TypeName="onsightdbModel.Certificate">
         <MappingFragment StoreEntitySet="Certificate">
           <ScalarProperty Name="certificateId" ColumnName="certificateId" />
           <ScalarProperty Name="certificateName" ColumnName="certificateName" />
@@ -33,7 +33,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Companies">
-      <EntityTypeMapping TypeName="onsightDBModel.Company">
+      <EntityTypeMapping TypeName="onsightdbModel.Company">
         <MappingFragment StoreEntitySet="Company">
           <ScalarProperty Name="companyId" ColumnName="companyId" />
           <ScalarProperty Name="companyName" ColumnName="companyName" />
@@ -48,7 +48,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="ConstructionSites">
-      <EntityTypeMapping TypeName="onsightDBModel.ConstructionSite">
+      <EntityTypeMapping TypeName="onsightdbModel.ConstructionSite">
         <MappingFragment StoreEntitySet="ConstructionSite">
           <ScalarProperty Name="constructionSiteId" ColumnName="constructionSiteId" />
           <ScalarProperty Name="address" ColumnName="address" />
@@ -62,7 +62,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Countries">
-      <EntityTypeMapping TypeName="onsightDBModel.Country">
+      <EntityTypeMapping TypeName="onsightdbModel.Country">
         <MappingFragment StoreEntitySet="Country">
           <ScalarProperty Name="countryId" ColumnName="countryId" />
           <ScalarProperty Name="countryName" ColumnName="countryName" />
@@ -70,7 +70,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Licenses">
-      <EntityTypeMapping TypeName="onsightDBModel.License">
+      <EntityTypeMapping TypeName="onsightdbModel.License">
         <MappingFragment StoreEntitySet="License">
           <ScalarProperty Name="licenseId" ColumnName="licenseId" />
           <ScalarProperty Name="licenseName" ColumnName="licenseName" />
@@ -82,7 +82,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="People">
-      <EntityTypeMapping TypeName="onsightDBModel.Person">
+      <EntityTypeMapping TypeName="onsightdbModel.Person">
         <MappingFragment StoreEntitySet="Person">
           <ScalarProperty Name="personId" ColumnName="personId" />
           <ScalarProperty Name="firstName" ColumnName="firstName" />
@@ -103,7 +103,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="PersonTypes">
-      <EntityTypeMapping TypeName="onsightDBModel.PersonType">
+      <EntityTypeMapping TypeName="onsightdbModel.PersonType">
         <MappingFragment StoreEntitySet="PersonType">
           <ScalarProperty Name="personTypeId" ColumnName="personTypeId" />
           <ScalarProperty Name="type" ColumnName="type" />
@@ -111,7 +111,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Provinces">
-      <EntityTypeMapping TypeName="onsightDBModel.Province">
+      <EntityTypeMapping TypeName="onsightdbModel.Province">
         <MappingFragment StoreEntitySet="Province">
           <ScalarProperty Name="provinceId" ColumnName="provinceId" />
           <ScalarProperty Name="provinceName" ColumnName="provinceName" />
@@ -119,7 +119,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Schedules">
-      <EntityTypeMapping TypeName="onsightDBModel.Schedule">
+      <EntityTypeMapping TypeName="onsightdbModel.Schedule">
         <MappingFragment StoreEntitySet="Schedule">
           <ScalarProperty Name="scheduleId" ColumnName="scheduleId" />
           <ScalarProperty Name="startDateTime" ColumnName="startDateTime" />
@@ -130,7 +130,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="TaskDetails">
-      <EntityTypeMapping TypeName="onsightDBModel.TaskDetail">
+      <EntityTypeMapping TypeName="onsightdbModel.TaskDetail">
         <MappingFragment StoreEntitySet="TaskDetail">
           <ScalarProperty Name="detailId" ColumnName="detailId" />
           <ScalarProperty Name="details" ColumnName="details" />
@@ -139,7 +139,7 @@
       </EntityTypeMapping>
     </EntitySetMapping>
     <EntitySetMapping Name="Timestamps">
-      <EntityTypeMapping TypeName="onsightDBModel.Timestamp">
+      <EntityTypeMapping TypeName="onsightdbModel.Timestamp">
         <MappingFragment StoreEntitySet="Timestamp">
           <ScalarProperty Name="timestampId" ColumnName="timestampId" />
           <ScalarProperty Name="timeIn" ColumnName="timeIn" />

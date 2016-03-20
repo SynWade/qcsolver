@@ -9,6 +9,7 @@
 
 namespace qcsolver.Models
 {
+
     using System;
     using System.Collections.Generic;
     
@@ -19,7 +20,7 @@ namespace qcsolver.Models
         {
             this.People = new HashSet<Person>();
         }
-    
+
         public int personTypeId { get; set; }
         public string type { get; set; }
     

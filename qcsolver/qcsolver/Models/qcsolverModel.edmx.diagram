@@ -4,40 +4,40 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="6feae0a7546b4d828aeab0e2682fa867" Name="Diagram1">
-        <EntityTypeShape EntityType="onsightDBModel.AssignedSubContractor" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.AssignedWorker" Width="1.5" PointX="13.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Certificate" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Company" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.ConstructionSite" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Country" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.License" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Person" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.PersonType" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Province" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Schedule" Width="1.5" PointX="13.5" PointY="5.25" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.TaskDetail" Width="1.5" PointX="15.75" PointY="9.625" IsExpanded="true" />
-        <EntityTypeShape EntityType="onsightDBModel.Timestamp" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
-        <AssociationConnector Association="onsightDBModel.FK__AssignedS__contr__1FCDBCEB" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__AssignedS__subCo__20C1E124" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__AssignedW__const__2C3393D0" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__AssignedW__perso__2D27B809" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__TaskDetai__assig__300424B4" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Certifica__perso__35BCFE0A" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Company__country__164452B1" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Company__provinc__173876EA" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Construct__compa__239E4DCF" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Person__company__1B0907CE" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Construct__count__24927208" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Construct__provi__25869641" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Schedule__constr__398D8EEE" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Timestamp__const__29572725" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Person__country__1BFD2C07" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__License__person__32E0915F" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Person__province__1CF15040" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Person__type__1A14E395" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Schedule__person__38996AB5" ManuallyRouted="false" />
-        <AssociationConnector Association="onsightDBModel.FK__Timestamp__perso__286302EC" ManuallyRouted="false" />
+      <Diagram DiagramId="c4150aebec2d4796a7d3fc60d9141904" Name="Diagram1">
+        <EntityTypeShape EntityType="onsightdbModel.AssignedSubContractor" Width="1.5" PointX="10.5" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.AssignedWorker" Width="1.5" PointX="13.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Certificate" Width="1.5" PointX="10.5" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Company" Width="1.5" PointX="3" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.ConstructionSite" Width="1.5" PointX="5.25" PointY="8.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Country" Width="1.5" PointX="0.75" PointY="9.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.License" Width="1.5" PointX="10.5" PointY="12.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Person" Width="1.5" PointX="8.25" PointY="7.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.PersonType" Width="1.5" PointX="6" PointY="5.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Province" Width="1.5" PointX="0.75" PointY="6.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Schedule" Width="1.5" PointX="13.5" PointY="5.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.TaskDetail" Width="1.5" PointX="15.75" PointY="9.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="onsightdbModel.Timestamp" Width="1.5" PointX="13.5" PointY="13.25" IsExpanded="true" />
+        <AssociationConnector Association="onsightdbModel.FK__AssignedS__contr__1FCDBCEB" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__AssignedS__subCo__20C1E124" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__AssignedW__const__2C3393D0" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__AssignedW__perso__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__TaskDetai__assig__300424B4" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Certifica__perso__35BCFE0A" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Company__country__164452B1" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Company__provinc__173876EA" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Construct__compa__239E4DCF" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Person__company__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Construct__count__24927208" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Construct__provi__25869641" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Schedule__constr__398D8EEE" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Timestamp__const__29572725" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Person__country__1BFD2C07" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__License__person__32E0915F" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Person__province__1CF15040" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Person__type__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Schedule__person__38996AB5" ManuallyRouted="false" />
+        <AssociationConnector Association="onsightdbModel.FK__Timestamp__perso__286302EC" ManuallyRouted="false" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>
