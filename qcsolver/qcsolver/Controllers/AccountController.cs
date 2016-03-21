@@ -21,7 +21,6 @@ namespace qcsolver.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private UserManager<Person> _userManager;
-
         private onsightdbEntities db = new onsightdbEntities();
 
         public AccountController()
@@ -52,11 +51,43 @@ namespace qcsolver.Controllers
             }
         }
 
+        public bool ValidatePassword(string email, string password)
+        {
+            bool isValid = false;
+            if (string.IsNullOrEmpty(email) || password == null)
+            {
+                throw new ArgumentNullException();
+            }
+
+            var row = db.People.FirstOrDefault(i => i.email == email);
+            if (row == null)
+            {
+                throw new HttpRequestValidationException("No user found with that email");
+            }
+            else
+            {
+                if (row.PASSWORD != password)
+                {
+                    throw new HttpRequestValidationException("Incorrect Password");
+                }
+                else
+                {
+                    isValid = true;
+                }
+            }
+
+            return isValid;
+        }
+
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (Request.IsAuthenticated)
+            {
+                return View("AlreadyLoggedIn");
+            }
             ViewBag.ReturnUrl = returnUrl;
             return View();
         }
