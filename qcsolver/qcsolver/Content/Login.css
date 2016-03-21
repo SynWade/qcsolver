@@ -1,0 +1,27 @@
+﻿html, body{
+    background-image: url("/Content/BuildFrameAlt.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.form-horizontal .form-group{
+    
+    margin-left:75px;
+    margin-right:auto;
+    align-content: center;
+}
+h1{
+    vertical-align: bottom;
+    margin-top: 250px;
+}
+.col-md-8{
+    margin-left:200px;
+    text-align: left;
+}
+#QCLogin{
+    margin-left: -11px;
+    margin-top:-85px;
+    width: 26%;
+    border-right: 1px solid #ffffff;
+}
