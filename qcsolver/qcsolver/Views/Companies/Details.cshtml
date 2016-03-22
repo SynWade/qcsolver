@@ -1,0 +1,82 @@
+﻿@model qcsolver.Models.Company
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Company</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.companyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.contactEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.contactEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.postalCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.postalCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country1.countryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country1.countryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province1.provinceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province1.provinceName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.companyId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

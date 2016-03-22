@@ -1,0 +1,75 @@
+﻿@model IEnumerable<qcsolver.Models.Company>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.companyName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.contactEmail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.postalCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country1.countryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Province1.provinceName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.companyName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.contactEmail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.postalCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.city)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Country1.countryName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Province1.provinceName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.companyId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.companyId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.companyId })
+        </td>
+    </tr>
+}
+
+</table>
