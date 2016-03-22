@@ -107,6 +107,7 @@
     <Property Name="postalCode" Type="String" MaxLength="6" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="phone" Type="String" MaxLength="10" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+    <Property Name="password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="online" Type="Boolean" Nullable="false" />
     <Property Name="type" Type="Int32" Nullable="false" />
     <Property Name="company" Type="Int32" Nullable="false" />

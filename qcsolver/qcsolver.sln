@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.40629.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qcsolver", "qcsolver\qcsolver.csproj", "{BB5A90B9-0095-44C4-A850-EBBB5B453452}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "qcsolver", "qcsolver\qcsolver.csproj", "{8E060558-3FAB-4DCD-B6F1-718C2476488C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +11,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{BB5A90B9-0095-44C4-A850-EBBB5B453452}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{BB5A90B9-0095-44C4-A850-EBBB5B453452}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{BB5A90B9-0095-44C4-A850-EBBB5B453452}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{BB5A90B9-0095-44C4-A850-EBBB5B453452}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8E060558-3FAB-4DCD-B6F1-718C2476488C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8E060558-3FAB-4DCD-B6F1-718C2476488C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8E060558-3FAB-4DCD-B6F1-718C2476488C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8E060558-3FAB-4DCD-B6F1-718C2476488C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

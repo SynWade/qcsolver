@@ -25,6 +25,7 @@ namespace qcsolver.Controllers
 
         public AccountController()
         {
+
         }
 
         public ApplicationSignInManager SignInManager
@@ -33,9 +34,9 @@ namespace qcsolver.Controllers
             {
                 return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
             }
-            private set 
-            { 
-                _signInManager = value; 
+            private set
+            {
+                _signInManager = value;
             }
         }
 
@@ -66,7 +67,7 @@ namespace qcsolver.Controllers
             }
             else
             {
-                if (row.PASSWORD != password)
+                if (row.password != password)
                 {
                     throw new HttpRequestValidationException("Incorrect Password");
                 }
@@ -99,27 +100,36 @@ namespace qcsolver.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginViewModel model, string returnUrl)
         {
-            if (!ModelState.IsValid)
+            if (ModelState.IsValid)
             {
-                return View(model);
-            }
+                var passwordValid = ValidatePassword(model.Email, model.Password);
+                if (passwordValid)
+                {
+                    FormsAuthentication.SetAuthCookie(model.Email, true);
+                    Person person = new Person();
+                    person = db.People.Where(i => i.email == model.Email).FirstOrDefault();
+                    person.online = true;
+                    Session["user"] = person;
 
-            // This doesn't count login failures towards account lockout
-            // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-            switch (result)
-            {
-                case SignInStatus.Success:
-                    return RedirectToLocal(returnUrl);
-                case SignInStatus.LockedOut:
-                    return View("Lockout");
-                case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
-                case SignInStatus.Failure:
-                default:
-                    ModelState.AddModelError("", "Invalid login attempt.");
-                    return View(model);
+                    // now the user is authenticated
+                    return RedirectToAction("Index", "Home");
+                }
+                else
+                {
+                    ModelState.AddModelError("password", "Invalid password");
+                }
             }
+            return View(model);
+        }
+
+        //
+        // GET: /Account/Logoff
+        [AllowAnonymous]
+        public ActionResult Logoff(string returnUrl)
+        {
+            AuthenticationManager.SignOut(DefaultAuthenticationTypes.ApplicationCookie);
+            Session.Remove("user");
+            return RedirectToAction("Login", "Account");
         }
 
         //
@@ -151,7 +161,7 @@ namespace qcsolver.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent: model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -170,6 +180,12 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
+            /*
+            if(((Person)Session["user"]).PersonType.type == "master")*/
+                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+            ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
             return View();
         }
 
@@ -182,7 +198,9 @@ namespace qcsolver.Controllers
         {
             if (ModelState.IsValid)
             {
-                var person = new Person();
+                db.People.Add(model);
+                db.SaveChanges();
+                return RedirectToAction("Index", "Account");
             }
 
             // If we got this far, something failed, redisplay form

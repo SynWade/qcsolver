@@ -87,6 +87,7 @@
     <Property Name="postalCode" Type="varchar" MaxLength="6" Nullable="false" />
     <Property Name="phone" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="email" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="online" Type="bit" Nullable="false" />
     <Property Name="type" Type="int" Nullable="false" />
     <Property Name="company" Type="int" Nullable="false" />

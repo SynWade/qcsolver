@@ -94,6 +94,7 @@
           <ScalarProperty Name="postalCode" ColumnName="postalCode" />
           <ScalarProperty Name="phone" ColumnName="phone" />
           <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="password" ColumnName="password" />
           <ScalarProperty Name="online" ColumnName="online" />
           <ScalarProperty Name="type" ColumnName="type" />
           <ScalarProperty Name="company" ColumnName="company" />
