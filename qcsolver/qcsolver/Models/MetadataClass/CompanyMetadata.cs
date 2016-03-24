@@ -89,7 +89,7 @@ namespace qcsolver.Models
         public string companyName { get; set; }
 
         [Display(Name = "contact Number")]
-        public int contactNumber { get; set; }
+        public String contactNumber { get; set; }
 
         [Display(Name = "contact Email")]
         [Required(ErrorMessage = "The email address is required")]
@@ -106,10 +106,10 @@ namespace qcsolver.Models
 
 
         [Display(Name = "country")]
-        public string country { get; set; }
+        public int country { get; set; }
 
 
         [Display(Name = "province")]
-        public string province { get; set; }
+        public int province { get; set; }
     }
 }

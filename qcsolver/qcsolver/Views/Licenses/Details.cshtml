@@ -1,0 +1,58 @@
+﻿@model qcsolver.Models.License
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>License</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.licenseName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.licenseName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateIssued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateIssued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.expirationDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.expirationDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fileLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fileLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person1.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person1.firstName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.licenseId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
