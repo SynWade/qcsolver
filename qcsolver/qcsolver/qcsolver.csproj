@@ -162,6 +162,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
+    <Compile Include="Controllers\ConstructionSitesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
@@ -192,6 +193,7 @@
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\MetadataClass\CompanyMetadata.cs" />
+    <Compile Include="Models\MetadataClass\ConstructionSitesMetadata.cs" />
     <Compile Include="Models\onsightModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -310,6 +312,11 @@
     <Content Include="Views\Companies\Details.cshtml" />
     <Content Include="Views\Companies\Edit.cshtml" />
     <Content Include="Views\Companies\Index.cshtml" />
+    <Content Include="Views\ConstructionSites\Create.cshtml" />
+    <Content Include="Views\ConstructionSites\Delete.cshtml" />
+    <Content Include="Views\ConstructionSites\Details.cshtml" />
+    <Content Include="Views\ConstructionSites\Edit.cshtml" />
+    <Content Include="Views\ConstructionSites\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>

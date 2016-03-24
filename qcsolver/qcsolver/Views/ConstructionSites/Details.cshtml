@@ -1,0 +1,74 @@
+﻿@model qcsolver.Models.ConstructionSite
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ConstructionSite</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.startDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.startDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.endDate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.endDate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company1.companyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company1.companyName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Country1.countryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Country1.countryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Province1.provinceName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Province1.provinceName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.constructionSiteId }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
