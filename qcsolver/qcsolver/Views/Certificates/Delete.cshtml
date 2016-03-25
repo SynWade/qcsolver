@@ -1,0 +1,56 @@
+﻿@model qcsolver.Models.Certificate
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Certificate</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.certificateName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.certificateName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateIssued)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateIssued)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fileLocation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fileLocation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Person1.firstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Person1.firstName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
