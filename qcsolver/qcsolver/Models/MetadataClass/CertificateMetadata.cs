@@ -16,12 +16,6 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (certificateId != null)
-            {
-                certificateId = certificateId;
-                yield return ValidationResult.Success;
-            }
-
             if (certificateName != null)
             {
                 certificateName = certificateName.Trim();

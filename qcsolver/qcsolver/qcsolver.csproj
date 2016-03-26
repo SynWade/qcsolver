@@ -198,6 +198,7 @@
     <Compile Include="Models\MetadataClass\CompanyMetadata.cs" />
     <Compile Include="Models\MetadataClass\ConstructionSiteMetadata.cs" />
     <Compile Include="Models\MetadataClass\LicenseMetadata.cs" />
+    <Compile Include="Models\MetadataClass\PersonMetadata.cs" />
     <Compile Include="Models\onsightModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
