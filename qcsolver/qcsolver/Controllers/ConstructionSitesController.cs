@@ -23,7 +23,7 @@ namespace qcsolver.Controllers
                 Person user = (Person)Session["user"];
                 if (Request["company"] != null)
                 {
-                    string company = Request["company"].ToString();
+                    var company = Request["company"].ToString();
                     if ((company == user.company.ToString() && user.PersonType.type == "admin") || user.PersonType.type == "master")
                         constructionSites = constructionSites.Where(c => c.company.ToString() == company);
                     else

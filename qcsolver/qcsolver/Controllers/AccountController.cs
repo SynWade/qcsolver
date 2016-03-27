@@ -39,33 +39,39 @@ namespace qcsolver.Controllers
 
                 if(Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && user.company.ToString() == Request["company"].ToString())))
                 {
+                    var company = Request["company"].ToString();
                     if (Request["type"] != null && (Request["type"].ToString() == "admin" || Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
                     {
-                        people = people.Where(c => c.PersonType.type == Request["type"].ToString()).Where(c => c.company.ToString() == Request["company"].ToString());
+                        var type = Request["type"].ToString();
+                        people = people.Where(c => c.PersonType.type == type).Where(c => c.company.ToString() == company);
                     }
                     else
                     {
-                        people = people.Where(c => c.company.ToString() == Request["company"].ToString());
+                        people = people.Where(c => c.company.ToString() == company);
                     }
                 }
                 else if (Request["constructionSite"] != null && (user.PersonType.type == "master" || ((user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)))
                 {
+                    var constructionSite = Request["constructionSite"].ToString();
                     if (Request["onsite"] != null)
                     {
-                        people = people.Where(c => c.Timestamps.Where(x => x.timeOut == null && x.person == user.personId) != null).Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null);
+                        people = people.Where(c => c.Timestamps.Where(x => x.timeOut == null && x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
                     }
                     else if (Request["type"] != null && (Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
                     {
-                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null).Where(c => c.PersonType.type == Request["type"].ToString());
+                        var type = Request["type"].ToString();
+                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.PersonType.type == type);
                     }
                     else
                     {
-                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null);
+                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
                     }
                 }
                 else if (Request["constructionSite"] != null && Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor" && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)
                 {
-                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null).Where(c => c.PersonType.type == Request["type"].ToString());
+                    var constructionSite = Request["constructionSite"].ToString();
+                    var type = Request["type"].ToString();
+                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite && x.person == user.personId).Count() != 0).Where(c => c.PersonType.type == type);
                 }
                 else if(user.PersonType.type == "master")
                 {
@@ -75,7 +81,8 @@ namespace qcsolver.Controllers
                     }
                     else if (Request["type"] != null)
                     {
-                        people = people.Where(c => c.PersonType.type == Request["type"].ToString());
+                        var type = Request["type"].ToString();
+                        people = people.Where(c => c.PersonType.type == type);
                     }
                 }
                 else
