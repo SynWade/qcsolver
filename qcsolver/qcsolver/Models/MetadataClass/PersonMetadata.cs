@@ -14,7 +14,7 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            
+            yield return ValidationResult.Success;
         }
     }
     public class PersonMetadata

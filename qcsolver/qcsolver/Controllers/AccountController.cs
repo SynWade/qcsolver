@@ -16,7 +16,7 @@ using System.Collections.Generic;
 
 namespace qcsolver.Controllers
 {
-    [Authorize]
+    //[Authorize]
     public class AccountController : Controller
     {
         private ApplicationSignInManager _signInManager;
@@ -26,6 +26,70 @@ namespace qcsolver.Controllers
         public AccountController()
         {
 
+        }
+
+        // GET: ConstructionSites
+        public ActionResult Index()
+        {
+            var people = db.People.Include(c => c.Company1).Include(c => c.Country1).Include(c => c.Province1).Include(c => c.PersonType);
+
+            if(Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+
+                if(Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && user.company.ToString() == Request["company"].ToString())))
+                {
+                    if (Request["type"] != null && (Request["type"].ToString() == "admin" || Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
+                    {
+                        people = people.Where(c => c.PersonType.type == Request["type"].ToString()).Where(c => c.company.ToString() == Request["company"].ToString());
+                    }
+                    else
+                    {
+                        people = people.Where(c => c.company.ToString() == Request["company"].ToString());
+                    }
+                }
+                else if (Request["constructionSite"] != null && (user.PersonType.type == "master" || ((user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)))
+                {
+                    if (Request["onsite"] != null)
+                    {
+                        people = people.Where(c => c.Timestamps.Where(x => x.timeOut == null && x.person == user.personId) != null).Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null);
+                    }
+                    else if (Request["type"] != null && (Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
+                    {
+                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null).Where(c => c.PersonType.type == Request["type"].ToString());
+                    }
+                    else
+                    {
+                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null);
+                    }
+                }
+                else if (Request["constructionSite"] != null && Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor" && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)
+                {
+                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == Request["constructionSite"].ToString() && x.person == user.personId) != null).Where(c => c.PersonType.type == Request["type"].ToString());
+                }
+                else if(user.PersonType.type == "master")
+                {
+                    if (Request["online"] != null)
+                    {
+                        people = people.Where(c => c.online == true);
+                    }
+                    else if (Request["type"] != null)
+                    {
+                        people = people.Where(c => c.PersonType.type == Request["type"].ToString());
+                    }
+                }
+                else
+                {
+                    //error
+                    //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                }
+            }
+            else
+            {
+                //error
+                //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+            }
+            return View(people.ToList());
         }
 
         public ApplicationSignInManager SignInManager
@@ -103,6 +167,7 @@ namespace qcsolver.Controllers
             if (ModelState.IsValid)
             {
                 var passwordValid = ValidatePassword(model.Email, model.Password);
+                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
                 if (passwordValid)
                 {
                     FormsAuthentication.SetAuthCookie(model.Email, true);

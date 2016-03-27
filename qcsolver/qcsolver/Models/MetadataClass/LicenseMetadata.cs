@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace qcsolver.Models
 {

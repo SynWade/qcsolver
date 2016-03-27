@@ -332,6 +332,7 @@
     <Content Include="Views\Certificates\Details.cshtml" />
     <Content Include="Views\Certificates\Edit.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
