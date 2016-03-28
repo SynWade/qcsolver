@@ -167,6 +167,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LicensesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TimestampsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -199,6 +200,7 @@
     <Compile Include="Models\MetadataClass\ConstructionSiteMetadata.cs" />
     <Compile Include="Models\MetadataClass\LicenseMetadata.cs" />
     <Compile Include="Models\MetadataClass\PersonMetadata.cs" />
+    <Compile Include="Models\MetadataClass\TimeStampMetadata.cs" />
     <Compile Include="Models\onsightModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
