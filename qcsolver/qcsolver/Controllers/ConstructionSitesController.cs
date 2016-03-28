@@ -18,6 +18,32 @@ namespace qcsolver.Controllers
         public ActionResult Index()
         {
             var constructionSites = db.ConstructionSites.Include(c => c.Company1).Include(c => c.Country1).Include(c => c.Province1);
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["company"] != null)
+                {
+                    var company = Request["company"].ToString();
+                    if ((company == user.company.ToString() && user.PersonType.type == "admin") || user.PersonType.type == "master")
+                        constructionSites = constructionSites.Where(c => c.company.ToString() == company);
+                    else
+                    {
+                        //Error
+                        //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+
+                    }
+                }
+                else if (user.PersonType.type != "master")
+                {
+                    //error
+                    //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                }
+            }
+            else
+            {
+                //error
+                //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+            }
             return View(constructionSites.ToList());
         }
 

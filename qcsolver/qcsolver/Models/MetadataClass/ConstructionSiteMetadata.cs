@@ -7,7 +7,7 @@ using System.Web;
 
 namespace qcsolver.Models
 {
-    [MetadataType(typeof(ConstructionSitesMetadata))]
+    [MetadataType(typeof(ConstructionSiteMetadata))]
     public partial class ConstructionSite : IValidatableObject
     {
         private onsightdbEntities db = new onsightdbEntities();
@@ -63,13 +63,7 @@ namespace qcsolver.Models
         }
     }
 
-
-
-
-
-
-
-    public class ConstructionSitesMetadata
+    public class ConstructionSiteMetadata
     {
         [Display(Name = "construction SiteId")]
         public int constructionSiteId { get; set; }

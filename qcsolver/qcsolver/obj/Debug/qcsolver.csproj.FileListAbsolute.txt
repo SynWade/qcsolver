@@ -105,7 +105,6 @@ G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
 G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
 G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
 G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
 G:\qcsolver\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
@@ -163,3 +162,59 @@ G:\qcsolver\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAcco
 G:\qcsolver\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
 G:\qcsolver\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
 G:\qcsolver\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.pdb
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Owin.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\WebGrease.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.pdb
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
+C:\Users\Syn Wade\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache

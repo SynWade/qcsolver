@@ -161,6 +161,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CertificatesController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\ConstructionSitesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -193,9 +194,11 @@
       <DependentUpon>onsightModel.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\MetadataClass\CertificateMetadata.cs" />
     <Compile Include="Models\MetadataClass\CompanyMetadata.cs" />
-    <Compile Include="Models\MetadataClass\ConstructionSitesMetadata.cs" />
+    <Compile Include="Models\MetadataClass\ConstructionSiteMetadata.cs" />
     <Compile Include="Models\MetadataClass\LicenseMetadata.cs" />
+    <Compile Include="Models\MetadataClass\PersonMetadata.cs" />
     <Compile Include="Models\onsightModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -324,6 +327,12 @@
     <Content Include="Views\Licenses\Details.cshtml" />
     <Content Include="Views\Licenses\Edit.cshtml" />
     <Content Include="Views\Licenses\Index.cshtml" />
+    <Content Include="Views\Certificates\Create.cshtml" />
+    <Content Include="Views\Certificates\Delete.cshtml" />
+    <Content Include="Views\Certificates\Details.cshtml" />
+    <Content Include="Views\Certificates\Edit.cshtml" />
+    <Content Include="Views\Certificates\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
