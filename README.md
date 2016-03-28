@@ -24,3 +24,14 @@ MotorheadMolson1
 ------------SUBCONTRACTOR-----------
 HickTie@gmail.ca
 hity1
+
+--------------For commiting---------------
+git add .
+git commit -m "detailed message"
+git psuh origin nameOfBranch
+
+--------------Creating new branch---------------
+git checkout -b nameOfBranch
+
+-----------Switching branches--------------
+git checkout nameOfBranch (Make sure that all changes have been saved otherwise you cant switch)
