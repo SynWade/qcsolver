@@ -166,6 +166,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LicensesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Controllers\TimestampsController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -196,6 +197,7 @@
     <Compile Include="Models\MetadataClass\CompanyMetadata.cs" />
     <Compile Include="Models\MetadataClass\ConstructionSitesMetadata.cs" />
     <Compile Include="Models\MetadataClass\LicenseMetadata.cs" />
+    <Compile Include="Models\MetadataClass\TimeStampMetadata.cs" />
     <Compile Include="Models\onsightModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -324,8 +326,20 @@
     <Content Include="Views\Licenses\Details.cshtml" />
     <Content Include="Views\Licenses\Edit.cshtml" />
     <Content Include="Views\Licenses\Index.cshtml" />
+    <Content Include="Views\ConstructionSites1\Create.cshtml" />
+    <Content Include="Views\ConstructionSites1\Delete.cshtml" />
+    <Content Include="Views\ConstructionSites1\Details.cshtml" />
+    <Content Include="Views\ConstructionSites1\Edit.cshtml" />
+    <Content Include="Views\ConstructionSites1\Index.cshtml" />
+    <Content Include="Views\Timestamps\Create.cshtml" />
+    <Content Include="Views\Timestamps\Delete.cshtml" />
+    <Content Include="Views\Timestamps\Details.cshtml" />
+    <Content Include="Views\Timestamps\Edit.cshtml" />
+    <Content Include="Views\Timestamps\Index.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\Countries\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
