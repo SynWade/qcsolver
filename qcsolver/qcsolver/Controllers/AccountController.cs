@@ -28,10 +28,11 @@ namespace qcsolver.Controllers
 
         }
 
-        // GET: ConstructionSites
+        //
+        // GET: /Account/Index
         public ActionResult Index()
         {
-            var people = db.People.Include(c => c.Company1).Include(c => c.Country1).Include(c => c.Province1).Include(c => c.PersonType);
+            var people = db.People.Include(c => c.Country1).Include(c => c.Province1);
 
             if(Session["user"] != null)
             {
@@ -67,11 +68,10 @@ namespace qcsolver.Controllers
                         people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
                     }
                 }
-                else if (Request["constructionSite"] != null && Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor" && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)
+                else if (Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor")
                 {
-                    var constructionSite = Request["constructionSite"].ToString();
                     var type = Request["type"].ToString();
-                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite && x.person == user.personId).Count() != 0).Where(c => c.PersonType.type == type);
+                    people = people.Where(c => c.AssignedSubContractors1.Where(x => x.contractor == user.personId).Count() != 0);
                 }
                 else if(user.PersonType.type == "master")
                 {
@@ -87,16 +87,47 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    //error
-                    //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                //error
-                //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                return RedirectToAction("Login", "Account");
             }
             return View(people.ToList());
+        }
+
+        //
+        // GET: /Account/Profile
+        [AllowAnonymous]
+        public ActionResult Profile()
+        {
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if(Request["person"] != null)
+                {
+                    var person = Request["person"].ToString();
+                    var people = db.People.Where(c => c.personId.ToString() == person).First();
+                    if(people != null && people.PersonType.personTypeId > user.PersonType.personTypeId)
+                    {
+                        return View(people);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var people = db.People.Where(c => c.personId == user.personId).First();
+                    return View(people);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ApplicationSignInManager SignInManager
