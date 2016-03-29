@@ -106,3 +106,224 @@ G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
 G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.pdb
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Owin.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\WebGrease.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.pdb
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+C:\Users\Df4ultYn95\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\qcsolver.pdb
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\EntityFramework.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Owin.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\WebGrease.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.pdb
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\EntityFramework.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+C:\Users\riederan-cc\Desktop\New folder\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\qcsolver.pdb
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Owin.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\WebGrease.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.pdb
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
+C:\Users\riederan-cc\Desktop\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll.config
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\qcsolver.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\qcsolver.pdb
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\EntityFramework.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Web.Infrastructure.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Owin.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\WebGrease.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Helpers.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Mvc.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Optimization.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.Razor.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Deployment.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\System.Web.WebPages.Razor.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Antlr3.Runtime.pdb
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Newtonsoft.Json.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\EntityFramework.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\EntityFramework.SqlServer.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Core.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.Owin.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.AspNet.Identity.EntityFramework.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Host.SystemWeb.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Facebook.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Cookies.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.OAuth.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Google.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
+C:\Users\riederan-cc\Desktop\26m\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb

@@ -4,13 +4,17 @@
     ViewBag.Title = "Log In";
 }
 <link href="~/Content/Login.css" type="text/css" rel="stylesheet" />
+    <script>
+        document.getElementsByClassName('sidebar-nav')[0].style.visibility = 'hidden';
+        document.getElementsByClassName('nav navbar-nav')[0].style.visibility = 'hidden';
+    </script>
 <div class="row">
     <div class="col-md-8">
         <section id=" loginform">
             @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
             {
                 <h1>
-                    <img id="QCLogin" src="~/Content/QCLoginLogo.png" alt="QCsolver logo" />
+                    <img id="QCLogin" src="~/Content/Images/QCLoginLogo.png" alt="QCsolver logo" />
                     &nbsp;@ViewBag.Title
                 </h1>
                 @Html.AntiForgeryToken()
