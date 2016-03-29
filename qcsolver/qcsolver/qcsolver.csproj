@@ -246,6 +246,16 @@
     </Content>
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Images\blackBox.jpg" />
+    <Content Include="Content\Images\BuildFrame.jpg" />
+    <Content Include="Content\Images\BuildFrameAlt.jpg" />
+    <Content Include="Content\Images\lion.JPG" />
+    <Content Include="Content\Images\QCFrame.jpg" />
+    <Content Include="Content\Images\QCLoginLogo.png" />
+    <Content Include="Content\Images\whiteBox.png" />
+    <Content Include="Content\Login.css" />
+    <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Content\TopNavBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -269,10 +279,12 @@
     <Content Include="Models\onsightModel.edmx.diagram">
       <DependentUpon>onsightModel.edmx</DependentUpon>
     </Content>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />

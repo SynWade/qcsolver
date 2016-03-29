@@ -1,0 +1,43 @@
+﻿body{ 
+    background: url("/Content/Images/BuildFrameAlt.jpg") no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: white;
+}
+
+.form-horizontal .form-group{
+    margin-left:75px;
+    margin-right:auto;
+    align-content: center;
+}
+h1{
+    vertical-align: bottom;
+    margin-top: 100px;
+}
+.col-md-8{
+    margin-top:175px;
+    margin-left:75px;
+    padding-top: 10px;
+    padding-left:25px;
+    padding-bottom: 15px;
+    align-content:center;
+    text-align: left;
+    background-color: rgba(0, 0, 0, .7);
+    border-radius: 50px;
+    box-shadow: inset 0px 0px 75px rgb(128, 128, 128);
+    color: white;
+
+}
+#QCLogin{
+    margin-left: -11px;
+    margin-top:-85px;
+    width: 225px;
+    border-right: 1px solid #ffffff;
+}
+
+#sidebar-wrapper, wrapper,
+ #sidebar-nav, #nav navbar-nav{
+    display: none;
+}
