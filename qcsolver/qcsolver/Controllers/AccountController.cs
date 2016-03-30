@@ -43,6 +43,7 @@ namespace qcsolver.Controllers
                     if (Request["type"] != null && (Request["type"].ToString() == "admin" || Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
                     {
                         var type = Request["type"].ToString();
+                        ViewBag.type = type;
                         people = people.Where(c => c.PersonType.type == type).Where(c => c.company.ToString() == company);
                     }
                     else
@@ -67,11 +68,10 @@ namespace qcsolver.Controllers
                         people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
                     }
                 }
-                else if (Request["constructionSite"] != null && Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor" && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)
+                else if (Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor")
                 {
-                    var constructionSite = Request["constructionSite"].ToString();
                     var type = Request["type"].ToString();
-                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite && x.person == user.personId).Count() != 0).Where(c => c.PersonType.type == type);
+                    people = people.Where(c => c.AssignedSubContractors1.Where(x => x.contractor == user.personId).Count() != 0);
                 }
                 else if(user.PersonType.type == "master")
                 {

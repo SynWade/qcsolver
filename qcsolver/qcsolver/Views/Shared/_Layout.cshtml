@@ -1,5 +1,6 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+    @using qcsolver.Models;
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -33,20 +34,71 @@
                         <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" style="height:125px" />
                     </div>
                     <div class="user-info">
-                        <p class="FLnames">First - Last Name</p>
-                        <p class="role" data-icon="flag">(Role)</p>
+@if (Session["user"] != null)
+                {
+                        <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
+                        <p class="role" data-icon="flag">@(((Person)Session["user"]).PersonType.type)</p>
+                }
                         <p class="status"><i class="fa fa-circle text-success"></i> Online</p>
                         <button type="button" class="acctSettings" /><p style="color: #999999;"><i class="fa fa-gear"></i> Account Settings</p>
                     </div>
                     <hr />
                 </div>
-                <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                <li data-icon="alert">@Html.ActionLink("About", "About", "Home")</li>
-                <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+
+                @if (Session["user"] == null)
+                {
+                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                }
+                else if (((Person)Session["user"]).PersonType.type == "master")
+                {
+                    <li>@Html.ActionLink("Login-Master", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Admins", "Index", "Account", new { type = "admin" }, null)</li>
+                    <li>@Html.ActionLink("Companies", "Index", "Companies")</li>
+                    <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites")</li>
+                    <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor" }, null)</li>
+                    <li>@Html.ActionLink("Online Users", "Index", "Account", new { online = true }, null)</li>
+                    <li>@Html.ActionLink("Supervisors", "Index", "Account", new {type = "supervisor"}, null)</li>
+                }
+                else if (((Person)Session["user"]).PersonType.type == "admin")
+                {
+                    <li>@Html.ActionLink("Login-Admin", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites")</li>
+                    <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor" }, null)</li>
+                    <li>@Html.ActionLink("Supervisors", "Index", "Account", new { type = "supervisor" }, null)</li>
+                }
+                else if (((Person)Session["user"]).PersonType.type == "supervisor")
+                {
+                    <li>@Html.ActionLink("Login-Supervisor", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor" }, null)</li>
+                    <li>@Html.ActionLink("OnSite", "Index", "ConstructionSites")</li>
+                    <li>@Html.ActionLink("Tasks - N/A Ln-77", "Index", "Account"@*, new { type = "supervisor" }, null*@)</li>
+                }
+                else if (((Person)Session["user"]).PersonType.type == "contractor")
+                {
+                    <li>@Html.ActionLink("Login-Contractor", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
+                    <li>@Html.ActionLink("Contracts - IMG LN83", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
+                    <li>@Html.ActionLink("Timestamps - LN85", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
+                    <li>@Html.ActionLink("Subcontractors", "Index", "Account", new { type = "subcontractor" }, null)</li>
+                }
+                else if (((Person)Session["user"]).PersonType.type == "subcontractor")
+                {
+                    <li>@Html.ActionLink("Login-Subcontractor", "Login", "Account")</li>
+                    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
+                    <li>@Html.ActionLink("Contracts - IMG LN93", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
+                    <li>@Html.ActionLink("Timestamps - LN95", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
+
+                }
             </ul>
         </div>
         <!-- /#sidebar-wrapper -->
-            <!-- Page Content -->        
+            <!-- Page Content -->
         <!-- Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
             <ul class="nav navbar-nav">
