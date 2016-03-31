@@ -4,7 +4,6 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace qcsolver.Models
 {
@@ -16,11 +15,24 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (certificateName != null)
+            //checks if the required field is entered
+            if (certificateName == null || certificateName.Trim() == "")
             {
-                certificateName = certificateName.Trim();
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The certificate name: {0} is required", certificateName), new[] { "certificateName" });
             }
+            else
+            {
+                //certificate name validation
+                certificateName = certificateName.Trim();
+                Regex certificateRegex = new Regex(" \b^[a-zA-Z]+$\b");
+                if (!certificateRegex.IsMatch(certificateName))
+                {
+
+                    yield return new ValidationResult(string.Format("The certificate name: {0} should not not contain a number", certificateName), new[] { "certificateName" });
+                }
+            }
+            
+
 
             if (dateIssued != null)
             {
@@ -28,21 +40,24 @@ namespace qcsolver.Models
                 yield return ValidationResult.Success;
             }
 
-            if (fileLocation != null)
-            {
-                fileLocation = fileLocation.Trim();
-                yield return ValidationResult.Success;
-            }
 
+            //checks if required field is entered.. 
+            if (fileLocation == null || fileLocation.Trim() == "")
+            {
+                yield return new ValidationResult(string.Format("The file location: {0} is required", fileLocation), new[] { "fileLocation" });
+            }
+            
+            //checks if person is selected
             if (person != null)
             {
                 person = person;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The person: {0} needs to be selected", person), new[] { "person" });
             }
         }
     }
     public class CertificateMetadata
     {
+        
         [Display(Name = "Certificate Id")]
         public int certificateId { get; set; }
 

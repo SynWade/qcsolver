@@ -14,34 +14,27 @@ namespace qcsolver.Models
         private onsightdbEntities db = new onsightdbEntities();
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (timestampId != null)
-            {
-                timestampId = timestampId;
-                yield return ValidationResult.Success;
-            }
-
+           
             if (timeIn != null)
             {
                 timeIn = timeIn;
                 yield return ValidationResult.Success;
             }
 
-            if (timeOut != null)
-            {
-                timeOut = timeOut;
-                yield return ValidationResult.Success;
-            }
+           
 
+            //checks if person is selected
             if (person != null)
             {
                 person = person;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The person: {0} needs to be selected", person), new[] { "person" });
             }
 
+            //checks if the construction site has been selected.. 
             if (constructionSite != null)
             {
                 constructionSite = constructionSite;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The construction site: {0} needs to be selected", constructionSite), new[] { "constructionSite" });
             }
         }
     }
