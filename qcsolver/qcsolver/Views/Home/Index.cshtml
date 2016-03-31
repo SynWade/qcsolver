@@ -1,31 +1,50 @@
-﻿@{
-    ViewBag.Title = "Home Page";
-}
+﻿<!DOCTYPE html>
+<html lang="en">
+@using qcsolver.Models;
+    <body>
+        @{
+            ViewBag.Title = "Home Page";
+        }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="http://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
-    </div>
-</div>
+        <h2 style="text-align:center; font-weight:bold">Welcome to QCsolver's OnSite </h2>
+        
+            @if (Session["user"] == null)
+            {
+                <script>document.getElementsByClassName('sidebar-nav')[0].style.visibility = 'hidden';</script>
+                <script>document.getElementById('sidebar-wrapper').style.visibility = 'hidden';</script>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>Software and a Service</h3>
+                            <img class="homeLogo" src="~/Content/Images/QCLoginLogo.png" alt=" QCsolver Logo" />
+                            <hr style="border: 1px double #337ab7;" />
+                            <p style="text-align:center">
+                                On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
+                                QCsolver hopes that this web application will improve your performance withing your company.
+                            </p>
+                        </div>
+                    </div>
+            }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Getting started</h3>
+                                <hr style="border: 1px double #337ab7;" />
+                                <p style="text-align:center">
+                                    On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
+                                    QCsolver hopes that this web application will improve your performance withing your company.
+                                </p>
+                            </div>
+                            <div class="col-md-12">
+                                <hr style="border: 1px double #337ab7;" />
+                                <h4>Your role as a user is:</h4>
+                                <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
+                            </div>
+                            @*<div class="col-md-8" style="background-image:url(~/Content/Images/buildingFrame.jpg)">
+                            <p>role is master</p>
+                        </div>*@
+                        </div>
+                    }
+                    </body>
+</html>

@@ -44,6 +44,7 @@ namespace qcsolver.Controllers
                     if (Request["type"] != null && (Request["type"].ToString() == "admin" || Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
                     {
                         var type = Request["type"].ToString();
+                        ViewBag.type = type;
                         people = people.Where(c => c.PersonType.type == type).Where(c => c.company.ToString() == company);
                     }
                     else
