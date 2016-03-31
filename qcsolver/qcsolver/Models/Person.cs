@@ -9,10 +9,11 @@
 
 namespace qcsolver.Models
 {
+    using Microsoft.AspNet.Identity;
     using System;
     using System.Collections.Generic;
     
-    public partial class Person
+    public partial class Person : IUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public Person()
@@ -25,7 +26,9 @@ namespace qcsolver.Models
             this.Schedules = new HashSet<Schedule>();
             this.Timestamps = new HashSet<Timestamp>();
         }
-    
+
+        public string Id { get; set; }
+        public string UserName { get; set; }
         public int personId { get; set; }
         public string firstName { get; set; }
         public string lastName { get; set; }
@@ -39,7 +42,7 @@ namespace qcsolver.Models
         public string password { get; set; }
         public bool online { get; set; }
         public int type { get; set; }
-        public int company { get; set; }
+        public Nullable<int> company { get; set; }
         public int country { get; set; }
         public int province { get; set; }
     

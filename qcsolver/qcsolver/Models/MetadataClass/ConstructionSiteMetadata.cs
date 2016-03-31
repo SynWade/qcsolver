@@ -12,8 +12,6 @@ namespace qcsolver.Models
     {
         private onsightdbEntities db = new onsightdbEntities();
 
-
-
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (constructionSiteId != null)

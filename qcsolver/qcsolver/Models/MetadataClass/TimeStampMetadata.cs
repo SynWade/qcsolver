@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace qcsolver.Models
 {
-    [MetadataType(typeof(TimeStampMetadata))]
+    [MetadataType(typeof(TimestampMetadata))]
     public partial class Timestamp : IValidatableObject
     {
 
@@ -46,25 +46,21 @@ namespace qcsolver.Models
         }
     }
 
-
-
-
-
-    public class TimeStampMetadata
+    public class TimestampMetadata
     {
-        [Display(Name= "Time StampId")]
+        [Display(Name = "Time StampId")]
         public int timestampId { get; set; }
 
-        [Display(Name= "Time In")]
+        [Display(Name = "Time In")]
         public System.DateTime timeIn { get; set; }
 
-        [Display(Name= "Time Out")]
+        [Display(Name = "Time Out")]
         public Nullable<System.DateTime> timeOut { get; set; }
 
-        [Display(Name= "Person")]
+        [Display(Name = "Person")]
         public int person { get; set; }
 
-        [Display(Name= "Construction Site")]
+        [Display(Name = "Construction Site")]
         public int constructionSite { get; set; }
     }
 }

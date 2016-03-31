@@ -4,7 +4,7 @@
     <Key>
       <PropertyRef Name="assignedSubId" />
     </Key>
-    <Property Name="assignedSubId" Type="int" Nullable="false" />
+    <Property Name="assignedSubId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="contractor" Type="int" Nullable="false" />
     <Property Name="subContractor" Type="int" Nullable="false" />
   </EntityType>
@@ -12,7 +12,7 @@
     <Key>
       <PropertyRef Name="assignedId" />
     </Key>
-    <Property Name="assignedId" Type="int" Nullable="false" />
+    <Property Name="assignedId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="asignDate" Type="date" Nullable="false" />
     <Property Name="unassignDate" Type="date" />
     <Property Name="constructionSite" Type="int" Nullable="false" />
@@ -22,7 +22,7 @@
     <Key>
       <PropertyRef Name="certificateId" />
     </Key>
-    <Property Name="certificateId" Type="int" Nullable="false" />
+    <Property Name="certificateId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="certificateName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="dateIssued" Type="date" Nullable="false" />
     <Property Name="fileLocation" Type="varchar" MaxLength="255" Nullable="false" />
@@ -32,7 +32,7 @@
     <Key>
       <PropertyRef Name="companyId" />
     </Key>
-    <Property Name="companyId" Type="int" Nullable="false" />
+    <Property Name="companyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="companyName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="contactNumber" Type="varchar" MaxLength="10" Nullable="false" />
     <Property Name="contactEmail" Type="varchar" MaxLength="50" Nullable="false" />
@@ -46,7 +46,7 @@
     <Key>
       <PropertyRef Name="constructionSiteId" />
     </Key>
-    <Property Name="constructionSiteId" Type="int" Nullable="false" />
+    <Property Name="constructionSiteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="address" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="startDate" Type="date" Nullable="false" />
     <Property Name="endDate" Type="date" />
@@ -59,14 +59,14 @@
     <Key>
       <PropertyRef Name="countryId" />
     </Key>
-    <Property Name="countryId" Type="int" Nullable="false" />
+    <Property Name="countryId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="countryName" Type="varchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <EntityType Name="License">
     <Key>
       <PropertyRef Name="licenseId" />
     </Key>
-    <Property Name="licenseId" Type="int" Nullable="false" />
+    <Property Name="licenseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="licenseName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="dateIssued" Type="date" Nullable="false" />
     <Property Name="expirationDate" Type="date" />
@@ -77,7 +77,7 @@
     <Key>
       <PropertyRef Name="personId" />
     </Key>
-    <Property Name="personId" Type="int" Nullable="false" />
+    <Property Name="personId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="firstName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="lastName" Type="varchar" MaxLength="25" Nullable="false" />
     <Property Name="city" Type="varchar" MaxLength="25" Nullable="false" />
@@ -90,7 +90,7 @@
     <Property Name="password" Type="varchar" MaxLength="50" Nullable="false" />
     <Property Name="online" Type="bit" Nullable="false" />
     <Property Name="type" Type="int" Nullable="false" />
-    <Property Name="company" Type="int" Nullable="false" />
+    <Property Name="company" Type="int" />
     <Property Name="country" Type="int" Nullable="false" />
     <Property Name="province" Type="int" Nullable="false" />
   </EntityType>
@@ -98,21 +98,21 @@
     <Key>
       <PropertyRef Name="personTypeId" />
     </Key>
-    <Property Name="personTypeId" Type="int" Nullable="false" />
+    <Property Name="personTypeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="type" Type="varchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <EntityType Name="Province">
     <Key>
       <PropertyRef Name="provinceId" />
     </Key>
-    <Property Name="provinceId" Type="int" Nullable="false" />
+    <Property Name="provinceId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="provinceName" Type="varchar" MaxLength="25" Nullable="false" />
   </EntityType>
   <EntityType Name="Schedule">
     <Key>
       <PropertyRef Name="scheduleId" />
     </Key>
-    <Property Name="scheduleId" Type="int" Nullable="false" />
+    <Property Name="scheduleId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="startDateTime" Type="datetime" Nullable="false" />
     <Property Name="duration" Type="int" Nullable="false" />
     <Property Name="person" Type="int" Nullable="false" />
@@ -122,7 +122,7 @@
     <Key>
       <PropertyRef Name="detailId" />
     </Key>
-    <Property Name="detailId" Type="int" Nullable="false" />
+    <Property Name="detailId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="details" Type="varchar" MaxLength="255" Nullable="false" />
     <Property Name="assigned" Type="int" Nullable="false" />
   </EntityType>
@@ -130,7 +130,7 @@
     <Key>
       <PropertyRef Name="timestampId" />
     </Key>
-    <Property Name="timestampId" Type="int" Nullable="false" />
+    <Property Name="timestampId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
     <Property Name="timeIn" Type="datetime" Nullable="false" />
     <Property Name="timeOut" Type="datetime" />
     <Property Name="person" Type="int" Nullable="false" />
@@ -269,7 +269,7 @@
     </ReferentialConstraint>
   </Association>
   <Association Name="FK__Person__company__1B0907CE">
-    <End Role="Company" Type="Self.Company" Multiplicity="1" />
+    <End Role="Company" Type="Self.Company" Multiplicity="0..1" />
     <End Role="Person" Type="Self.Person" Multiplicity="*" />
     <ReferentialConstraint>
       <Principal Role="Company">

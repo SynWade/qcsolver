@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -25,12 +26,6 @@ namespace qcsolver.Models
                 yield return ValidationResult.Success;
             }
 
-            if (companyId != null)
-            {
-                companyId = companyId;
-                yield return ValidationResult.Success;
-            }
-
             if (contactNumber != null)
             {
                 contactNumber = contactNumber.Trim();
@@ -44,7 +39,7 @@ namespace qcsolver.Models
             }
 
             Regex emailRegex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
-            if (!emailRegex.IsMatch(contactEmail))
+            if (emailRegex.IsMatch(contactEmail))
             {
                 yield return new ValidationResult("Email is not valid");
             }
@@ -55,7 +50,7 @@ namespace qcsolver.Models
             }
 
             Regex postalCodeRegex = new Regex("A[ABCEGHJKLMNPRSTVXY]\\d[A-Z] ?\\d[A-Z]\\d\\z");
-            if (!postalCodeRegex.IsMatch(postalCode))
+            if (postalCodeRegex.IsMatch(postalCode))
             {
                 yield return new ValidationResult("postal code is not valid");
             }
@@ -75,13 +70,12 @@ namespace qcsolver.Models
                 city = city.Trim();
                 yield return ValidationResult.Success;
             }
-
-
-            yield return new ValidationResult("");
         }
     }
+
     public class CompanyMetadata
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "company ID")]
         public int companyId { get; set; }
 
@@ -92,7 +86,6 @@ namespace qcsolver.Models
         public String contactNumber { get; set; }
 
         [Display(Name = "contact Email")]
-        [Required(ErrorMessage = "The email address is required")]
         public string contactEmail { get; set; }
 
         [Display(Name = "address")]

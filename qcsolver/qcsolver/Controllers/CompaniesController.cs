@@ -18,23 +18,53 @@ namespace qcsolver.Controllers
         // GET: Companies
         public ActionResult Index()
         {
-            var companies = db.Companies.Include(c => c.Country1).Include(c => c.Province1);
-            return View(companies.ToList());
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (user.PersonType.type == "master")
+                {
+                    var companies = db.Companies.Include(c => c.Country1).Include(c => c.Province1);
+                    return View(companies.ToList());
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: Companies/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (user.PersonType.type == "master" || user.PersonType.type == "admin")
+                {
+                    if (Request["company"] != null)
+                    {
+                        var id = Request["company"].ToString();
+                        var company = db.Companies.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.companyId.ToString() == id).First();
+                        return View(company);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(company);
         }
 
         // GET: Companies/Create
@@ -132,25 +162,6 @@ namespace qcsolver.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
-        }
-
-        public class EmailAnnotation : RegularExpressionAttribute
-        {
-            static EmailAnnotation()
-            {
-                DataAnnotationsModelValidatorProvider.RegisterAdapter(typeof(EmailAnnotation), typeof(RegularExpressionAttributeAdapter));
-            }
-
-
-            public EmailAnnotation()
-                : base(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*"
-            + "@"
-            + @"((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$") { }
-
-            public override string FormatErrorMessage(string name)
-            {
-                return "E-mail is not valid";
-            }
         }
     }
 }

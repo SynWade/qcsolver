@@ -48,7 +48,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include="certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate)
+        public ActionResult Create([Bind(Include = "certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate)
         {
             if (ModelState.IsValid)
             {
@@ -82,7 +82,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include="certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate)
+        public ActionResult Edit([Bind(Include = "certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate)
         {
             if (ModelState.IsValid)
             {

@@ -28,16 +28,17 @@ namespace qcsolver.Controllers
 
         }
 
-        // GET: ConstructionSites
+        //
+        // GET: /Account/Index
         public ActionResult Index()
         {
-            var people = db.People.Include(c => c.Company1).Include(c => c.Country1).Include(c => c.Province1).Include(c => c.PersonType);
+            var people = db.People.Include(c => c.Country1).Include(c => c.Province1);
 
-            if(Session["user"] != null)
+            if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
 
-                if(Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && user.company.ToString() == Request["company"].ToString())))
+                if (Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && user.company.ToString() == Request["company"].ToString())))
                 {
                     var company = Request["company"].ToString();
                     if (Request["type"] != null && (Request["type"].ToString() == "admin" || Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
@@ -67,13 +68,12 @@ namespace qcsolver.Controllers
                         people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
                     }
                 }
-                else if (Request["constructionSite"] != null && Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor" && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)
+                else if (Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor")
                 {
-                    var constructionSite = Request["constructionSite"].ToString();
                     var type = Request["type"].ToString();
-                    people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite && x.person == user.personId).Count() != 0).Where(c => c.PersonType.type == type);
+                    people = people.Where(c => c.AssignedSubContractors1.Where(x => x.contractor == user.personId).Count() != 0);
                 }
-                else if(user.PersonType.type == "master")
+                else if (user.PersonType.type == "master")
                 {
                     if (Request["online"] != null)
                     {
@@ -87,16 +87,49 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    //error
-                    //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                //error
-                //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                return RedirectToAction("Login", "Account");
             }
             return View(people.ToList());
+        }
+
+        //
+        // GET: /Account/Profile
+        [AllowAnonymous]
+        public ActionResult Profile()
+        {
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var person = db.People.Where(c => c.personId.ToString() == personId).First();
+                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    {
+                        ViewBag.person = person;
+                        return View(person);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var person = db.People.Where(c => c.personId == user.personId).First();
+                    ViewBag.person = person;
+                    return View(person);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         public ApplicationSignInManager SignInManager
@@ -156,9 +189,9 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            if (Request.IsAuthenticated)
+            if (Session["user"] != null)
             {
-                return View("AlreadyLoggedIn");
+                return RedirectToAction("Index", "Home");
             }
             ViewBag.ReturnUrl = returnUrl;
             return View();
@@ -252,12 +285,24 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Register()
         {
-            /*
-            if(((Person)Session["user"]).PersonType.type == "master")*/
-                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
-            ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
-            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
-            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+            if (Session["user"] != null)
+            {
+                if(((Person)Session["user"]).PersonType.type != "subcontractor" && ((Person)Session["user"]).PersonType.type != "contractor")
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                    ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
             return View();
         }
 
@@ -277,6 +322,111 @@ namespace qcsolver.Controllers
 
             // If we got this far, something failed, redisplay form
             return View(model);
+        }
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Edit()
+        {
+            if (Session["user"] != null)
+            {
+                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var person = db.People.Where(c => c.personId.ToString() == personId).First();
+                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    {
+                        ViewBag.person = person;
+                        return View(person);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var person = db.People.Where(c => c.personId == user.personId).First();
+                    ViewBag.person = person;
+                    return View(person);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> Edit(Person person)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(person).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+
+            // If we got this far, something failed, redisplay form
+            return View(person);
+        }
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult Delete()
+        {
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var person = db.People.Where(c => c.personId.ToString() == personId).First();
+                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                        ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                        ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                        ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                        ViewBag.person = person;
+                        return View(person);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        // POST: Companies/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Person person = db.People.Find(id);
+            db.People.Remove(person);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         //
