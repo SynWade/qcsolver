@@ -48,9 +48,6 @@ namespace qcsolver.Models
         }
     }
 
-
-
-
     public class LicenseMetadata
     {
         [Display(Name = "License Id")]
@@ -60,7 +57,7 @@ namespace qcsolver.Models
         public string licenseName { get; set; }
 
         [Display(Name = "Date Issued")]
-        public System.DateTime dateIssued {get; set;}
+        public System.DateTime dateIssued { get; set; }
 
         [Display(Name = "Expiration Date")]
         public Nullable<System.DateTime> expirationDate { get; set; }

@@ -14,38 +14,38 @@
     <div class="form-horizontal">
         <h4>Certificate</h4>
         <hr />
-        @Html.ValidationSummary(true)
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.certificateId)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.certificateName, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.certificateName, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.certificateName)
-                @Html.ValidationMessageFor(model => model.certificateName)
+                @Html.EditorFor(model => model.certificateName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.certificateName, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.dateIssued, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.dateIssued, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.dateIssued)
-                @Html.ValidationMessageFor(model => model.dateIssued)
+                @Html.EditorFor(model => model.dateIssued, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.dateIssued, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.fileLocation, new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.fileLocation, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.fileLocation)
-                @Html.ValidationMessageFor(model => model.fileLocation)
+                @Html.EditorFor(model => model.fileLocation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.fileLocation, "", new { @class = "text-danger" })
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.person, "person", new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.person, "person", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.DropDownList("person", String.Empty)
-                @Html.ValidationMessageFor(model => model.person)
+                @Html.DropDownList("person", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.person, "", new { @class = "text-danger" })
             </div>
         </div>
 

@@ -13,7 +13,6 @@ namespace qcsolver.Models
     {
         private onsightdbEntities db = new onsightdbEntities();
 
-
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             if (certificateName != null)
@@ -41,6 +40,7 @@ namespace qcsolver.Models
             }
         }
     }
+
     public class CertificateMetadata
     {
         [Display(Name = "Certificate Id")]

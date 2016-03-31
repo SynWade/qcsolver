@@ -44,25 +44,21 @@ namespace qcsolver.Models
         }
     }
 
-
-
-
-
     public class ScheduleMetadata
     {
-        [Display(Name= "Schedule Id")]
+        [Display(Name = "Schedule Id")]
         public int scheduleId { get; set; }
 
-        [Display(Name= "Start Date Time")]
+        [Display(Name = "Start Date Time")]
         public System.DateTime startDateTime { get; set; }
 
-        [Display(Name= "Duration")]
+        [Display(Name = "Duration")]
         public int duration { get; set; }
 
-        [Display(Name= "Person")]
+        [Display(Name = "Person")]
         public int person { get; set; }
 
-        [Display(Name= "Construction Site")]
+        [Display(Name = "Construction Site")]
         public int constructionSite { get; set; }
     }
 }

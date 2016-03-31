@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -71,8 +72,10 @@ namespace qcsolver.Models
             }
         }
     }
+
     public class CompanyMetadata
     {
+        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [Display(Name = "company ID")]
         public int companyId { get; set; }
 

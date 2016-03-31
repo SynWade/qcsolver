@@ -21,7 +21,7 @@ namespace qcsolver.Controllers
             if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
-                if(user.PersonType.type == "master")
+                if (user.PersonType.type == "master")
                 {
                     var companies = db.Companies.Include(c => c.Country1).Include(c => c.Province1);
                     return View(companies.ToList());
@@ -45,7 +45,7 @@ namespace qcsolver.Controllers
                 Person user = (Person)Session["user"];
                 if (user.PersonType.type == "master" || user.PersonType.type == "admin")
                 {
-                    if(Request["company"] != null)
+                    if (Request["company"] != null)
                     {
                         var id = Request["company"].ToString();
                         var company = db.Companies.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.companyId.ToString() == id).First();

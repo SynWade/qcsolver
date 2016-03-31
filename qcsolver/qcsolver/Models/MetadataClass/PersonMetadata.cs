@@ -11,12 +11,12 @@ namespace qcsolver.Models
     {
         private onsightdbEntities db = new onsightdbEntities();
 
-
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
             yield return ValidationResult.Success;
         }
     }
+
     public class PersonMetadata
     {
         public string UserName { get; set; }
