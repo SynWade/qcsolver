@@ -33,16 +33,15 @@
                     <div class="pull-left image">
                         <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" style="height:125px" />
                     </div>
-                    <div class="user-info">
 @if (Session["user"] != null)
-                {
-                        <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
-                        <p class="role" data-icon="flag">@(((Person)Session["user"]).PersonType.type)</p>
-                }
-                        <p class="status"><i class="fa fa-circle text-success"></i> Online</p>
-                        <button type="button" class="acctSettings" /><p style="color: #999999;"><i class="fa fa-gear"></i> Account Settings</p>
-                    </div>
-                    <hr />
+{
+    <div class="user-info">
+        <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
+        <p class="role" data-icon="flag">@(((Person)Session["user"]).PersonType.type)</p>
+        <button type="button" class="acctSettings" /><p style="color: #999999;"><i class="fa fa-gear"></i> Account Settings</p>
+    </div>
+    <hr />
+}
                 </div>
 
                 @if (Session["user"] == null)
@@ -151,10 +150,25 @@
 @Scripts.Render("~/bundles/bootstrap")
 @Scripts.Render("~/bundles/bootstrap.min")
 @RenderSection("scripts", required: false)
+
+@if (Session["user"] == null)
+            {
 <script>
     $("#menu-toggle").click(function (e) {
         e.preventDefault();
         $("#wrapper").toggleClass("toggled");
-    });
+    }).click();
 </script>
+    <script>document.getElementsByClassName('menu-toggle')[0].style.visibility = 'hidden';</script>
+    <script>document.getElementsByClassName('sr-only-focusable')[0].style.visibility = 'hidden';</script>
+            }
+else
+{
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+}
 

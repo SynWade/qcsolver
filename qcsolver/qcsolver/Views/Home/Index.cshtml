@@ -8,21 +8,43 @@
 
 
         <h2 style="text-align:center; font-weight:bold">Welcome to QCsolver's OnSite </h2>
-        <div class="row">
-            <div class="col-md-8">
-                <h3>Getting started</h3>
-                <hr style="border: 1px double #337ab7;" />
-                <p style="text-align:center">
-                    On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
-                    QCsolver hopes that this web application will improve your performance withing your company.
-                </p>
-                
-            </div>
-            <div class="col-md-12">
-                <hr style="border: 1px double #337ab7;" />
-                <h4>Your role as a user is:</h4>
-                <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
-            </div>
-        </div>
-    </body>
+        
+            @if (Session["user"] == null)
+            {
+                <script>document.getElementsByClassName('sidebar-nav')[0].style.visibility = 'hidden';</script>
+                <script>document.getElementById('sidebar-wrapper').style.visibility = 'hidden';</script>
+                    <div class="row">
+                        <div class="col-md-8">
+                            <h3>Software and a Service</h3>
+                            <img class="homeLogo" src="~/Content/Images/QCLoginLogo.png" alt=" QCsolver Logo" />
+                            <hr style="border: 1px double #337ab7;" />
+                            <p style="text-align:center">
+                                On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
+                                QCsolver hopes that this web application will improve your performance withing your company.
+                            </p>
+                        </div>
+                    </div>
+            }
+                    else
+                    {
+                        <div class="row">
+                            <div class="col-md-8">
+                                <h3>Getting started</h3>
+                                <hr style="border: 1px double #337ab7;" />
+                                <p style="text-align:center">
+                                    On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
+                                    QCsolver hopes that this web application will improve your performance withing your company.
+                                </p>
+                            </div>
+                            <div class="col-md-12">
+                                <hr style="border: 1px double #337ab7;" />
+                                <h4>Your role as a user is:</h4>
+                                <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
+                            </div>
+                            @*<div class="col-md-8" style="background-image:url(~/Content/Images/buildingFrame.jpg)">
+                            <p>role is master</p>
+                        </div>*@
+                        </div>
+                    }
+                    </body>
 </html>
