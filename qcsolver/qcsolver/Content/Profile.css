@@ -1,0 +1,23 @@
+﻿body {
+}
+
+.profileImage{
+    width:200px;
+    height:200px;
+    float: left;
+    margin-right:20px;
+}
+
+.linksByPicture{
+    padding-top:150px;
+}
+
+.profileDetails{
+    text-align:left;
+    padding-left:55px;
+}
+
+.dl{
+    padding-left:550px;
+}
+

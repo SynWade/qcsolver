@@ -24,23 +24,18 @@
         <!-- Sidebar -->
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
-                @*@*<li>Placeholder for image</li>
-                <li><img src="~/Content/Images/lion.jpg" style="height:80px;"></li>
-                </br>
-                <p style="color: #fff; text-align: center">Raul Iederan</p>
-                <p style="font-style: italic; color: #fff; text-align: center">(Administrator)</p>*@
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" style="height:125px" />
+                        <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" />
                     </div>
 @if (Session["user"] != null)
 {
     <div class="user-info">
         <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
-        <p class="role" data-icon="flag">@(((Person)Session["user"]).PersonType.type)</p>
-        <button type="button" class="acctSettings" /><p style="color: #999999;"><i class="fa fa-gear"></i> Account Settings</p>
-    </div>
-    <hr />
+        <p class="role" data-icon="flag">Role: @(((Person)Session["user"]).PersonType.type)</p>
+        <a href="../Account/Profile" /><p class="acctSettings"><i class="fa fa-gear"></i> Account Settings</p>
+        <hr />
+</div>
 }
                 </div>
 
@@ -52,7 +47,9 @@
                 }
                 else if (((Person)Session["user"]).PersonType.type == "master")
                 {
-                    <li>@Html.ActionLink("Login-Master", "Login", "Account")</li>
+                    
+                    <link type="text/css" href="~/Content/Master-SideBar.css" rel="stylesheet">
+                    <li>@Html.ActionLink("Profile", "Profile", "Account")</li>
                     <li>@Html.ActionLink("Admins", "Index", "Account", new { type = "admin" }, null)</li>
                     <li>@Html.ActionLink("Companies", "Index", "Companies")</li>
                     <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites")</li>
@@ -62,21 +59,21 @@
                 }
                 else if (((Person)Session["user"]).PersonType.type == "admin")
                 {
-                    <li>@Html.ActionLink("Login-Admin", "Login", "Account")</li>
+                    <link type="text/css" href="~/Content/Admin-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites")</li>
                     <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor" }, null)</li>
                     <li>@Html.ActionLink("Supervisors", "Index", "Account", new { type = "supervisor" }, null)</li>
                 }
                 else if (((Person)Session["user"]).PersonType.type == "supervisor")
                 {
-                    <li>@Html.ActionLink("Login-Supervisor", "Login", "Account")</li>
+                    <link type="text/css" href="~/Content/Supervisor-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor" }, null)</li>
                     <li>@Html.ActionLink("OnSite", "Index", "ConstructionSites")</li>
                     <li>@Html.ActionLink("Tasks - N/A Ln-77", "Index", "Account"@*, new { type = "supervisor" }, null*@)</li>
                 }
                 else if (((Person)Session["user"]).PersonType.type == "contractor")
                 {
-                    <li>@Html.ActionLink("Login-Contractor", "Login", "Account")</li>
+                    <link type="text/css" href="~/Content/Contractor-Sub-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
                     <li>@Html.ActionLink("Contracts - IMG LN83", "Index", "Login")</li>
                     <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
@@ -86,7 +83,7 @@
                 }
                 else if (((Person)Session["user"]).PersonType.type == "subcontractor")
                 {
-                    <li>@Html.ActionLink("Login-Subcontractor", "Login", "Account")</li>
+                    <link type="text/css" href="~/Content/Subcontractor-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
                     <li>@Html.ActionLink("Contracts - IMG LN93", "Index", "Login")</li>
                     <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
@@ -111,24 +108,40 @@
                 <li><input type="text" name="searchBar" class="form-control" placeholder="Search..." /></li>
                 <li><button type='submit' name='search' id='search-btn' class="btn btn-flat">
                     <i class="fa fa-search"></i></button></li>
+
                 <!-- In case we get to do chat-->
+
+
                 @*<li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-envelope-o"></i>
                     <span class="label label-success">4</span>
                 </a>
             </li>*@
-                <li class="dropdown notifications-menu" style="float:right">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                        <i class="fa fa-sign-out"></i>
-                    </a>
-                </li>
-                <li class="dropdown notifications-menu" style="float:right">
+                @if (Session["user"] == null)
+                {
+                    <li class="button" style="float:right">
+                        <a href="../Account/Logoff"><i class=" fa fa-sign-out"></i></a>
+                    </li>
+                    <li class="button" style="float:right">
+                        <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
+                    </li>
+                }
+                else
+                {
+                    <li class="button" style="float:right">
+                        <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
+                    </li>
+                }
+                <!-- Left Icon for Push Notifications-->
+
+
+                @*<li class="dropdown notifications-menu" style="float:right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
                         <span class="label label-danger">3</span>
                     </a>
-                </li>
+                </li>*@
             </ul>
         </nav>
             <div id="page-content-wrapper">
@@ -136,6 +149,9 @@
                     <div class="row">
                         <div class="col-lg-12">
                             @RenderBody()
+                            <footer class="customFooter">
+                                <strong>Copyright &copy; 2016 <a href="http://http://qcsolver.com/">QCsolver</a>.</strong><italic> All rights reserved.</italic>
+                            </footer>
                         </div>
                     </div>
                 </div>
