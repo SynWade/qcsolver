@@ -12,10 +12,12 @@
     margin-right:auto;
     align-content: center;
 }
+
 h1{
     vertical-align: bottom;
     margin-top: 100px;
 }
+
 .col-md-8{
     margin-top:175px;
     margin-left:300px;
@@ -30,6 +32,7 @@ h1{
     color: white;
 
 }
+
 #QCLogin{
     margin-left: -11px;
     margin-top:-85px;

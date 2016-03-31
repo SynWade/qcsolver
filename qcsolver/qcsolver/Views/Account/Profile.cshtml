@@ -5,106 +5,107 @@
 }
 
 @using qcsolver.Models;
+<link type="text/css" href="~/Content/Profile.css" rel="stylesheet">
+<h2>@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)'s Profile</h2>
+<hr style="border: 1px double #337ab7;">
 
-<h2>Profile</h2>
-
-<div>
-    <h4>Person</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.firstName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.firstName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.lastName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.lastName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.postalCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.postalCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.phone)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.phone)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.email)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.email)
-        </dd>
-
-        @if(((Person)ViewBag.person).PersonType.type != "master")
-        {
+    <img class="profileImage"src="~/Content/Images/smimg.png" alt="Profile Image"/>
+        <div class="linksByPicture">
+            <p>@Html.ActionLink("Change Photo", "Edit", "Account")</p>
+            <p>@Html.ActionLink("Change account information", "Edit", "Account")</p>
+        </div>
+    <div class="profileDetails">
+        <dl class="dl-horizontal">
             <dt>
-                @Html.DisplayNameFor(model => model.Company1.companyName)
+                @Html.DisplayNameFor(model => model.firstName)
             </dt>
-            
+
             <dd>
-                @Html.DisplayFor(model => model.Company1.companyName)
+                @Html.DisplayFor(model => model.firstName)
             </dd>
-        }
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Country1.countryName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.lastName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Country1.countryName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.lastName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Province1.provinceName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.city)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Province1.provinceName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.city)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.PersonType.type)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.address)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.PersonType.type)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
 
-    </dl>
-</div>
-<p>
-    @Html.ActionLink("Back to List", "Index", "Account")
-</p>
+            <dt>
+                @Html.DisplayNameFor(model => model.postalCode)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.postalCode)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.phone)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.phone)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.email)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.email)
+            </dd>
+
+            @if (((Person)ViewBag.person).PersonType.type != "master")
+            {
+                <dt>
+                    @Html.DisplayNameFor(model => model.Company1.companyName)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Company1.companyName)
+                </dd>
+            }
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Country1.countryName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Country1.countryName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Province1.provinceName)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Province1.provinceName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PersonType.type)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PersonType.type)
+            </dd>
+
+        </dl>
+    </div>
