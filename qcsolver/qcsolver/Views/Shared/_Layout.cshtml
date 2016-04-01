@@ -33,7 +33,7 @@
     <div class="user-info">
         <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
         <p class="role" data-icon="flag">Role: @(((Person)Session["user"]).PersonType.type)</p>
-        <a href="../Account/Profile" /><p class="acctSettings"><i class="fa fa-gear"></i> Account Settings</p>
+        <a href="../Account/Profile" /><p class="acctSettings"><i class="fa fa-gear"></i> Profile & Settings</p>
         <hr />
 </div>
 }
@@ -49,7 +49,6 @@
                 {
                     
                     <link type="text/css" href="~/Content/Master-SideBar.css" rel="stylesheet">
-                    <li>@Html.ActionLink("Profile", "Profile", "Account")</li>
                     <li>@Html.ActionLink("Admins", "Index", "Account", new { type = "admin" }, null)</li>
                     <li>@Html.ActionLink("Companies", "Index", "Companies")</li>
                     <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites")</li>
@@ -121,16 +120,13 @@
                 @if (Session["user"] == null)
                 {
                     <li class="button" style="float:right">
-                        <a href="../Account/Logoff"><i class=" fa fa-sign-out"></i></a>
-                    </li>
-                    <li class="button" style="float:right">
                         <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
                     </li>
                 }
                 else
                 {
                     <li class="button" style="float:right">
-                        <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
+                        <a href="../Account/Logoff"><i class=" fa fa-sign-out"></i></a>
                     </li>
                 }
                 <!-- Left Icon for Push Notifications-->

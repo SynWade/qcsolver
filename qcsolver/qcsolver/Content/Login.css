@@ -44,3 +44,7 @@ h1{
  #sidebar-nav, #nav navbar-nav{
     display: none;
 }
+
+.customFooter{
+    background-color: transparent;
+}
