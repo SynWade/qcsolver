@@ -25,7 +25,7 @@ namespace qcsolver.Models
                 //address validation
                 address = address.Trim();
                 Regex addressRegex = new Regex(@"[^A-Za-z0-9'\.\-\s\,]");
-                if (!addressRegex.IsMatch(address))
+                if (addressRegex.IsMatch(address))
                 {
                     yield return new ValidationResult(string.Format("The address: {0}, needs no special characters", address), new[] { "address" });
                 }

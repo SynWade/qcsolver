@@ -355,7 +355,10 @@ namespace qcsolver.Controllers
                     db.SaveChanges();
                     return RedirectToAction("Index", "Account");
                 }
-
+                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
                 // If we got this far, something failed, redisplay form
                 return View(model);
             }

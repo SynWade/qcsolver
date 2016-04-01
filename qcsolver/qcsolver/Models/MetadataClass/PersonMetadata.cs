@@ -85,19 +85,6 @@ namespace qcsolver.Models
                 }
             }
 
-            //checks if required field is entered.. 
-            if (pictureLocation == null || pictureLocation.Trim() == "")
-            {
-                yield return new ValidationResult(string.Format("The picture location: {0} is required", pictureLocation), new[] { "pictureLocation" });
-            }
-
-
-            //checks if required field is entered.. 
-            if (contractLocation == null || contractLocation.Trim() == "")
-            {
-                yield return new ValidationResult(string.Format("The contract location: {0} is required", pictureLocation), new[] { "contractLocation" });
-            }
-
             //check the required field
             if (postalCode == null || postalCode.Trim() == "")
             {
@@ -154,35 +141,35 @@ namespace qcsolver.Models
             else
             {
                 Regex passwordRegex = new Regex(@"^[a-zA-Z'.]{1,40}$");
-                if (!passwordRegex.IsMatch(password))
+                if (passwordRegex.IsMatch(password))
                 {
                     yield return new ValidationResult(string.Format("The Password: {0}, must have no space, atleast one uppercase, one number and a special character", password), new[] { "password" });
                 }
             }
 
             //checks if the province is selected
-            if (type != null)
+            if (type == null)
             {
                 type = type;
                 yield return new ValidationResult(string.Format("The type: {0}, you need to select your type!", type), new[] { "type" });
             }
 
             //checks if the province is selected
-            if (company != null)
+            if (company == null)
             {
                 company = company;
                 yield return new ValidationResult(string.Format("The company: {0}, you need to select your company!", company), new[] { "company" });
             }
 
             //checks if the province is selected
-            if (country != null)
+            if (country == null)
             {
                 country = country;
                 yield return new ValidationResult(string.Format("The country: {0}, you need to select your country!", country), new[] { "country" });
             }
 
             //checks if the province is selected
-            if (province != null)
+            if (province == null)
             {
                 province = province;
                 yield return new ValidationResult(string.Format("The province: {0}, you need to select your province!", province), new[] { "province" });

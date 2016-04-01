@@ -58,7 +58,7 @@ namespace qcsolver.Models
                 //email validation
                 contactEmail = contactEmail.Trim();
                 Regex emailRegex = new Regex(@"^[\w!#$%&'*+\-/=?\^_`{|}~]+(\.[\w!#$%&'*+\-/=?\^_`{|}~]+)*((([\-\w]+\.)+[a-zA-Z]{2,4})|(([0-9]{1,3}\.){3}[0-9]{1,3}))$");
-                if (!emailRegex.IsMatch(contactEmail))
+                if (emailRegex.IsMatch(contactEmail))
                 {
                     yield return new ValidationResult(string.Format("The email: {0}, need to be the right email format", contactEmail), new[] { "contactEmail" });
                 }
@@ -74,7 +74,7 @@ namespace qcsolver.Models
                 //address validation
                 address = address.Trim();
                 Regex addressRegex = new Regex(@"[^A-Za-z0-9'\.\-\s\,]");
-                if (!addressRegex.IsMatch(address))
+                if (addressRegex.IsMatch(address))
                 {
                     yield return new ValidationResult(string.Format("The address: {0}, needs no special characters", address), new[] {"address"});
                 }
@@ -99,16 +99,14 @@ namespace qcsolver.Models
 
            
             //checks if the province is selected
-            if (province != null)
+            if (province == null)
             {
-                province = province;
                 yield return new ValidationResult(string.Format("The province: {0}, you need to select your province!", province), new[] { "province" });
             }
 
             //checks if country is selected
-            if (country != null)
+            if (country == null)
             {
-                country = country;
                 yield return new ValidationResult(string.Format("The country: {0}, you need to select your country", country), new[] { "country" });
             }
 

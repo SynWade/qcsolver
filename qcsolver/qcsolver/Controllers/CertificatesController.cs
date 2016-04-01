@@ -19,6 +19,7 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
@@ -50,6 +51,7 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
@@ -90,6 +92,7 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
@@ -137,6 +140,7 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
@@ -194,6 +198,7 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
+                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
