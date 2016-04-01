@@ -14,16 +14,21 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (constructionSiteId != null)
-            {
-                constructionSiteId = constructionSiteId;
-                yield return ValidationResult.Success;
-            }
 
-            if (address != null)
+            //checks if the required field is entered
+            if (address == null || address.Trim() == "")
             {
+                yield return new ValidationResult(string.Format("The address: {0}, is required", address), new[] { "address" });
+            }
+            else
+            {
+                //address validation
                 address = address.Trim();
-                yield return ValidationResult.Success;
+                Regex addressRegex = new Regex(@"[^A-Za-z0-9'\.\-\s\,]");
+                if (!addressRegex.IsMatch(address))
+                {
+                    yield return new ValidationResult(string.Format("The address: {0}, needs no special characters", address), new[] { "address" });
+                }
             }
 
             if (startDate != null)
@@ -35,28 +40,42 @@ namespace qcsolver.Models
             {
                 endDate = endDate;
             }
-            if (city != null)
-            {
-                city = city.Trim();
-                yield return ValidationResult.Success;
-            }
 
+            //checks if city has been selected..
+            if (city == null || city.Trim() == "")
+            {
+                yield return new ValidationResult(string.Format("The city: {0}, is required", city), new[] { "city" });
+            }
+            else
+            {
+                //city validation
+                city = city.Trim();
+                Regex cityRegex = new Regex(" \b^[a-zA-Z]+$\b");
+                if (!cityRegex.IsMatch(city))
+                {
+                    yield return new ValidationResult(string.Format("The city: {0}, should not contain a number!", city), new[] { "city" });
+                }
+            }
+                
+            //checks if company has been selected..
             if (company != null)
             {
                 company = company;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The company: {0}, has to been selected", company), new[] { "company" });
             }
 
+            //checks if country has been selected
             if (country != null)
             {
                 country = country;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The country: {0}, has to been selected", country), new[] { "country" });
             }
 
+            //checks if province has been selected
             if (province != null)
             {
                 province = province;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The province: {0}, has to be selected", province), new[] { "province" });
             }
         }
     }

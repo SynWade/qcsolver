@@ -244,8 +244,10 @@
     <Content Include="App_Data\onsightdb_log.ldf">
       <DependentUpon>onsightdb.mdf</DependentUpon>
     </Content>
+    <Content Include="Content\Admin-SideBar.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\Contractor-Sub-SideBar.css" />
     <Content Include="Content\Images\blackBox.jpg" />
     <Content Include="Content\Images\BuildFrame.jpg" />
     <Content Include="Content\Images\BuildFrameAlt.jpg" />
@@ -254,7 +256,11 @@
     <Content Include="Content\Images\QCLoginLogo.png" />
     <Content Include="Content\Images\whiteBox.png" />
     <Content Include="Content\Login.css" />
+    <Content Include="Content\Master-SideBar.css" />
     <Content Include="Content\simple-sidebar.css" />
+    <Content Include="Content\Profile.css" />
+    <Content Include="Content\Subcontractor-SideBar.css" />
+    <Content Include="Content\Supervisor-SideBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />

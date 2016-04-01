@@ -16,34 +16,41 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-            if (licenseId != null)
+            //check if the required field is entered
+            if (licenseName == null || licenseName.Trim() == "")
             {
-                licenseId = licenseId;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("", licenseName), new[] { "licenseName" });
             }
-
-            if (licenseName != null)
+            else
             {
+                //license name validation
                 licenseName = licenseName.Trim();
-                yield return ValidationResult.Success;
+                Regex licenseRegex = new Regex(" \b^[a-zA-Z]+$\b");
+                if (!licenseRegex.IsMatch(licenseName))
+                {
+                    yield return new ValidationResult(string.Format("", licenseName), new[] { "licenseName" });
+                }
             }
-
+           
+           
+            //need to work on this..
             if (dateIssued != null)
             {
                 dateIssued = dateIssued;
                 yield return ValidationResult.Success;
             }
 
-            if (fileLocation != null)
+            //checks if required field is entered.. 
+            if (fileLocation == null || fileLocation.Trim() == "")
             {
-                fileLocation = fileLocation.Trim();
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The file location: {0} is required", fileLocation), new[] { "fileLocation" });
             }
 
+            //checks if person is selected
             if (person != null)
             {
                 person = person;
-                yield return ValidationResult.Success;
+                yield return new ValidationResult(string.Format("The person: {0} needs to be selected", person), new[] { "person" });
             }
         }
     }
