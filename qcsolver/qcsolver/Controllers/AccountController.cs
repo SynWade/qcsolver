@@ -13,6 +13,9 @@ using System.Web.Security;
 using System.Data.Entity;
 using System.Net;
 using System.Collections.Generic;
+using System.IO;
+using System.Data.Entity.Validation;
+using System.Diagnostics;
 
 namespace qcsolver.Controllers
 {
@@ -312,16 +315,62 @@ namespace qcsolver.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Register(Person model)
+        public async Task<ActionResult> Register(Person model, HttpPostedFileBase profilePic, HttpPostedFileBase contract)
         {
-            if (ModelState.IsValid)
+            try
             {
-                db.People.Add(model);
-                db.SaveChanges();
-                return RedirectToAction("Index", "Account");
-            }
+                if (ModelState.IsValid)
+                {
+                    if (profilePic != null)
+                    {
+                        //If filename is too long, shorten it
+                        var fileName = Path.GetFileName(profilePic.FileName);
+                        if (fileName.Length > 60)
+                        {
+                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                        }
 
-            // If we got this far, something failed, redisplay form
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                        profilePic.SaveAs(path);
+                        model.pictureLocation = fileName;
+                    }
+                    else
+                    {
+                        model.pictureLocation = "~/Content/Images/BuildFrame.jpg";
+                    }
+                    //Saves image files, then saves their path in database
+                    if (contract != null)
+                    {
+                        var fileName = Path.GetFileName(contract.FileName);
+                        if (fileName.Length > 60)
+                        {
+                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                        }
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                        contract.SaveAs(path);
+                        model.contractLocation = fileName;
+                    }
+
+                    db.People.Add(model);
+                    db.SaveChanges();
+                    return RedirectToAction("Index", "Account");
+                }
+
+                // If we got this far, something failed, redisplay form
+                return View(model);
+            }
+            catch (DbEntityValidationException dbEx)
+            {
+                foreach (var validationErrors in dbEx.EntityValidationErrors)
+                {
+                    foreach (var validationError in validationErrors.ValidationErrors)
+                    {
+                        Trace.TraceInformation("Property: {0} Error: {1}", 
+                                                validationError.PropertyName, 
+                                                validationError.ErrorMessage);
+                    }
+                }
+            }
             return View(model);
         }
 
@@ -369,10 +418,40 @@ namespace qcsolver.Controllers
         [HttpPost]
         [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(Person person)
+        public async Task<ActionResult> Edit(Person person, HttpPostedFileBase profilePic, HttpPostedFileBase contract)
         {
             if (ModelState.IsValid)
             {
+                if (profilePic != null)
+                {
+                    //If filename is too long, shorten it
+                    var fileName = Path.GetFileName(profilePic.FileName);
+                    if (fileName.Length > 60)
+                    {
+                        fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                    }
+
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                    profilePic.SaveAs(path);
+                    person.pictureLocation = fileName;
+                }
+                else
+                {
+                    person.pictureLocation = "~/Content/Images/BuildFrame.jpg";
+                }
+                //Saves image files, then saves their path in database
+                if (contract != null)
+                {
+                    var fileName = Path.GetFileName(contract.FileName);
+                    if (fileName.Length > 60)
+                    {
+                        fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                    }
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                    contract.SaveAs(path);
+                    person.contractLocation = fileName;
+                }
+
                 db.Entry(person).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

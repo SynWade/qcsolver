@@ -43,18 +43,11 @@ namespace qcsolver.Controllers
             if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
-                if (user.PersonType.type == "master" || user.PersonType.type == "admin")
+                if (Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && Request["company"].ToString() == user.company.ToString())))
                 {
-                    if (Request["company"] != null)
-                    {
-                        var id = Request["company"].ToString();
-                        var company = db.Companies.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.companyId.ToString() == id).First();
-                        return View(company);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    var id = Request["company"].ToString();
+                    var company = db.Companies.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.companyId.ToString() == id).First();
+                    return View(company);
                 }
                 else
                 {
@@ -70,9 +63,24 @@ namespace qcsolver.Controllers
         // GET: Companies/Create
         public ActionResult Create()
         {
-            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
-            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
-            return View();
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (user.PersonType.type == "master")
+                {
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Companies/Create
@@ -95,20 +103,32 @@ namespace qcsolver.Controllers
         }
 
         // GET: Companies/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["company"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && Request["company"].ToString() == user.company.ToString())))
+                {
+                    string companyId = Request["company"].ToString();
+                    var company = db.Companies.Where(c => c.companyId.ToString() == companyId).First();
+                    if (company == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", company.country);
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", company.province);
+                    return View(company);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", company.country);
-            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", company.province);
-            return View(company);
         }
 
         // POST: Companies/Edit/5
@@ -130,18 +150,32 @@ namespace qcsolver.Controllers
         }
 
         // GET: Companies/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["company"] != null && user.PersonType.type == "master")
+                {
+                    string companyId = Request["company"].ToString();
+                    var company = db.Companies.Where(c => c.companyId.ToString() == companyId).First();
+                    if (company == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", company.country);
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", company.province);
+                    return View(company);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            Company company = db.Companies.Find(id);
-            if (company == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(company);
         }
 
         // POST: Companies/Delete/5

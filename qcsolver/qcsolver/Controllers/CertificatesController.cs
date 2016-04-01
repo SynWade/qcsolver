@@ -17,30 +17,101 @@ namespace qcsolver.Controllers
         // GET: /Certificates/
         public ActionResult Index()
         {
-            var certificates = db.Certificates.Include(c => c.Person1);
-            return View(certificates.ToList());
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var certificates = db.Certificates.Where(c => c.person.ToString() == personId);
+                    if (certificates != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > certificates.First().Person1.PersonType.personTypeId))
+                    {
+                        return View(certificates);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var certificates = db.Certificates.Where(c => c.person == user.personId);
+                    return View(certificates);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: /Certificates/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Certificate certificate = db.Certificates.Find(id);
-            if (certificate == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(certificate);
         }
 
         // GET: /Certificates/Create
         public ActionResult Create()
         {
-            ViewBag.person = new SelectList(db.People, "personId", "firstName");
-            return View();
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (user.PersonType.type == "master" || user.PersonType.personTypeId > db.People.Where(c => c.personId.ToString() == personId).First().personId)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: /Certificates/Create
@@ -62,19 +133,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: /Certificates/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Certificate certificate = db.Certificates.Find(id);
-            if (certificate == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ViewBag.person = new SelectList(db.People, "personId", "firstName", certificate.person);
-            return View(certificate);
         }
 
         // POST: /Certificates/Edit/5
@@ -95,18 +190,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: /Certificates/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var certificateId = Request["certificate"].ToString();
+                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        return View(certificate);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Certificate certificate = db.Certificates.Find(id);
-            if (certificate == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(certificate);
         }
 
         // POST: /Certificates/Delete/5

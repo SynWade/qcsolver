@@ -25,50 +25,73 @@ namespace qcsolver.Controllers
                 {
                     var company = Request["company"].ToString();
                     if ((company == user.company.ToString() && user.PersonType.type == "admin") || user.PersonType.type == "master")
+                    {
                         constructionSites = constructionSites.Where(c => c.company.ToString() == company);
+                    }
                     else
                     {
-                        //Error
-                        //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                        return RedirectToAction("Index", "Home");
 
                     }
                 }
                 else if (user.PersonType.type != "master")
                 {
-                    //error
-                    //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
             {
-                //error
-                //return Redirect(HttpContext.Request.UrlReferrer.OriginalString);
+                return RedirectToAction("Login", "Account");
             }
+
             return View(constructionSites.ToList());
         }
 
         // GET: ConstructionSites/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["constructionSite"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && db.ConstructionSites.Where(c => c.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company.ToString() == user.company.ToString())))
+                {
+                    var id = Request["constructionSite"].ToString();
+                    var constructionSite = db.ConstructionSites.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.constructionSiteId.ToString() == id).First();
+                    return View(constructionSite);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            ConstructionSite constructionSite = db.ConstructionSites.Find(id);
-            if (constructionSite == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(constructionSite);
         }
 
         // GET: ConstructionSites/Create
         public ActionResult Create()
         {
-            ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
-            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
-            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
-            return View();
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (user.PersonType.type == "master" || user.PersonType.type == "admin")
+                {
+                    ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: ConstructionSites/Create
@@ -92,21 +115,26 @@ namespace qcsolver.Controllers
         }
 
         // GET: ConstructionSites/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["constructionSite"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && db.ConstructionSites.Where(c => c.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company.ToString() == user.company.ToString())))
+                {
+                    var id = Request["constructionSite"].ToString();
+                    var constructionSite = db.ConstructionSites.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.constructionSiteId.ToString() == id).First();
+                    return View(constructionSite);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            ConstructionSite constructionSite = db.ConstructionSites.Find(id);
-            if (constructionSite == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ViewBag.company = new SelectList(db.Companies, "companyId", "companyName", constructionSite.company);
-            ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", constructionSite.country);
-            ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", constructionSite.province);
-            return View(constructionSite);
         }
 
         // POST: ConstructionSites/Edit/5
@@ -129,18 +157,26 @@ namespace qcsolver.Controllers
         }
 
         // GET: ConstructionSites/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["constructionSite"] != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && db.ConstructionSites.Where(c => c.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company.ToString() == user.company.ToString())))
+                {
+                    var id = Request["constructionSite"].ToString();
+                    var constructionSite = db.ConstructionSites.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.constructionSiteId.ToString() == id).First();
+                    return View(constructionSite);
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
             }
-            ConstructionSite constructionSite = db.ConstructionSites.Find(id);
-            if (constructionSite == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(constructionSite);
         }
 
         // POST: ConstructionSites/Delete/5

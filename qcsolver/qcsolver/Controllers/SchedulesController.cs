@@ -17,31 +17,101 @@ namespace qcsolver.Controllers
         // GET: Schedules
         public ActionResult Index()
         {
-            var schedules = db.Schedules.Include(s => s.ConstructionSite1).Include(s => s.Person1);
-            return View(schedules.ToList());
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var schedules = db.Schedules.Where(c => c.person.ToString() == personId);
+                    if (schedules != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > schedules.First().Person1.PersonType.personTypeId))
+                    {
+                        return View(schedules);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var schedules = db.Schedules.Where(c => c.person == user.personId);
+                    return View(schedules);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: Schedules/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["schedule"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Schedules.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person.ToString() == personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["schedule"] != null && (user.PersonType.personTypeId == db.Schedules.Where(c => c.scheduleId.ToString() == Request["schedule"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person == user.personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(schedule);
         }
 
         // GET: Schedules/Create
         public ActionResult Create()
         {
-            ViewBag.constructionSite = new SelectList(db.ConstructionSites, "constructionSiteId", "address");
-            ViewBag.person = new SelectList(db.People, "personId", "firstName");
-            return View();
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (user.PersonType.type == "master" || user.PersonType.personTypeId > db.People.Where(c => c.personId.ToString() == personId).First().personId)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Schedules/Create
@@ -64,20 +134,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: Schedules/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["schedule"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Schedules.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person.ToString() == personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["schedule"] != null && (user.PersonType.personTypeId == db.Schedules.Where(c => c.scheduleId.ToString() == Request["schedule"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person == user.personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ViewBag.constructionSite = new SelectList(db.ConstructionSites, "constructionSiteId", "address", schedule.constructionSite);
-            ViewBag.person = new SelectList(db.People, "personId", "firstName", schedule.person);
-            return View(schedule);
         }
 
         // POST: Schedules/Edit/5
@@ -99,18 +192,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: Schedules/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["schedule"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Schedules.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person.ToString() == personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["schedule"] != null && (user.PersonType.personTypeId == db.Schedules.Where(c => c.scheduleId.ToString() == Request["schedule"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var scheduleId = Request["schedule"].ToString();
+                        var schedule = db.Schedules.Where(c => c.person == user.personId).Where(c => c.scheduleId.ToString() == scheduleId).First();
+                        return View(schedule);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            Schedule schedule = db.Schedules.Find(id);
-            if (schedule == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(schedule);
         }
 
         // POST: Schedules/Delete/5
