@@ -251,9 +251,12 @@
     <Content Include="Content\Images\blackBox.jpg" />
     <Content Include="Content\Images\BuildFrame.jpg" />
     <Content Include="Content\Images\BuildFrameAlt.jpg" />
+    <Content Include="Content\Images\buildingFrame.jpg" />
+    <Content Include="Content\Images\fillerImage.jpg" />
     <Content Include="Content\Images\lion.JPG" />
     <Content Include="Content\Images\QCFrame.jpg" />
     <Content Include="Content\Images\QCLoginLogo.png" />
+    <Content Include="Content\Images\smimg.png" />
     <Content Include="Content\Images\whiteBox.png" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Master-SideBar.css" />
