@@ -84,8 +84,13 @@ INSERT INTO Province (provinceName) VALUES
 
 --Add all companies
 INSERT INTO Company (companyName, contactNumber, contactEmail, address, postalCode, city, country, province)
-VALUES ('Air Postal', '5197325243', 'customer_support@airpostal.ca', '4615 Ontario St.', 'T0M1T1', 'Montreal', 1, 68),
+VALUES ('Air Constructions', '5197325243', 'customer_support@airpostal.ca', '4615 Ontario St.', 'T0M1T1', 'Montreal', 1, 68),
 ('GeoLive', '2263034284', 'GeoLiveSupport@hotmail.com', '5120 Homestead Drive', '33801', 'Lakeland', 2, 11);
+
+--Add all construction sites
+INSERT INTO ConstructionSite (address, startDate, city, company, country, province)
+VALUES ('536 Main St.', '2015-02-10', 'Montreal', 1, 1, 68),
+('1432 Second Av.', '2016-11-23', 'Montreal', 1, 1, 68);
 
 --Add all users
 
@@ -114,3 +119,44 @@ VALUES ('Emily', 'Molson', 'Montreal', '534 Fullson av.', 'T1X6S9', '5193487012'
 --Add assigned subcontractors
 INSERT INTO AssignedSubContractor(contractor, subContractor)
 VALUES (7, 9), (7, 10);
+
+--Add schedules
+INSERT INTO Schedule(startDateTime, duration, person, constructionSite)
+VALUES ('2015-02-11 7:00:00', 8, 5, 1), 
+('2015-02-10 7:00:00', 8, 7, 1),
+('2015-02-11 7:00:00', 8, 7, 1), 
+('2015-02-11 7:00:00', 8, 8, 1), 
+('2015-02-11 7:00:00', 8, 9, 1), 
+('2015-02-11 7:00:00', 8, 10, 1);
+
+--Add certificates
+INSERT INTO Certificate(certificateName, dateIssued, fileLocation, person)
+VALUES ('Certificate of Completion', '2014-03-09', '/file/completion.pdf', 5), 
+('Safety Certificate', '2013-05-12', '/file/safety.pdf', 5);
+
+--Add licenses
+INSERT INTO License(licenseName, dateIssued, expirationDate, fileLocation, person)
+VALUES ('WHMIS', '2011-11-09', '2020-11-09', '/file/whmis.pdf', 5), 
+('Contractors License', '2012-10-12', '2021-10-12', '/file/contractor.pdf', 5);
+
+--Add assigned workers
+INSERT INTO AssignedWorker(asignDate, constructionSite, person)
+VALUES ('2015-02-10', 1, 5), 
+('2015-02-10', 1, 7), 
+('2015-02-10', 1, 8), 
+('2015-02-10', 1, 9), 
+('2015-02-10', 1, 10);
+
+--Add task details
+INSERT INTO TaskDetail(details, assigned)
+VALUES ('Have to organize crew.', 1),  
+('Plan construction site.', 1);
+
+--Add timestamps still online
+INSERT INTO Timestamp(timeIn, person, constructionSite)
+VALUES ('2015-02-11 7:00:00', 5, 1),  
+('2015-02-11 7:00:00', 7, 1);
+
+--Add timestamps signed out
+INSERT INTO Timestamp(timeIn, timeOut, person, constructionSite)
+VALUES ('2015-02-10 7:00:00', '2015-02-10 15:00:00', 5, 1);

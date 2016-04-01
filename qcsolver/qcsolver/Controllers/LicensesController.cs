@@ -17,30 +17,101 @@ namespace qcsolver.Controllers
         // GET: Licenses
         public ActionResult Index()
         {
-            var licenses = db.Licenses.Include(l => l.Person1);
-            return View(licenses.ToList());
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var licenses = db.Licenses.Where(c => c.person.ToString() == personId);
+                    if (licenses != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > licenses.First().Person1.PersonType.personTypeId))
+                    {
+                        return View(licenses);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var licenses = db.Licenses.Where(c => c.person == user.personId);
+                    return View(licenses);
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // GET: Licenses/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            License license = db.Licenses.Find(id);
-            if (license == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(license);
         }
 
         // GET: Licenses/Create
         public ActionResult Create()
         {
-            ViewBag.person = new SelectList(db.People, "personId", "firstName");
-            return View();
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (user.PersonType.type == "master" || user.PersonType.personTypeId > db.People.Where(c => c.personId.ToString() == personId).First().personId)
+                    {
+                        return View();
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return View();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         // POST: Licenses/Create
@@ -62,19 +133,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: Licenses/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            License license = db.Licenses.Find(id);
-            if (license == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            ViewBag.person = new SelectList(db.People, "personId", "firstName", license.person);
-            return View(license);
         }
 
         // POST: Licenses/Edit/5
@@ -95,18 +190,43 @@ namespace qcsolver.Controllers
         }
 
         // GET: Licenses/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete()
         {
-            if (id == null)
+            if (Session["user"] != null)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
+                    {
+                        var licenseId = Request["license"].ToString();
+                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        return View(license);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
             }
-            License license = db.Licenses.Find(id);
-            if (license == null)
+            else
             {
-                return HttpNotFound();
+                return RedirectToAction("Login", "Account");
             }
-            return View(license);
         }
 
         // POST: Licenses/Delete/5

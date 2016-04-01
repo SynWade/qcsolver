@@ -162,3 +162,4 @@ G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.Twitter.xml
 G:\qcsolver\qcsolver\qcsolver\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.dll
 G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.pdb
+G:\qcsolver\qcsolver\qcsolver\obj\Debug\qcsolver.csprojResolveAssemblyReference.cache
