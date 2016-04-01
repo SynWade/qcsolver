@@ -255,7 +255,6 @@
     <Content Include="Content\Images\whiteBox.png" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\simple-sidebar.css" />
-    <Content Include="Content\TopNavBar.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
