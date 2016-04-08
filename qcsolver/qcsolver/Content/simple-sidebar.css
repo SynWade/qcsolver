@@ -68,12 +68,13 @@
 .sidebar-nav li a {
     display: block;
     text-decoration: none;
-    color: #999999;
+    color: #fff;
 }
 
 .sidebar-nav li a:hover {
     text-decoration: none;
     color: #fff;
+    font-weight: bold;
     background: rgba(255,255,255,0.2);
 }
 
@@ -90,7 +91,7 @@
 }
 
 .sidebar-nav > .sidebar-brand a {
-    color: #999999;
+    color: #fff;
 }
 
 .sidebar-nav > .sidebar-brand a:hover {
@@ -133,19 +134,19 @@
     .role{
         padding-top:15px;
         font-style:italic; 
-        color: #999999; 
+        color: #fff; 
         text-align:center
     }
 
     .status{
-        color: #999999; 
+        color: #fff; 
         font-size: 11px; 
         text-align:center
     }
 
     .FLnames{
         font-weight:bold;
-        color: #999999; 
+        color: #fff; 
         text-align:center
     }
 

@@ -1,5 +1,5 @@
 # qcsolver
-My name is Nebojsa Orsecanin and I like sucking large dicks.
+
 -------------------Useful Git Links---------------------
 Basic Instructions: http://rogerdudler.github.io/git-guide/
 Merge Conflicts: http://gitready.com/advanced/2009/02/25/keep-either-file-in-merge-conflicts.html
@@ -23,7 +23,7 @@ MotorheadMolson1
 
 ------------SUBCONTRACTOR-----------
 HickTie@gmail.ca
-hity1dick
+hity1
 
 --------------For commiting---------------
 git add .
