@@ -6,7 +6,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{F62B01F5-E89A-4903-850B-8CAD188B8EEA}</ProjectGuid>
+    <ProjectGuid>{F676B8EA-C144-4ED0-861B-BD52A2198985}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>qcsolver.Tests</RootNamespace>
@@ -93,7 +93,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\qcsolver\qcsolver.csproj">
-      <Project>{9A3F1B6A-59CA-4C48-AB97-D57087E56999}</Project>
+      <Project>{1010BFDE-1483-443A-920C-1A234C1C7F6E}</Project>
       <Name>qcsolver</Name>
     </ProjectReference>
   </ItemGroup>
