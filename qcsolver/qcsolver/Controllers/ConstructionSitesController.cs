@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using qcsolver.Models;
+using System.Threading.Tasks;
 
 namespace qcsolver.Controllers
 {
@@ -154,6 +155,77 @@ namespace qcsolver.Controllers
             ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", constructionSite.country);
             ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", constructionSite.province);
             return View(constructionSite);
+        }
+
+
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult AssignWorker()
+        {
+            if (Session["user"] != null)
+            {
+                if (((Person)Session["user"]).PersonType.type != "subcontractor" && ((Person)Session["user"]).PersonType.type != "contractor")
+                {
+                    if (((Person)Session["user"]).PersonType.type == "master")
+                    {
+                        ViewBag.constructionSite = new SelectList(db.ConstructionSites, "constructionSiteId", "address");
+                        ViewBag.person = new SelectList(db.People, "personId", "firstName");
+                    }
+                    else
+                    {
+                        ViewBag.constructionSite = new SelectList(db.ConstructionSites.Where(x => x.company == ((Person)Session["user"]).company), "constructionSiteId", "address");
+                        ViewBag.person = new SelectList(db.People.Where(x => x.company == ((Person)Session["user"]).company), "personId", "firstName");
+                    }
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AssignWorker(AssignedWorker assigned)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Session["user"] != null)
+                {
+                    if (((Person)Session["user"]).PersonType.type != "subcontractor" && ((Person)Session["user"]).PersonType.type != "contractor")
+                    {
+                        if (assigned.ConstructionSite1.company == assigned.Person1.company && (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.personTypeId < assigned.Person1.PersonType.personTypeId && ((((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.ConstructionSite1.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.constructionSite == assigned.constructionSite)))))
+                        {
+                            db.AssignedWorkers.Add(assigned);
+                            db.SaveChanges();
+                            return RedirectToAction("Index", "Account");
+                        }
+                        else
+                        {
+                            return View(assigned);
+                        }
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            return View(assigned);
         }
 
         // GET: ConstructionSites/Delete/5

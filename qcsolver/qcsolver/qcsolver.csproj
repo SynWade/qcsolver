@@ -257,6 +257,7 @@
     <Content Include="Content\Images\QCFrame.jpg" />
     <Content Include="Content\Images\QCLoginLogo.png" />
     <Content Include="Content\Images\smimg.png" />
+    <Content Include="Content\Images\Users\ryeroll%40gmail.ca\Profile\Chrysanthemum.jpg" />
     <Content Include="Content\Images\whiteBox.png" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Master-SideBar.css" />
@@ -288,6 +289,7 @@
       <DependentUpon>qcsolverModel.edmx</DependentUpon>
     </Content>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="Content\Images\Users\ryeroll%40gmail.ca\Contract\Project Evaluation Guidelines.pdf" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -366,10 +368,12 @@
     <Content Include="Views\Account\Index.cshtml" />
     <Content Include="Views\Account\Edit.cshtml" />
     <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\AssignSubContractor.cshtml" />
+    <Content Include="Views\ConstructionSites\AssignWorker.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\Users\Certificates\" />
-    <Folder Include="Content\Images\Users\Licenses\" />
+    <Folder Include="Content\Images\Users\ryeroll%40gmail.ca\Certificates\" />
+    <Folder Include="Content\Images\Users\ryeroll%40gmail.ca\Licenses\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

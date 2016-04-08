@@ -321,6 +321,31 @@ namespace qcsolver.Controllers
             {
                 if (ModelState.IsValid)
                 {
+                    var folder = Server.MapPath("~/Content/Images/Users/" + model.email);
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    folder = Server.MapPath("~/Content/Images/Users/" + model.email + "/Certificates");
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    folder = Server.MapPath("~/Content/Images/Users/" + model.email + "/Licenses");
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    folder = Server.MapPath("~/Content/Images/Users/" + model.email + "/Profile");
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
+                    folder = Server.MapPath("~/Content/Images/Users/" + model.email + "/Contract");
+                    if (!Directory.Exists(folder))
+                    {
+                        Directory.CreateDirectory(folder);
+                    }
                     if (profilePic != null)
                     {
                         //If filename is too long, shorten it
@@ -330,7 +355,7 @@ namespace qcsolver.Controllers
                             fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                         }
 
-                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users/" + model.email + "/Profile"), fileName);
                         profilePic.SaveAs(path);
                         model.pictureLocation = fileName;
                     }
@@ -346,7 +371,7 @@ namespace qcsolver.Controllers
                         {
                             fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                         }
-                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                        var path = Path.Combine(Server.MapPath("~/Content/Images/Users/" + model.email + "/Contract"), fileName);
                         contract.SaveAs(path);
                         model.contractLocation = fileName;
                     }
@@ -375,6 +400,107 @@ namespace qcsolver.Controllers
                 }
             }
             return View(model);
+        }
+
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult AssignSubContractor()
+        {
+            if (Session["user"] != null)
+            {
+                if (((Person)Session["user"]).PersonType.type != "subcontractor")
+                {
+                    return View();
+                }
+                else
+                {
+                    return RedirectToAction("Index", "Home");
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+        }
+
+        //
+        // POST: /Account/Register
+        [HttpPost]
+        [AllowAnonymous]
+        [ValidateAntiForgeryToken]
+        public async Task<ActionResult> AssignSubContractor(AssignedSubContractor assigned)
+        {
+            if (ModelState.IsValid)
+            {
+                if (Session["user"] != null)
+                {
+                    if (((Person)Session["user"]).PersonType.type != "subcontractor")
+                    {
+                        if (assigned.Person.AssignedWorkers.constructionSite == assigned.Person1.AssignedWorkers.constructionSite && assigned.Person.PersonType.type == "contractor" && assigned.Person1.PersonType.type == "subContractor" && (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.constructionSite == assigned.Person.AssignedWorkers.constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor)))
+                        {
+                            db.AssignedSubContractors.Add(assigned);
+                            db.SaveChanges();
+                            return RedirectToAction("Index", "Account");
+                        }
+                        else
+                        {
+                            return View(assigned);
+                        }
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    return RedirectToAction("Login", "Account");
+                }
+            }
+            return View(assigned);
+        }
+
+        //
+        // GET: /Account/Register
+        [AllowAnonymous]
+        public ActionResult ViewContract()
+        {
+            
+            if (Session["user"] != null)
+            {
+                Person user = (Person)Session["user"];
+                if (Request["person"] != null)
+                {
+                    var personId = Request["person"].ToString();
+                    var person = db.People.Where(c => c.personId.ToString() == personId).First();
+                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    {
+                        Response.ContentType = "Application/pdf";
+                        Response.AppendHeader("Content-Disposition", "attachment; filename=" + person.contractLocation);
+                        Response.TransmitFile(Server.MapPath("~/Content/Images/Users/" + person.email + "/Contract/" + person.contractLocation));
+                        Response.End();
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
+                else
+                {
+                    var person = db.People.Where(c => c.personId == user.personId).First();
+                    Response.ContentType = "Application/pdf";
+                    Response.AppendHeader("Content-Disposition", "attachment; filename=" + person.contractLocation);
+                    Response.TransmitFile(Server.MapPath("~/Content/Images/Users/" + person.email + "/Contract/" + person.contractLocation));
+                    Response.End();
+                }
+            }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+            return RedirectToAction("Index", "Home");
         }
 
         //
@@ -433,15 +559,17 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
+                    System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Images/Users/" + person.email + "/Profile");
 
-                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+                    foreach (FileInfo file in myDirInfo.GetFiles())
+                    {
+                        file.Delete();
+                    }
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users/" + person.email + "/Profile"), fileName);
                     profilePic.SaveAs(path);
                     person.pictureLocation = fileName;
                 }
-                else
-                {
-                    person.pictureLocation = "~/Content/Images/BuildFrame.jpg";
-                }
+
                 //Saves image files, then saves their path in database
                 if (contract != null)
                 {
@@ -450,7 +578,14 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
-                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users"), fileName);
+
+                    System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Images/Users/" + person.email + "/Contract");
+
+                    foreach (FileInfo file in myDirInfo.GetFiles())
+                    {
+                        file.Delete();
+                    }
+                    var path = Path.Combine(Server.MapPath("~/Content/Images/Users/" + person.email + "/Contract"), fileName);
                     contract.SaveAs(path);
                     person.contractLocation = fileName;
                 }
@@ -509,6 +644,17 @@ namespace qcsolver.Controllers
             Person person = db.People.Find(id);
             db.People.Remove(person);
             db.SaveChanges();
+
+            System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Images/Users/" + person.email);
+
+            foreach (FileInfo file in myDirInfo.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in myDirInfo.GetDirectories())
+            {
+                dir.Delete(true);
+            }
             return RedirectToAction("Index");
         }
 
