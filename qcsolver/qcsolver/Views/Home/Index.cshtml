@@ -14,44 +14,93 @@
                 <script>document.getElementsByClassName('sidebar-nav')[0].style.visibility = 'hidden';</script>
                 <script>document.getElementById('sidebar-wrapper').style.visibility = 'hidden';</script>
                     <div class="row">
-                        <div class="col-md-8">
+                        <div class="col-sm-12">
                             <h3>Software and a Service</h3>
                             <hr style="border: 1px double #337ab7;" />
                             <img class="homeLogo" src="~/Content/Images/QCLoginLogo.png" alt=" QCsolver Logo" />
                             <hr style="border: 1px double #337ab7;" />
-                            <p style="text-align:center">
-                                Welcome to QCsolver's OnSite managing web application. Please sign in by using the top right icon. If you have no credentials or invalid credentials contact your system administrator.</p>
-                            <p style="text-align:left">
+                            <br />
+                            <h4 style="text-align:center">
+                                Welcome to QCsolver's OnSite managing web application.
+                            </h4>
+                            <h5 style="text-align:center"> 
+                                Please sign in by using the top right icon. If you have no credentials or invalid credentials contact your system administrator.
+                            </h5>
+                            <h5 style="text-align:center">
                                 QCsolver is a convenient and easy-to-use portal to monitor your organisation’s risk. Our QCsolver portal will ensure that your vendors and contractors are current and qualified, while adhering to legislation.
-                            </p>
-                            <p style="text-align:right">
-                                QCsolver helps you manage your organisation’s certificates and documents using customized categories. Keep track of expiration dates and the status on your certificates to ensure that everything is up to date.</p>
-                            <p style="text-align:left">
-                                With QCsolver, your organisation is able to access all evaluations of the vendors that you use, in one database.  Tracking the performance of your vendors using evaluations is key in any business relationship.
-                            </p>
+                            </h5>
+                            <br />
+                            <hr />
+                            <br />
+                            <div class="container">
+                                <div class="row row-centered">
+                                    <div class="col-md-4 col-centered">
+                                        <p>
+                                            <i class="fa fa-folder-open" style="font-size:5em"></i>
+                                            <br /><br />
+                                            QCsolver helps you manage your organisation’s certificates and documents using customized categories.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-centered">
+                                        <p>
+                                            <i class="fa fa-calendar" style="font-size:5em; padding-left:35%;"></i>
+                                            <br /><br />
+                                            Keep track of expiration dates and the status on your certificates to ensure that everything is up to date.
+                                        </p>
+                                    </div>
+                                    <div class="col-md-4 col-centered">
+                                        <p>
+                                            <i class="fa fa-database" style="font-size:5em; padding-left:82%;"></i>
+                                            <br /><br />
+                                            With QCsolver, your organisation is able to access all evaluations of the vendors that you use, in one database.
+                                            Tracking the performance of your vendors using evaluations is key in any business relationship.
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-            }
-                    else
-                    {
-                        <div class="row">
-                            <div class="col-md-8">
-                                <h3>Getting started</h3>
-                                <hr style="border: 1px double #337ab7;" />
-                                <p style="text-align:center">
-                                    On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
-                                    QCsolver hopes that this web application will improve your performance withing your company.
-                                </p>
+                            }
+                            else
+                            {
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <h3>Getting started</h3>
+                                    <hr style="border: 1px double #337ab7;" />
+                                    <p style="text-align:center">
+                                        On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
+                                        <i class="fa fa-arrow-left" style="font-size:3em; padding-right:100%"></i>
+                                        <br />
+                                        QCsolver hopes that this web application will improve your performance withing your company.
+                                    </p>
+                                </div>
+                                <div class="col-md-12">
+                                    <hr style="border: 1px double #337ab7;" />
+                                    <h4>Your role as a user is:</h4>
+                                    <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
+                                    <div class="userIconRole">
+                                        @if (((Person)Session["user"]).PersonType.type == "master")
+                                        {
+                                            <i class="fa fa-user-secret" style="font-size:35em; float:right;"></i>
+                                        }
+                                        else if (((Person)Session["user"]).PersonType.type == "admin")
+                                        {
+                                            <i class="fa fa-users" style="font-size:35em; float:right;"></i>
+                                        }
+                                        else if (((Person)Session["user"]).PersonType.type == "supervisor")
+                                        {
+                                            <i class="fa fa-user-plus" style="font-size:35em; float:right;"></i>
+                                        }
+                                        else if ((((Person)Session["user"]).PersonType.type == "contractor") || (((Person)Session["user"]).PersonType.type == "subcontractor"))
+                                        {
+                                            <i class="fa fa-user" style="font-size:35em; float:right;"></i>
+                                        }
+                                    </div>
+                                </div>
+                                @*<div class="col-md-8" style="background-image:url(~/Content/Images/buildingFrame.jpg)">
+                    <p>role is master</p>
+                </div>*@
                             </div>
-                            <div class="col-md-12">
-                                <hr style="border: 1px double #337ab7;" />
-                                <h4>Your role as a user is:</h4>
-                                <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
-                            </div>
-                            @*<div class="col-md-8" style="background-image:url(~/Content/Images/buildingFrame.jpg)">
-                            <p>role is master</p>
-                        </div>*@
-                        </div>
-                    }
-                    </body>
+                            }
+</body>
 </html>

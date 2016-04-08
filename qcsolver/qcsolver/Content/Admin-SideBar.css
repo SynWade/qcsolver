@@ -1,11 +1,11 @@
 ﻿.sidebar-nav li{
     text-align: center;
     line-height: 270px;
-    border-top: 1px dashed white;
+    border-top: 1px dashed #999999;
 }
 
 .acctSettings{
-    color: #999999;
+    color: #fff;
 }
 
 hr{

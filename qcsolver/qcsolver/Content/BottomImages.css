@@ -1,0 +1,20 @@
+﻿.indexImages{
+    height:300px;
+    width:300px;
+    float:right;
+    position:relative;
+    top:385px;
+    -ms-transform: rotate(-15deg); /* IE 9 */
+    -webkit-transform: rotate(-15deg); /* Chrome, Safari, Opera */
+    transform: rotate(-15deg);
+    opacity:0.3;
+}
+
+.indexTime{
+    height:300px;
+    width:300px;
+    float:right;
+    position:relative;
+    top:385px;
+    opacity:0.3;
+}
