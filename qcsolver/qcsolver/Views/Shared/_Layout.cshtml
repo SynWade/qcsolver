@@ -85,9 +85,9 @@
                 {
                     <link type="text/css" href="~/Content/Contractor-Sub-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
-                    <li>@Html.ActionLink("Contracts - IMG LN83", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Contracts", "Index", "Login")</li>
                     <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
-                    <li>@Html.ActionLink("Timestamps - LN85", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Timestamps - LN85", "Index", "Timestamps")</li>
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
                     <li>@Html.ActionLink("Subcontractors", "Index", "Account", new { type = "subcontractor" }, null)</li>
                 }
@@ -97,7 +97,7 @@
                     <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
                     <li>@Html.ActionLink("Contracts - IMG LN93", "Index", "Login")</li>
                     <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
-                    <li>@Html.ActionLink("Timestamps - LN95", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Timestamps", "Index", "Timestamps")</li>
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
 
                 }
@@ -119,30 +119,30 @@
                 <li><button type='submit' name='search' id='search-btn' class="btn btn-flat">
                     <i class="fa fa-search"></i></button></li>
 
-                <!-- In case we get to do chat-->
-
-
+                <!-- Icon for Chat - Later Development-->
                 @*<li class="dropdown messages-menu">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-envelope-o"></i>
                     <span class="label label-success">4</span>
                 </a>
             </li>*@
+
+                <!--Sign In/Out Buttons-->
                 @if (Session["user"] == null)
-                {
-                    <li class="button" style="float:right">
+                {   
+                    <!--Sign In Button if not signed in off of the main page-->
+                    <li class="button" style="float:right; font-size:1.5em">
                         <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
                     </li>
                 }
                 else
                 {
-                    <li class="button" style="float:right">
+                    <!--Sign Out Button if signed in-->
+                    <li class="button" style="float:right; font-size:1.5em">
                         <a href="../Account/Logoff"><i class=" fa fa-sign-out"></i></a>
                     </li>
                 }
-                <!-- Left Icon for Push Notifications-->
-
-
+                <!-- Left Icon for Push Notifications - Later Development-->
                 @*<li class="dropdown notifications-menu" style="float:right">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                         <i class="fa fa-bell-o"></i>
@@ -151,11 +151,14 @@
                 </li>*@
             </ul>
         </nav>
+        <!--End of Navbar-->
+        <!--Body container-->
             <div id="page-content-wrapper">
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-lg-12">
                             @RenderBody()
+                            <!--Footer-->
                             <footer class="customFooter">
                                 <strong>Copyright &copy; 2016 <a href="http://qcsolver.com">QCsolver</a>.</strong><italic> All rights reserved.</italic>
                             </footer>
