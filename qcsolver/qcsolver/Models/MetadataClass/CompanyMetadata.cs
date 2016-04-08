@@ -47,9 +47,9 @@ namespace qcsolver.Models
                     yield return new ValidationResult(string.Format("The number: {0}, need a valid phone number", contactNumber), new[] { "contactNumber" });
                 }
             }
-            
+
             //checks if required field is entered ..
-            if (contactEmail == null || contactEmail.Trim() == "" )
+            if (contactEmail == null || contactEmail.Trim() == "")
             {
                 yield return new ValidationResult(string.Format("The email: {0}, is required", contactEmail), new[] { "contactEmail" });
             }
@@ -76,10 +76,10 @@ namespace qcsolver.Models
                 Regex addressRegex = new Regex(@"[^A-Za-z0-9'\.\-\s\,]");
                 if (addressRegex.IsMatch(address))
                 {
-                    yield return new ValidationResult(string.Format("The address: {0}, needs no special characters", address), new[] {"address"});
+                    yield return new ValidationResult(string.Format("The address: {0}, needs no special characters", address), new[] { "address" });
                 }
             }
-           
+
 
             //check the required field
             if (postalCode == null || postalCode.Trim() == "")
@@ -93,11 +93,11 @@ namespace qcsolver.Models
                 Regex postalCodeRegex = new Regex(@"^[a-z]\d[a-z] ?\d[a-z]\d$");
                 if (!postalCodeRegex.IsMatch(postalCode))
                 {
-                    yield return new ValidationResult(string.Format("Postal code: {0}, should be in the right format N2L 1C3 ", postalCode), new[] {"postalCode"});
+                    yield return new ValidationResult(string.Format("Postal code: {0}, should be in the right format N2L 1C3 ", postalCode), new[] { "postalCode" });
                 }
             }
 
-           
+
             //checks if the province is selected
             if (province == null)
             {
@@ -129,8 +129,8 @@ namespace qcsolver.Models
     }
     public class CompanyMetadata
     {
-       
-        
+
+
         public int companyId { get; set; }
 
         [Display(Name = "company Name")]

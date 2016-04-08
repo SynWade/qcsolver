@@ -14,6 +14,21 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            //checks if required field is entered
+            if (constructionSiteName == null || constructionSiteName.Trim() == "")
+            {
+                yield return new ValidationResult(string.Format("The name: {0}, is required", constructionSiteName), new[] { "constructionSiteName" });
+            }
+            else
+            {
+                constructionSiteName = constructionSiteName.Trim();
+                //company name validation
+                Regex nameRegex = new Regex(" \b^[a-zA-Z]+$\b");
+                if (!nameRegex.IsMatch(constructionSiteName))
+                {
+                    yield return new ValidationResult(string.Format("The name: {0}, should not contain a number", constructionSiteName), new[] { "constructionSiteName" });
+                }
+            }
 
             //checks if the required field is entered
             if (address == null || address.Trim() == "")
@@ -56,7 +71,7 @@ namespace qcsolver.Models
                     yield return new ValidationResult(string.Format("The city: {0}, should not contain a number!", city), new[] { "city" });
                 }
             }
-                
+
             //checks if company has been selected..
             if (company != null)
             {
@@ -82,8 +97,11 @@ namespace qcsolver.Models
 
     public class ConstructionSiteMetadata
     {
-        [Display(Name = "construction SiteId")]
+        [Display(Name = "construction Site Id")]
         public int constructionSiteId { get; set; }
+
+        [Display(Name = "Construction Site Name")]
+        public string constructionSiteName { get; set; }
 
         [Display(Name = "address")]
         public string address { get; set; }

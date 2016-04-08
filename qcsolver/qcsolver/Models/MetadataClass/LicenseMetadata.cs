@@ -31,8 +31,8 @@ namespace qcsolver.Models
                     yield return new ValidationResult(string.Format("", licenseName), new[] { "licenseName" });
                 }
             }
-           
-           
+
+
             //need to work on this..
             if (dateIssued != null)
             {

@@ -92,6 +92,7 @@ CREATE TABLE AssignedSubContractor
 CREATE TABLE ConstructionSite 
 (
   constructionSiteId INT IDENTITY (1, 1) NOT NULL,
+  constructionSiteName VARCHAR(25) NOT NULL,
   address VARCHAR(25) NOT NULL,
   startDate DATE NOT NULL,
   endDate DATE NULL,
@@ -122,7 +123,7 @@ CREATE TABLE AssignedWorker
 	asignDate DATE NOT NULL,
 	unassignDate DATE NULL,
 	constructionSite INT NOT NULL,
-  person INT NOT NULL,
+  person INT NOT NULL UNIQUE,
   PRIMARY KEY CLUSTERED (assignedId ASC),
   FOREIGN KEY (constructionSite) REFERENCES ConstructionSite(constructionSiteId),
   FOREIGN KEY (person) REFERENCES Person(personId)

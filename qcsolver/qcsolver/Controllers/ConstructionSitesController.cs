@@ -204,7 +204,7 @@ namespace qcsolver.Controllers
                 {
                     if (((Person)Session["user"]).PersonType.type != "subcontractor" && ((Person)Session["user"]).PersonType.type != "contractor")
                     {
-                        if (assigned.ConstructionSite1.company == assigned.Person1.company && (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.personTypeId < assigned.Person1.PersonType.personTypeId && ((((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.ConstructionSite1.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.constructionSite == assigned.constructionSite)))))
+                        if (assigned.ConstructionSite1.company == assigned.Person1.company && (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.personTypeId < assigned.Person1.PersonType.personTypeId && ((((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.ConstructionSite1.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.constructionSite)))))
                         {
                             db.AssignedWorkers.Add(assigned);
                             db.SaveChanges();

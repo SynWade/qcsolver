@@ -18,13 +18,13 @@ namespace qcsolver.Models
 
             //if (Use)
             //{
-                
+
             //}
 
             //checks if the required field is entered
             if (firstName == null || firstName.Trim() == "")
             {
-                yield return new ValidationResult(string.Format("The First Name: {0}, is required", firstName), new[] {"firstName"});
+                yield return new ValidationResult(string.Format("The First Name: {0}, is required", firstName), new[] { "firstName" });
             }
             else
             {
@@ -180,58 +180,58 @@ namespace qcsolver.Models
     }
     public class PersonMetadata
     {
-        [Display(Name= "user Name")]
+        [Display(Name = "user Name")]
         public string UserName { get; set; }
 
-        [Display(Name= "Id")]
+        [Display(Name = "Id")]
         public string Id { get; set; }
 
-        [Display(Name= "Person Id")]
+        [Display(Name = "Person Id")]
         public int personId { get; set; }
 
-        [Display(Name= "First Name")]
+        [Display(Name = "First Name")]
         public string firstName { get; set; }
 
-        [Display(Name= "Last Name")]
+        [Display(Name = "Last Name")]
         public string lastName { get; set; }
 
-        [Display(Name= "city")]
+        [Display(Name = "city")]
         public string city { get; set; }
 
-        [Display(Name= "address")]
+        [Display(Name = "address")]
         public string address { get; set; }
 
-        [Display(Name= "Picture Location")]
+        [Display(Name = "Picture Location")]
         public string pictureLocation { get; set; }
 
-        [Display(Name= "Contract Location")]
+        [Display(Name = "Contract Location")]
         public string contractLocation { get; set; }
 
-        [Display(Name= "Postal Code")]
+        [Display(Name = "Postal Code")]
         public string postalCode { get; set; }
 
-        [Display(Name= "Phone")]
+        [Display(Name = "Phone")]
         public string phone { get; set; }
 
-        [Display(Name= "email")]
+        [Display(Name = "email")]
         public string email { get; set; }
 
-        [Display(Name="Password")]
+        [Display(Name = "Password")]
         public string password { get; set; }
 
-        [Display(Name= "Online")]
+        [Display(Name = "Online")]
         public bool online { get; set; }
 
-        [Display(Name= "Type")]
+        [Display(Name = "Type")]
         public int type { get; set; }
 
-        [Display(Name= "Company")]
+        [Display(Name = "Company")]
         public int company { get; set; }
 
-        [Display(Name= "Country")]
+        [Display(Name = "Country")]
         public int country { get; set; }
 
-        [Display(Name= "Province")]
+        [Display(Name = "Province")]
         public int province { get; set; }
     }
 }

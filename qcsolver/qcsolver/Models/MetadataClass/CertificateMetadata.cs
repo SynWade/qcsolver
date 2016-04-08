@@ -30,7 +30,7 @@ namespace qcsolver.Models
                     yield return new ValidationResult(string.Format("The certificate name: {0} should not not contain a number", certificateName), new[] { "certificateName" });
                 }
             }
-            
+
 
 
             if (dateIssued != null)
@@ -45,7 +45,7 @@ namespace qcsolver.Models
             {
                 yield return new ValidationResult(string.Format("The file location: {0} is required", fileLocation), new[] { "fileLocation" });
             }
-            
+
             //checks if person is selected
             if (person != null)
             {
@@ -57,7 +57,7 @@ namespace qcsolver.Models
 
     public class CertificateMetadata
     {
-        
+
         [Display(Name = "Certificate Id")]
         public int certificateId { get; set; }
 

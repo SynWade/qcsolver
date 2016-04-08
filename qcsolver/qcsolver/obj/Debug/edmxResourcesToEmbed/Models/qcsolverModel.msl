@@ -51,6 +51,7 @@
       <EntityTypeMapping TypeName="onsightdbModel.ConstructionSite">
         <MappingFragment StoreEntitySet="ConstructionSite">
           <ScalarProperty Name="constructionSiteId" ColumnName="constructionSiteId" />
+          <ScalarProperty Name="constructionSiteName" ColumnName="constructionSiteName" />
           <ScalarProperty Name="address" ColumnName="address" />
           <ScalarProperty Name="startDate" ColumnName="startDate" />
           <ScalarProperty Name="endDate" ColumnName="endDate" />

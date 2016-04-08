@@ -7,7 +7,7 @@
     <ProductVersion>
     </ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{9237B818-4A52-4DBA-A83F-41719FED5423}</ProjectGuid>
+    <ProjectGuid>{9A3F1B6A-59CA-4C48-AB97-D57087E56999}</ProjectGuid>
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
@@ -257,12 +257,11 @@
     <Content Include="Content\Images\QCFrame.jpg" />
     <Content Include="Content\Images\QCLoginLogo.png" />
     <Content Include="Content\Images\smimg.png" />
-    <Content Include="Content\Images\Users\ryeroll%40gmail.ca\Profile\Chrysanthemum.jpg" />
     <Content Include="Content\Images\whiteBox.png" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Master-SideBar.css" />
-    <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\Profile.css" />
+    <Content Include="Content\simple-sidebar.css" />
     <Content Include="Content\Subcontractor-SideBar.css" />
     <Content Include="Content\Supervisor-SideBar.css" />
     <Content Include="favicon.ico" />
@@ -288,13 +287,11 @@
     <Content Include="Models\qcsolverModel.edmx.diagram">
       <DependentUpon>qcsolverModel.edmx</DependentUpon>
     </Content>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="Content\Images\Users\ryeroll%40gmail.ca\Contract\Project Evaluation Guidelines.pdf" />
+    <Content Include="Content\Images\Thumbs.db" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
     <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.js" />
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
@@ -338,42 +335,55 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Companies\Create.cshtml" />
-    <Content Include="Views\Companies\Delete.cshtml" />
-    <Content Include="Views\Companies\Details.cshtml" />
-    <Content Include="Views\Companies\Edit.cshtml" />
-    <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\Certificates\Create.cshtml" />
     <Content Include="Views\Certificates\Delete.cshtml" />
     <Content Include="Views\Certificates\Details.cshtml" />
     <Content Include="Views\Certificates\Edit.cshtml" />
     <Content Include="Views\Certificates\Index.cshtml" />
-    <Content Include="Views\Licenses\Create.cshtml" />
-    <Content Include="Views\Licenses\Delete.cshtml" />
-    <Content Include="Views\Licenses\Details.cshtml" />
-    <Content Include="Views\Licenses\Edit.cshtml" />
-    <Content Include="Views\Licenses\Index.cshtml" />
+    <Content Include="Views\Companies\Create.cshtml" />
+    <Content Include="Views\Companies\Delete.cshtml" />
+    <Content Include="Views\Companies\Details.cshtml" />
+    <Content Include="Views\Companies\Edit.cshtml" />
+    <Content Include="Views\Companies\Index.cshtml" />
     <Content Include="Views\ConstructionSites\Create.cshtml" />
     <Content Include="Views\ConstructionSites\Delete.cshtml" />
     <Content Include="Views\ConstructionSites\Details.cshtml" />
     <Content Include="Views\ConstructionSites\Edit.cshtml" />
     <Content Include="Views\ConstructionSites\Index.cshtml" />
+    <Content Include="Views\Licenses\Create.cshtml" />
+    <Content Include="Views\Licenses\Delete.cshtml" />
+    <Content Include="Views\Licenses\Details.cshtml" />
+    <Content Include="Views\Licenses\Edit.cshtml" />
+    <Content Include="Views\Licenses\Index.cshtml" />
     <Content Include="Views\Schedules\Create.cshtml" />
     <Content Include="Views\Schedules\Delete.cshtml" />
     <Content Include="Views\Schedules\Details.cshtml" />
     <Content Include="Views\Schedules\Edit.cshtml" />
     <Content Include="Views\Schedules\Index.cshtml" />
+    <Content Include="Views\Timestamps\Create.cshtml" />
+    <Content Include="Views\Timestamps\Delete.cshtml" />
+    <Content Include="Views\Timestamps\Details.cshtml" />
+    <Content Include="Views\Timestamps\Edit.cshtml" />
     <Content Include="Views\Timestamps\Index.cshtml" />
-    <Content Include="Views\Account\Profile.cshtml" />
-    <Content Include="Views\Account\Index.cshtml" />
-    <Content Include="Views\Account\Edit.cshtml" />
-    <Content Include="Views\Account\Delete.cshtml" />
     <Content Include="Views\Account\AssignSubContractor.cshtml" />
+    <Content Include="Views\Account\Delete.cshtml" />
+    <Content Include="Views\Account\Edit.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\UnAssignSubContractor.cshtml" />
     <Content Include="Views\ConstructionSites\AssignWorker.cshtml" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Content\Images\Users\ryeroll%40gmail.ca\Certificates\" />
-    <Folder Include="Content\Images\Users\ryeroll%40gmail.ca\Licenses\" />
+    <Folder Include="Content\Users\bworth%40gmail.ca\" />
+    <Folder Include="Content\Users\gregorygeorge%40hotmail.com\" />
+    <Folder Include="Content\Users\HickTie%40gmail.ca\" />
+    <Folder Include="Content\Users\JackDaniels%40hotmail.com\" />
+    <Folder Include="Content\Users\MeghanCrows%40hotmail.com\" />
+    <Folder Include="Content\Users\milson%40outlook.com\" />
+    <Folder Include="Content\Users\MolsonLife%40gmail.ca\" />
+    <Folder Include="Content\Users\RickyRoll%40gmail.ca\" />
+    <Folder Include="Content\Users\RockBrock%40outlook.com\" />
+    <Folder Include="Content\Users\TAndrews%40gmail.ca\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
@@ -401,9 +411,9 @@
         <WebProjectProperties>
           <UseIIS>True</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>50734</DevelopmentServerPort>
+          <DevelopmentServerPort>21661</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>http://localhost:50734/</IISUrl>
+          <IISUrl>http://localhost:20318/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

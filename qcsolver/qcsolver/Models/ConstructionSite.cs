@@ -23,6 +23,7 @@ namespace qcsolver.Models
         }
     
         public int constructionSiteId { get; set; }
+        public string constructionSiteName { get; set; }
         public string address { get; set; }
         public System.DateTime startDate { get; set; }
         public Nullable<System.DateTime> endDate { get; set; }

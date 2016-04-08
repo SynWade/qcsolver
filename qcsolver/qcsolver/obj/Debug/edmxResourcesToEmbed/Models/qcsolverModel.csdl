@@ -19,9 +19,9 @@
     <Property Name="unassignDate" Type="DateTime" Precision="0" />
     <Property Name="constructionSite" Type="Int32" Nullable="false" />
     <Property Name="person" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__AssignedW__const__2C3393D0" FromRole="AssignedWorker" ToRole="ConstructionSite" />
-    <NavigationProperty Name="Person1" Relationship="Self.FK__AssignedW__perso__2D27B809" FromRole="AssignedWorker" ToRole="Person" />
-    <NavigationProperty Name="TaskDetails" Relationship="Self.FK__TaskDetai__assig__300424B4" FromRole="AssignedWorker" ToRole="TaskDetail" />
+    <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__AssignedW__const__2D27B809" FromRole="AssignedWorker" ToRole="ConstructionSite" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__AssignedW__perso__2E1BDC42" FromRole="AssignedWorker" ToRole="Person" />
+    <NavigationProperty Name="TaskDetails" Relationship="Self.FK__TaskDetai__assig__30F848ED" FromRole="AssignedWorker" ToRole="TaskDetail" />
   </EntityType>
   <EntityType Name="Certificate">
     <Key>
@@ -32,7 +32,7 @@
     <Property Name="dateIssued" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="fileLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="person" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Person1" Relationship="Self.FK__Certifica__perso__35BCFE0A" FromRole="Certificate" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__Certifica__perso__36B12243" FromRole="Certificate" ToRole="Person" />
   </EntityType>
   <EntityType Name="Company">
     <Key>
@@ -57,6 +57,7 @@
       <PropertyRef Name="constructionSiteId" />
     </Key>
     <Property Name="constructionSiteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="constructionSiteName" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="address" Type="String" MaxLength="25" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="startDate" Type="DateTime" Nullable="false" Precision="0" />
     <Property Name="endDate" Type="DateTime" Precision="0" />
@@ -64,11 +65,11 @@
     <Property Name="company" Type="Int32" Nullable="false" />
     <Property Name="country" Type="Int32" Nullable="false" />
     <Property Name="province" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__const__2C3393D0" FromRole="ConstructionSite" ToRole="AssignedWorker" />
+    <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__const__2D27B809" FromRole="ConstructionSite" ToRole="AssignedWorker" />
     <NavigationProperty Name="Company1" Relationship="Self.FK__Construct__compa__239E4DCF" FromRole="ConstructionSite" ToRole="Company" />
     <NavigationProperty Name="Country1" Relationship="Self.FK__Construct__count__24927208" FromRole="ConstructionSite" ToRole="Country" />
     <NavigationProperty Name="Province1" Relationship="Self.FK__Construct__provi__25869641" FromRole="ConstructionSite" ToRole="Province" />
-    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__constr__398D8EEE" FromRole="ConstructionSite" ToRole="Schedule" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__constr__3A81B327" FromRole="ConstructionSite" ToRole="Schedule" />
     <NavigationProperty Name="Timestamps" Relationship="Self.FK__Timestamp__const__29572725" FromRole="ConstructionSite" ToRole="Timestamp" />
   </EntityType>
   <EntityType Name="Country">
@@ -91,7 +92,7 @@
     <Property Name="expirationDate" Type="DateTime" Precision="0" />
     <Property Name="fileLocation" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="person" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="Person1" Relationship="Self.FK__License__person__32E0915F" FromRole="License" ToRole="Person" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__License__person__33D4B598" FromRole="License" ToRole="Person" />
   </EntityType>
   <EntityType Name="Person">
     <Key>
@@ -115,14 +116,14 @@
     <Property Name="province" Type="Int32" Nullable="false" />
     <NavigationProperty Name="AssignedSubContractors" Relationship="Self.FK__AssignedS__contr__1FCDBCEB" FromRole="Person" ToRole="AssignedSubContractor" />
     <NavigationProperty Name="AssignedSubContractors1" Relationship="Self.FK__AssignedS__subCo__20C1E124" FromRole="Person" ToRole="AssignedSubContractor" />
-    <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__perso__2D27B809" FromRole="Person" ToRole="AssignedWorker" />
-    <NavigationProperty Name="Certificates" Relationship="Self.FK__Certifica__perso__35BCFE0A" FromRole="Person" ToRole="Certificate" />
+    <NavigationProperty Name="AssignedWorkers" Relationship="Self.FK__AssignedW__perso__2E1BDC42" FromRole="Person" ToRole="AssignedWorker" />
+    <NavigationProperty Name="Certificates" Relationship="Self.FK__Certifica__perso__36B12243" FromRole="Person" ToRole="Certificate" />
     <NavigationProperty Name="Company1" Relationship="Self.FK__Person__company__1B0907CE" FromRole="Person" ToRole="Company" />
     <NavigationProperty Name="Country1" Relationship="Self.FK__Person__country__1BFD2C07" FromRole="Person" ToRole="Country" />
-    <NavigationProperty Name="Licenses" Relationship="Self.FK__License__person__32E0915F" FromRole="Person" ToRole="License" />
+    <NavigationProperty Name="Licenses" Relationship="Self.FK__License__person__33D4B598" FromRole="Person" ToRole="License" />
     <NavigationProperty Name="Province1" Relationship="Self.FK__Person__province__1CF15040" FromRole="Person" ToRole="Province" />
     <NavigationProperty Name="PersonType" Relationship="Self.FK__Person__type__1A14E395" FromRole="Person" ToRole="PersonType" />
-    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__person__38996AB5" FromRole="Person" ToRole="Schedule" />
+    <NavigationProperty Name="Schedules" Relationship="Self.FK__Schedule__person__398D8EEE" FromRole="Person" ToRole="Schedule" />
     <NavigationProperty Name="Timestamps" Relationship="Self.FK__Timestamp__perso__286302EC" FromRole="Person" ToRole="Timestamp" />
   </EntityType>
   <EntityType Name="PersonType">
@@ -152,8 +153,8 @@
     <Property Name="duration" Type="Int32" Nullable="false" />
     <Property Name="person" Type="Int32" Nullable="false" />
     <Property Name="constructionSite" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__Schedule__constr__398D8EEE" FromRole="Schedule" ToRole="ConstructionSite" />
-    <NavigationProperty Name="Person1" Relationship="Self.FK__Schedule__person__38996AB5" FromRole="Schedule" ToRole="Person" />
+    <NavigationProperty Name="ConstructionSite1" Relationship="Self.FK__Schedule__constr__3A81B327" FromRole="Schedule" ToRole="ConstructionSite" />
+    <NavigationProperty Name="Person1" Relationship="Self.FK__Schedule__person__398D8EEE" FromRole="Schedule" ToRole="Person" />
   </EntityType>
   <EntityType Name="TaskDetail">
     <Key>
@@ -162,7 +163,7 @@
     <Property Name="detailId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="details" Type="String" MaxLength="255" FixedLength="false" Unicode="false" Nullable="false" />
     <Property Name="assigned" Type="Int32" Nullable="false" />
-    <NavigationProperty Name="AssignedWorker" Relationship="Self.FK__TaskDetai__assig__300424B4" FromRole="TaskDetail" ToRole="AssignedWorker" />
+    <NavigationProperty Name="AssignedWorker" Relationship="Self.FK__TaskDetai__assig__30F848ED" FromRole="TaskDetail" ToRole="AssignedWorker" />
   </EntityType>
   <EntityType Name="Timestamp">
     <Key>
@@ -200,7 +201,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__AssignedW__const__2C3393D0">
+  <Association Name="FK__AssignedW__const__2D27B809">
     <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
     <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
     <ReferentialConstraint>
@@ -212,7 +213,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__AssignedW__perso__2D27B809">
+  <Association Name="FK__AssignedW__perso__2E1BDC42">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="*" />
     <ReferentialConstraint>
@@ -224,7 +225,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__TaskDetai__assig__300424B4">
+  <Association Name="FK__TaskDetai__assig__30F848ED">
     <End Role="AssignedWorker" Type="Self.AssignedWorker" Multiplicity="1" />
     <End Role="TaskDetail" Type="Self.TaskDetail" Multiplicity="*" />
     <ReferentialConstraint>
@@ -236,7 +237,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Certifica__perso__35BCFE0A">
+  <Association Name="FK__Certifica__perso__36B12243">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Certificate" Type="Self.Certificate" Multiplicity="*" />
     <ReferentialConstraint>
@@ -320,7 +321,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Schedule__constr__398D8EEE">
+  <Association Name="FK__Schedule__constr__3A81B327">
     <End Role="ConstructionSite" Type="Self.ConstructionSite" Multiplicity="1" />
     <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
     <ReferentialConstraint>
@@ -356,7 +357,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__License__person__32E0915F">
+  <Association Name="FK__License__person__33D4B598">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="License" Type="Self.License" Multiplicity="*" />
     <ReferentialConstraint>
@@ -392,7 +393,7 @@
       </Dependent>
     </ReferentialConstraint>
   </Association>
-  <Association Name="FK__Schedule__person__38996AB5">
+  <Association Name="FK__Schedule__person__398D8EEE">
     <End Role="Person" Type="Self.Person" Multiplicity="1" />
     <End Role="Schedule" Type="Self.Schedule" Multiplicity="*" />
     <ReferentialConstraint>
@@ -438,19 +439,19 @@
       <End Role="Person" EntitySet="People" />
       <End Role="AssignedSubContractor" EntitySet="AssignedSubContractors" />
     </AssociationSet>
-    <AssociationSet Name="FK__AssignedW__const__2C3393D0" Association="Self.FK__AssignedW__const__2C3393D0">
+    <AssociationSet Name="FK__AssignedW__const__2D27B809" Association="Self.FK__AssignedW__const__2D27B809">
       <End Role="ConstructionSite" EntitySet="ConstructionSites" />
       <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
     </AssociationSet>
-    <AssociationSet Name="FK__AssignedW__perso__2D27B809" Association="Self.FK__AssignedW__perso__2D27B809">
+    <AssociationSet Name="FK__AssignedW__perso__2E1BDC42" Association="Self.FK__AssignedW__perso__2E1BDC42">
       <End Role="Person" EntitySet="People" />
       <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
     </AssociationSet>
-    <AssociationSet Name="FK__TaskDetai__assig__300424B4" Association="Self.FK__TaskDetai__assig__300424B4">
+    <AssociationSet Name="FK__TaskDetai__assig__30F848ED" Association="Self.FK__TaskDetai__assig__30F848ED">
       <End Role="AssignedWorker" EntitySet="AssignedWorkers" />
       <End Role="TaskDetail" EntitySet="TaskDetails" />
     </AssociationSet>
-    <AssociationSet Name="FK__Certifica__perso__35BCFE0A" Association="Self.FK__Certifica__perso__35BCFE0A">
+    <AssociationSet Name="FK__Certifica__perso__36B12243" Association="Self.FK__Certifica__perso__36B12243">
       <End Role="Person" EntitySet="People" />
       <End Role="Certificate" EntitySet="Certificates" />
     </AssociationSet>
@@ -478,7 +479,7 @@
       <End Role="Province" EntitySet="Provinces" />
       <End Role="ConstructionSite" EntitySet="ConstructionSites" />
     </AssociationSet>
-    <AssociationSet Name="FK__Schedule__constr__398D8EEE" Association="Self.FK__Schedule__constr__398D8EEE">
+    <AssociationSet Name="FK__Schedule__constr__3A81B327" Association="Self.FK__Schedule__constr__3A81B327">
       <End Role="ConstructionSite" EntitySet="ConstructionSites" />
       <End Role="Schedule" EntitySet="Schedules" />
     </AssociationSet>
@@ -490,7 +491,7 @@
       <End Role="Country" EntitySet="Countries" />
       <End Role="Person" EntitySet="People" />
     </AssociationSet>
-    <AssociationSet Name="FK__License__person__32E0915F" Association="Self.FK__License__person__32E0915F">
+    <AssociationSet Name="FK__License__person__33D4B598" Association="Self.FK__License__person__33D4B598">
       <End Role="Person" EntitySet="People" />
       <End Role="License" EntitySet="Licenses" />
     </AssociationSet>
@@ -502,7 +503,7 @@
       <End Role="PersonType" EntitySet="PersonTypes" />
       <End Role="Person" EntitySet="People" />
     </AssociationSet>
-    <AssociationSet Name="FK__Schedule__person__38996AB5" Association="Self.FK__Schedule__person__38996AB5">
+    <AssociationSet Name="FK__Schedule__person__398D8EEE" Association="Self.FK__Schedule__person__398D8EEE">
       <End Role="Person" EntitySet="People" />
       <End Role="Schedule" EntitySet="Schedules" />
     </AssociationSet>

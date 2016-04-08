@@ -12,7 +12,7 @@ namespace qcsolver.Models
     using Microsoft.AspNet.Identity;
     using System;
     using System.Collections.Generic;
-    
+
     public partial class Person : IUser
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]

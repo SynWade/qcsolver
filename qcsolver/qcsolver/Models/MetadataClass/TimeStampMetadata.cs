@@ -14,14 +14,11 @@ namespace qcsolver.Models
         private onsightdbEntities db = new onsightdbEntities();
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-           
             if (timeIn != null)
             {
                 timeIn = timeIn;
                 yield return ValidationResult.Success;
             }
-
-           
 
             //checks if person is selected
             if (person != null)

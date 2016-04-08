@@ -12,19 +12,19 @@ namespace qcsolver.Models
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-           
+
             //checks if the start date time is selected
             if (startDateTime != null)
             {
                 startDateTime = startDateTime;
-                yield return new ValidationResult(string.Format("The start date time: {0} is required", startDateTime), new[] {"startDateTime"});
+                yield return new ValidationResult(string.Format("The start date time: {0} is required", startDateTime), new[] { "startDateTime" });
             }
 
 
             //checks if duration is between (1-24)
             if (duration > 0 && duration < 24)
             {
-                yield return new ValidationResult(string.Format("The duration: {0} must be between 1 and 24", duration), new[] {"duration"});
+                yield return new ValidationResult(string.Format("The duration: {0} must be between 1 and 24", duration), new[] { "duration" });
             }
 
             //checks if person is selected
@@ -38,7 +38,7 @@ namespace qcsolver.Models
             if (constructionSite != null)
             {
                 constructionSite = constructionSite;
-                yield return new ValidationResult(string.Format("The construction site: {0} needs to be selected", constructionSite), new[] {"constructionSite"});
+                yield return new ValidationResult(string.Format("The construction site: {0} needs to be selected", constructionSite), new[] { "constructionSite" });
             }
         }
     }

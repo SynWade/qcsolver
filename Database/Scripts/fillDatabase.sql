@@ -88,9 +88,9 @@ VALUES ('Air Constructions', '5197325243', 'customer_support@airpostal.ca', '461
 ('GeoLive', '2263034284', 'GeoLiveSupport@hotmail.com', '5120 Homestead Drive', '33801', 'Lakeland', 2, 11);
 
 --Add all construction sites
-INSERT INTO ConstructionSite (address, startDate, city, company, country, province)
-VALUES ('536 Main St.', '2015-02-10', 'Montreal', 1, 1, 68),
-('1432 Second Av.', '2016-11-23', 'Montreal', 1, 1, 68);
+INSERT INTO ConstructionSite (constructionSiteName, address, startDate, city, company, country, province)
+VALUES ('Rearden Site', '536 Main St.', '2015-02-10', 'Montreal', 1, 1, 68),
+('McMorris Site', '1432 Second Av.', '2016-11-23', 'Montreal', 1, 1, 68);
 
 --Add all users
 
