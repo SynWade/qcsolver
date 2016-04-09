@@ -25,7 +25,7 @@ namespace qcsolver.Controllers
                 {
                     var personId = Request["person"].ToString();
                     var licenses = db.Licenses.Where(c => c.person.ToString() == personId);
-                    if (licenses != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > licenses.First().Person1.PersonType.personTypeId))
+                    if (user.PersonType.type == "master" || user.PersonType.personTypeId > licenses.First().Person1.PersonType.personTypeId)
                     {
                         return View(licenses);
                     }

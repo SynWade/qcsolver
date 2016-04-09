@@ -28,11 +28,11 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" />
-                    </div>
 @if (Session["user"] != null)
 {
+    <div class="pull-left image">
+        <img src='~/Content/Users/@(((Person)Session["user"]).email)/Profile/@(((Person)Session["user"]).pictureLocation)' class="img-circle" alt="User Image" />
+    </div>
     <div class="user-info">
         <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
         <p class="role" data-icon="flag">Role: @(((Person)Session["user"]).PersonType.type)</p>
@@ -42,13 +42,7 @@
 }
                 </div>
 
-                @if (Session["user"] == null)
-                {
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                }
-                else if (((Person)Session["user"]).PersonType.type == "master")
+                @if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "master")
                 {
                     
                     <link type="text/css" href="~/Content/Master-SideBar.css" rel="stylesheet">
@@ -59,7 +53,7 @@
                     <li>@Html.ActionLink("Online Users", "Index", "Account", new { online = true }, null)</li>
                     <li>@Html.ActionLink("Supervisors", "Index", "Account", new {type = "supervisor"}, null)</li>
                 }
-                else if (((Person)Session["user"]).PersonType.type == "admin")
+                else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "admin")
                 {
                     <link type="text/css" href="~/Content/Admin-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Construction Sites", "Index", "ConstructionSites", new { company = ((Person)Session["user"]).company }, null)</li>
@@ -71,34 +65,34 @@
                 
                 
                 //FROM HERE DOWN WE NEED TO HAVE THE LINKS WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                
-                
-                
-                else if (((Person)Session["user"]).PersonType.type == "supervisor")
+
+
+
+                else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "supervisor")
                 {
                     <link type="text/css" href="~/Content/Supervisor-SideBar.css" rel="stylesheet">
-                    //<li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor", constructionSite = ((Person)Session["user"]).constructionSite }, null)</li>
-                    <li>@Html.ActionLink("OnSite", "Index", "ConstructionSites", new { onsite = true}, null)</li>
+                    <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor", constructionSite = ((Person)Session["user"]).AssignedWorkers.First().constructionSite }, null)</li>
+                    <li>@Html.ActionLink("OnSite", "Index", "Account", new { onsite = true, constructionSite = ((Person)Session["user"]).AssignedWorkers.First().constructionSite }, null)</li>
                     <li>@Html.ActionLink("Tasks - N/A Ln-77", "Index", "Account"@*, new { type = "supervisor" }, null*@)</li>
                 }
-                else if (((Person)Session["user"]).PersonType.type == "contractor")
+                else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "contractor")
                 {
                     <link type="text/css" href="~/Content/Contractor-Sub-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
-                    <li>@Html.ActionLink("Contract", "Index", "Login")</li>
-                    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
-                    <li>@Html.ActionLink("Timestamps - LN85", "Index", "Timestamps")</li>
-                    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
-                    <li>@Html.ActionLink("Subcontractors", "Index", "Account", new { type = "subcontractor" }, null)</li>
-                }
-                else if (((Person)Session["user"]).PersonType.type == "subcontractor")
-                {
-                    <link type="text/css" href="~/Content/Subcontractor-SideBar.css" rel="stylesheet">
-                    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
-                    <li>@Html.ActionLink("Contract", "Index", "Login")</li>
+                    <li>@Html.ActionLink("Download Contract", "ViewContract", "Account")</li>
                     <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
                     <li>@Html.ActionLink("Timestamps", "Index", "Timestamps")</li>
                     <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
+                    <li>@Html.ActionLink("Subcontractors", "Index", "Account", new { type = "subcontractor" }, null)</li>
+                }
+                else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "subcontractor")
+                {
+                    <link type="text/css" href="~/Content/Subcontractor-SideBar.css" rel="stylesheet">
+    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
+    <li>@Html.ActionLink("Download Contract", "ViewContract", "Account")</li>
+    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
+    <li>@Html.ActionLink("Timestamps", "Index", "Timestamps")</li>
+    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
 
                 }
             </ul>
@@ -129,7 +123,9 @@
 
                 <!--Sign In/Out Buttons-->
                 @if (Session["user"] == null)
-                {   
+                {
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <!--Sign In Button if not signed in off of the main page-->
                     <li class="button" style="float:right; font-size:1.5em">
                         <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>
@@ -137,6 +133,8 @@
                 }
                 else
                 {
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                     <!--Sign Out Button if signed in-->
                     <li class="button" style="float:right; font-size:1.5em">
                         <a href="../Account/Logoff"><i class=" fa fa-sign-out"></i></a>
