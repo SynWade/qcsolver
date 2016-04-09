@@ -55,21 +55,28 @@ namespace qcsolver.Controllers
                         people = people.Where(c => c.company.ToString() == company);
                     }
                 }
-                else if (Request["constructionSite"] != null && (user.PersonType.type == "master" || ((user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == Request["constructionSite"].ToString()).First().company)))
+                else if (Request["constructionSite"] != null)
                 {
                     var constructionSite = Request["constructionSite"].ToString();
-                    if (Request["onsite"] != null)
+                    if (user.PersonType.type == "master" || ((user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && user.company == db.ConstructionSites.Where(x => x.constructionSiteId.ToString() == constructionSite).First().company))
                     {
-                        people = people.Where(c => c.Timestamps.Where(x => x.timeOut == null && x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
-                    }
-                    else if (Request["type"] != null && (Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
-                    {
-                        var type = Request["type"].ToString();
-                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.PersonType.type == type);
+                        if (Request["onsite"] != null)
+                        {
+                            people = people.Where(c => c.Timestamps.Where(x => x.timeOut == null && x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
+                        }
+                        else if (Request["type"] != null && (Request["type"].ToString() == "supervisor" || Request["type"].ToString() == "contractor" || Request["type"].ToString() == "subcontractor"))
+                        {
+                            var type = Request["type"].ToString();
+                            people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0).Where(c => c.PersonType.type == type);
+                        }
+                        else
+                        {
+                            people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
+                        }
                     }
                     else
                     {
-                        people = people.Where(c => c.AssignedWorkers.Where(x => x.constructionSite.ToString() == constructionSite).Count() != 0);
+                        return RedirectToAction("Index", "Home");
                     }
                 }
                 else if (Request["type"] != null && user.PersonType.type == "contractor" && Request["type"].ToString() == "subcontractor")
