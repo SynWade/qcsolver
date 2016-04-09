@@ -26,7 +26,7 @@ namespace qcsolver.Models
                 //license name validation
                 licenseName = licenseName.Trim();
                 Regex licenseRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!licenseRegex.IsMatch(licenseName))
+                if (licenseRegex.IsMatch(licenseName))
                 {
                     yield return new ValidationResult(string.Format("", licenseName), new[] { "licenseName" });
                 }

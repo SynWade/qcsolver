@@ -24,7 +24,7 @@ namespace qcsolver.Models
                 //certificate name validation
                 certificateName = certificateName.Trim();
                 Regex certificateRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!certificateRegex.IsMatch(certificateName))
+                if (certificateRegex.IsMatch(certificateName))
                 {
 
                     yield return new ValidationResult(string.Format("The certificate name: {0} should not not contain a number", certificateName), new[] { "certificateName" });

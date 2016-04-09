@@ -26,7 +26,7 @@ namespace qcsolver.Models
                 companyName = companyName.Trim();
                 //company name validation
                 Regex nameRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!nameRegex.IsMatch(companyName))
+                if (nameRegex.IsMatch(companyName))
                 {
                     yield return new ValidationResult(string.Format("The name: {0}, should not contain a number", companyName), new[] { "companyName" });
                 }
@@ -42,7 +42,7 @@ namespace qcsolver.Models
                 //number validation
                 contactNumber = contactNumber.Trim();
                 Regex numberRegex = new Regex(@"^\d{3}-\d{3}-\d{4}$");
-                if (!numberRegex.IsMatch(contactNumber))
+                if (numberRegex.IsMatch(contactNumber))
                 {
                     yield return new ValidationResult(string.Format("The number: {0}, need a valid phone number", contactNumber), new[] { "contactNumber" });
                 }
@@ -91,7 +91,7 @@ namespace qcsolver.Models
                 //postal code validation
                 postalCode = postalCode.Trim();
                 Regex postalCodeRegex = new Regex(@"^[a-z]\d[a-z] ?\d[a-z]\d$");
-                if (!postalCodeRegex.IsMatch(postalCode))
+                if (postalCodeRegex.IsMatch(postalCode))
                 {
                     yield return new ValidationResult(string.Format("Postal code: {0}, should be in the right format N2L 1C3 ", postalCode), new[] { "postalCode" });
                 }
@@ -120,7 +120,7 @@ namespace qcsolver.Models
                 //city validation
                 city = city.Trim();
                 Regex cityRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!cityRegex.IsMatch(city))
+                if (cityRegex.IsMatch(city))
                 {
                     yield return new ValidationResult(string.Format("The city: {0}, should not contain a number!", city), new[] { "city" });
                 }

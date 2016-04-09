@@ -14,6 +14,8 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            yield return ValidationResult.Success;
+            /*
             //checks if required field is entered
             if (constructionSiteName == null || constructionSiteName.Trim() == "")
             {
@@ -24,7 +26,7 @@ namespace qcsolver.Models
                 constructionSiteName = constructionSiteName.Trim();
                 //company name validation
                 Regex nameRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!nameRegex.IsMatch(constructionSiteName))
+                if (nameRegex.IsMatch(constructionSiteName))
                 {
                     yield return new ValidationResult(string.Format("The name: {0}, should not contain a number", constructionSiteName), new[] { "constructionSiteName" });
                 }
@@ -66,32 +68,12 @@ namespace qcsolver.Models
                 //city validation
                 city = city.Trim();
                 Regex cityRegex = new Regex(" \b^[a-zA-Z]+$\b");
-                if (!cityRegex.IsMatch(city))
+                if (cityRegex.IsMatch(city))
                 {
                     yield return new ValidationResult(string.Format("The city: {0}, should not contain a number!", city), new[] { "city" });
                 }
             }
-
-            //checks if company has been selected..
-            if (company != null)
-            {
-                company = company;
-                yield return new ValidationResult(string.Format("The company: {0}, has to been selected", company), new[] { "company" });
-            }
-
-            //checks if country has been selected
-            if (country != null)
-            {
-                country = country;
-                yield return new ValidationResult(string.Format("The country: {0}, has to been selected", country), new[] { "country" });
-            }
-
-            //checks if province has been selected
-            if (province != null)
-            {
-                province = province;
-                yield return new ValidationResult(string.Format("The province: {0}, has to be selected", province), new[] { "province" });
-            }
+             * */
         }
     }
 

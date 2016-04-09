@@ -96,9 +96,9 @@
 <h4>Personal option links</h4>
     <nav class="linksUnderPic">
         <hr />
-            <span>@Html.ActionLink("Certificates", "Index", "Certificates")</span><br />
-            <span>@Html.ActionLink("Contracts - IMG LN93", "Index", "Login")</span><br />
-            <span>@Html.ActionLink("Licenses", "Index", "Licenses")</span><br />
+            <span>@Html.ActionLink("Certificates", "Index", "Certificates", new { person = Model.personId }, null)</span><br />
+            <span>@Html.ActionLink("Download Contract", "ViewContract", "Account", new { person=Model.personId}, null)</span><br />
+            <span>@Html.ActionLink("Licenses", "Index", "Licenses", new { person = Model.personId }, null)</span><br />
             <span>@Html.ActionLink("Timestamps", "Index", "Timestamps")</span><br />
             <span>@Html.ActionLink("Schedules", "Index", "Schedules")</span>
     </nav>

@@ -147,34 +147,6 @@ namespace qcsolver.Models
                 }
             }
 
-            //checks if the province is selected
-            if (type == null)
-            {
-                type = type;
-                yield return new ValidationResult(string.Format("The type: {0}, you need to select your type!", type), new[] { "type" });
-            }
-
-            //checks if the province is selected
-            if (company == null)
-            {
-                company = company;
-                yield return new ValidationResult(string.Format("The company: {0}, you need to select your company!", company), new[] { "company" });
-            }
-
-            //checks if the province is selected
-            if (country == null)
-            {
-                country = country;
-                yield return new ValidationResult(string.Format("The country: {0}, you need to select your country!", country), new[] { "country" });
-            }
-
-            //checks if the province is selected
-            if (province == null)
-            {
-                province = province;
-                yield return new ValidationResult(string.Format("The province: {0}, you need to select your province!", province), new[] { "province" });
-            }
-
 
         }
     }
