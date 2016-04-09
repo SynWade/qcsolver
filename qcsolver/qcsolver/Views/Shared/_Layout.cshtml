@@ -28,11 +28,11 @@
         <div id="sidebar-wrapper">
             <ul class="sidebar-nav">
                 <div class="user-panel">
-                    <div class="pull-left image">
-                        <img src="~/Content/Images/lion.jpg" class="img-circle" alt="User Image" />
-                    </div>
 @if (Session["user"] != null)
 {
+    <div class="pull-left image">
+        <img src='~/Content/Users/@(((Person)Session["user"]).email)/Profile/@(((Person)Session["user"]).pictureLocation)' class="img-circle" alt="User Image" />
+    </div>
     <div class="user-info">
         <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
         <p class="role" data-icon="flag">Role: @(((Person)Session["user"]).PersonType.type)</p>

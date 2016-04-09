@@ -9,7 +9,8 @@
 <h2>@(((Person)ViewBag.person).firstName + " " + ((Person)ViewBag.person).lastName)'s Profile</h2>
 <span>@Html.ActionLink("Change account information", "Edit", "Account")</span>
 <hr style="border: 1px double #337ab7;">
-    <img class="profileImage"src="~/Content/Images/lion.png" alt="Profile Image"/>
+
+    <img class="profileImage" src='~/Content/Users/@(((Person)ViewBag.person).email)/Profile/@(((Person)ViewBag.person).pictureLocation)' alt=" profile image" />
 <div class="profile">
     <profile>
         <properties>
