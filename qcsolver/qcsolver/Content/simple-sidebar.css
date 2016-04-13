@@ -155,6 +155,7 @@
         height:25px;
         background:transparent;
         border: none;
+        text-align: center;
     }
 
     .img-circle{
@@ -164,7 +165,7 @@
     .customFooter{
         bottom: 0;
         position: fixed;
-        padding-bottom: 20px;
+        padding-bottom: 5px;
         float: right;
         background-color: white;
     }

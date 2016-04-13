@@ -36,8 +36,8 @@
     <div class="user-info">
         <p class="FLnames">@(((Person)Session["user"]).firstName + " " + ((Person)Session["user"]).lastName)</p>
         <p class="role" data-icon="flag">Role: @(((Person)Session["user"]).PersonType.type)</p>
-        <a href="../Account/Profile" /><p class="acctSettings"><i class="fa fa-gear"></i> Profile & Settings</p>
         <hr />
+        <a href="../Account/Profile" /><p class="acctSettings"><i class="fa fa-gear"></i> Profile & Settings</p>
 </div>
 }
                 </div>
@@ -109,9 +109,9 @@
                 </li>
                 <!-- Application Name -->
                 <li>@Html.ActionLink("QCsolver's OnSite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
-                <li><input type="text" name="searchBar" class="form-control" placeholder="Search..." /></li>
+                @*<li><input type="text" name="searchBar" class="form-control" placeholder="Search..." /></li>
                 <li><button type='submit' name='search' id='search-btn' class="btn btn-flat">
-                    <i class="fa fa-search"></i></button></li>
+                    <i class="fa fa-search"></i></button></li>*@
 
                 <!-- Icon for Chat - Later Development-->
                 @*<li class="dropdown messages-menu">
@@ -125,7 +125,7 @@
                 @if (Session["user"] == null)
                 {
                     <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
                     <!--Sign In Button if not signed in off of the main page-->
                     <li class="button" style="float:right; font-size:1.5em">
                         <a href="../Account/Login"><i class=" fa fa-sign-in"></i></a>

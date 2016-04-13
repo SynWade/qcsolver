@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Add event to schedule", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.startDateTime)
@@ -27,27 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDateTime)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.duration)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ConstructionSite1.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person1.firstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.scheduleId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.scheduleId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.scheduleId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDateTime)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.duration)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ConstructionSite1.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person1.firstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.scheduleId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.scheduleId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.scheduleId })
+            </td>
+        </tr>
+    }
 </table>
 <div class="indexImages">
     <img src="~/Content/Images/Icons/schedule.png" alt="Schedule Icon" />
