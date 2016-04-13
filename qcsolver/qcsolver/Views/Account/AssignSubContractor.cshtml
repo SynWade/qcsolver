@@ -15,9 +15,8 @@
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
-            @Html.LabelFor(model => model.contractor, "contractor", htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.HiddenFor(model => model.contractor, htmlAttributes: new { @value = "contractor" })
+                @Html.HiddenFor(model => model.contractor, new { @Value = ViewBag.contractorId });
                 @Html.ValidationMessageFor(model => model.contractor, "", new { @class = "text-danger" })
             </div>
         </div>

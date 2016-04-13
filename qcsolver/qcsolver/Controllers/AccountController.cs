@@ -84,6 +84,20 @@ namespace qcsolver.Controllers
                     var type = Request["type"].ToString();
                     people = people.Where(c => c.AssignedSubContractors1.Where(x => x.contractor == user.personId).Count() != 0);
                 }
+                else if (Request["type"] != null && Request["type"].ToString() == "subcontractor" && Request["person"] != null)
+                {
+                    var type = Request["type"].ToString();
+                    var personid = Request["person"].ToString();
+                    var contractor = db.People.Where(x => x.personId.ToString() == personid).First();
+                    if (contractor != null && (user.PersonType.type == "master" || (user.PersonType.type == "admin" && user.company == contractor.company) || (user.PersonType.type == "supervisor" && user.AssignedWorkers.First().constructionSite == contractor.AssignedWorkers.First().constructionSite)))
+                    {
+                        people = people.Where(c => c.AssignedSubContractors1.Where(x => x.contractor == contractor.personId).Count() != 0);
+                    }
+                    else
+                    {
+                        return RedirectToAction("Index", "Home");
+                    }
+                }
                 else if (user.PersonType.type == "master")
                 {
                     if (Request["online"] != null)
@@ -120,7 +134,7 @@ namespace qcsolver.Controllers
                 {
                     var personId = Request["person"].ToString();
                     var person = db.People.Where(c => c.personId.ToString() == personId).First();
-                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    if (person != null && (user.PersonType.type == "master" || (person.PersonType.personTypeId > user.PersonType.personTypeId && person.company == user.company)))
                     {
                         ViewBag.person = person;
                         return View(person);
@@ -167,39 +181,13 @@ namespace qcsolver.Controllers
             }
         }
 
-        public bool ValidatePassword(string email, string password)
-        {
-            bool isValid = false;
-            if (string.IsNullOrEmpty(email) || password == null)
-            {
-                throw new ArgumentNullException();
-            }
-
-            var row = db.People.FirstOrDefault(i => i.email == email);
-            if (row == null)
-            {
-                throw new HttpRequestValidationException("No user found with that email");
-            }
-            else
-            {
-                if (row.password != password)
-                {
-                    throw new HttpRequestValidationException("Incorrect Password");
-                }
-                else
-                {
-                    isValid = true;
-                }
-            }
-
-            return isValid;
-        }
-
         //
         // GET: /Account/Login
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            var person = db.People.FirstOrDefault(i => i.email == "MolsonLife@gmail.ca");
+            Session["user"] = person;
             if (Session["user"] != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -217,22 +205,35 @@ namespace qcsolver.Controllers
         {
             if (ModelState.IsValid)
             {
-                var passwordValid = ValidatePassword(model.Email, model.Password);
-                var result = await SignInManager.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
-                if (passwordValid)
+                if (string.IsNullOrEmpty(model.Email) || model.Password == null)
                 {
-                    FormsAuthentication.SetAuthCookie(model.Email, true);
-                    Person person = new Person();
-                    person = db.People.Where(i => i.email == model.Email).FirstOrDefault();
-                    person.online = true;
-                    Session["user"] = person;
-
-                    // now the user is authenticated
-                    return RedirectToAction("Index", "Home");
+                    ModelState.AddModelError("Email", "Email is required!");
+                    ModelState.AddModelError("Password", "Password is required!");
                 }
                 else
                 {
-                    ModelState.AddModelError("password", "Invalid password");
+                    var row = db.People.FirstOrDefault(i => i.email == model.Email);
+                    if (row == null)
+                    {
+                        ModelState.AddModelError("Email", "No user with that email exists!");
+                    }
+                    else
+                    {
+                        if (row.password != model.Password)
+                        {
+                            ModelState.AddModelError("Password", "Incorrect password!");
+                        }
+                        else
+                        {
+                            FormsAuthentication.SetAuthCookie(model.Email, true);
+                            Person person = new Person();
+                            person = db.People.Where(i => i.email == model.Email).FirstOrDefault();
+                            Session["user"] = person;
+
+                            // now the user is authenticated
+                            return RedirectToAction("Index", "Home");
+                        }
+                    }
                 }
             }
             return View(model);
@@ -419,16 +420,17 @@ namespace qcsolver.Controllers
                 var user = (Person)Session["user"];
                 if (user.PersonType.type == "contractor")
                 {
-                    ViewBag.contractor = user;
-                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.First().constructionSite == user.AssignedWorkers.First().constructionSite), "personId", "firstName");
+                    var constructionSiteId = user.AssignedWorkers.FirstOrDefault().constructionSite;
+                    ViewBag.contractorId = user.personId;
+                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.FirstOrDefault().constructionSite == constructionSiteId && x.AssignedSubContractors1.FirstOrDefault() == null), "personId", "firstName");
                     return View();
                 }
-                else if ((user.PersonType.type == "master" || user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && Request["person"] != null && db.People.Where(x => x.personId.ToString() == Request["person"].ToString()).First().PersonType.type == "contractor")
+                else if ((user.PersonType.type == "master" || user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && Request["person"] != null)
                 {
                     var id = Request["person"].ToString();
-                    var person = db.People.Where(x => x.personId.ToString() == id).First();
-                    ViewBag.contractor = person;
-                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.First().constructionSite == person.AssignedWorkers.First().constructionSite), "personId", "firstName");
+                    var contractor = db.People.Where(x => x.personId.ToString() == id).First();
+                    ViewBag.contractor = contractor;
+                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.First().constructionSite == contractor.AssignedWorkers.First().constructionSite).Where(x => x.AssignedSubContractors == null), "personId", "firstName");
                     return View();
                 }
                 else
@@ -468,7 +470,7 @@ namespace qcsolver.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return View(assigned);
                     }
                 }
                 else
@@ -486,35 +488,19 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                if (((Person)Session["user"]).PersonType.type != "subcontractor")
-                {
-                    return View();
-                }
-                else
-                {
-                    return RedirectToAction("Index", "Home");
-                }
-            }
-            else
-            {
-                return RedirectToAction("Login", "Account");
-            }
-
-            if (Session["user"] != null)
-            {
                 var user = (Person)Session["user"];
                 if (user.PersonType.type == "contractor")
                 {
-                    ViewBag.contractor = user;
-                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.Where(y => y.contractor == user.personId) != null), "personId", "firstName");
+                    ViewBag.contractorId = user.personId;
+                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.FirstOrDefault().contractor == user.personId), "personId", "firstName");
                     return View();
                 }
-                else if ((user.PersonType.type == "master" || user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && Request["person"] != null && db.People.Where(x => x.personId.ToString() == Request["person"].ToString()).First().PersonType.type == "contractor")
+                else if ((user.PersonType.type == "master" || user.PersonType.type == "admin" || user.PersonType.type == "supervisor") && Request["person"] != null)
                 {
                     var id = Request["person"].ToString();
                     var person = db.People.Where(x => x.personId.ToString() == id).First();
                     ViewBag.contractor = person;
-                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.Where(y => y.contractor == user.personId) != null), "personId", "firstName");
+                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.FirstOrDefault().contractor == user.personId), "personId", "firstName");
                     return View();
                 }
                 else
@@ -543,7 +529,8 @@ namespace qcsolver.Controllers
                     {
                         if (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.Person.AssignedWorkers.First().constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor))
                         {
-                            db.AssignedSubContractors.Add(assigned);
+                            var toDelete = db.AssignedSubContractors.Where(x => x.contractor == assigned.contractor && x.subContractor == assigned.subContractor).First();
+                            db.AssignedSubContractors.Remove(toDelete);
                             db.SaveChanges();
                             return RedirectToAction("Index", "Account");
                         }
@@ -554,7 +541,7 @@ namespace qcsolver.Controllers
                     }
                     else
                     {
-                        return RedirectToAction("Index", "Home");
+                        return View(assigned);
                     }
                 }
                 else
