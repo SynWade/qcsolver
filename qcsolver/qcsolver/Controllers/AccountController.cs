@@ -200,6 +200,8 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            //var row = db.People.FirstOrDefault(i => i.email == "TAndrews@gmail.ca");
+            //Session["user"] = row;
             if (Session["user"] != null)
             {
                 return RedirectToAction("Index", "Home");

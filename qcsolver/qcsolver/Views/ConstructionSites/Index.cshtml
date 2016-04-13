@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Create construction site", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.address)
@@ -36,35 +36,36 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.startDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.endDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Company1.companyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country1.countryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Province1.provinceName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.constructionSiteId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.constructionSiteId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.constructionSiteId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.startDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.endDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Company1.companyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country1.countryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province1.provinceName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.constructionSiteId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.constructionSiteId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.constructionSiteId })
+            </td>
+        </tr>
+    }
 
 </table>

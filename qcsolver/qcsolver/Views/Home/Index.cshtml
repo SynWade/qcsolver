@@ -70,7 +70,9 @@
                                     <p style="text-align:center">
                                         On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
                                         <i class="fa fa-arrow-left" style="font-size:3em; padding-right:100%"></i>
-                                        <br />
+                                        The QCSOLVER SYSTEM is a fully accessible cloud based software and service designed to assist clients and contractors in managing pre-qualifications and performance.
+                                    </p>
+                                    <p style="text-align:center">
                                         QCsolver hopes that this web application will improve your performance withing your company.
                                     </p>
                                 </div>
@@ -104,3 +106,25 @@
                             }
 </body>
 </html>
+@if (Session["user"] == null)
+            {
+<script>
+    $("#menu-toggle").click(function (e) {
+        e.preventDefault();
+        $("#wrapper").toggleClass("toggled");
+    }).click();
+</script>
+    <script>document.getElementsByClassName('menu-toggle')[0].style.visibility = 'hidden';</script>
+    <script>document.getElementsByClassName('sr-only-focusable')[0].style.visibility = 'hidden';</script>
+    <script>document.getElementsByClassName('sidebar-nav')[0].style.visibility = 'hidden';</script>
+    <script>document.getElementById('sidebar-wrapper').style.visibility = 'hidden';</script>
+            }
+else
+{
+    <script>
+        $("#menu-toggle").click(function (e) {
+            e.preventDefault();
+            $("#wrapper").toggleClass("toggled");
+        });
+    </script>
+}

@@ -1,19 +1,47 @@
 ﻿@model IEnumerable<qcsolver.Models.Person>
-
+@using qcsolver.Models;
 @{
     ViewBag.Title = "Index";
 }
+
 @*@if (ViewBag.type != null)
 {
     <h2>View @ViewBag.type</h2>
 }*@
-<h2>View Personnel</h2>
-<hr style="border: 1px double #337ab7;">
 
-<p>
-    @Html.ActionLink("Create new user", "Create")
-</p>
-<table class="table">
+@if (((Person)Session["user"]).PersonType.type == "master")
+{
+    <h2>View Personnel</h2>
+    <hr style="border: 1px double #337ab7;">
+    <p>
+        @Html.ActionLink("Create new user", "Register")
+    </p>
+}
+else if (((Person)Session["user"]).PersonType.type == "admin")
+{
+    <h2>View Personnel</h2>
+    <hr style="border: 1px double #337ab7;">
+    <p>
+        @Html.ActionLink("Create new user", "Register")
+    </p>
+}
+else if (((Person)Session["user"]).PersonType.type == "supervisor")
+{
+    <h2>View Personnel</h2>
+    <hr style="border: 1px double #337ab7;">
+    <p>
+        @Html.ActionLink("Create new contractor", "Register")
+    </p>
+}
+else if (((Person)Session["user"]).PersonType.type == "contractor")
+{
+    <h2>View Subontractors</h2>
+    <hr style="border: 1px double #337ab7;">
+    <p>
+        @Html.ActionLink("Create new subcontractor", "Register")
+    </p>
+}
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.firstName)
@@ -23,6 +51,9 @@
         </th>
         <th>
             @Html.DisplayNameFor(model => model.PersonType.type)
+        </th>
+        <th>
+            Options
         </th>
     </tr>
 
@@ -35,7 +66,6 @@
             <td>
                 @Html.DisplayFor(modelItem => item.lastName)
             </td>
-            
             <td>
                 @Html.DisplayFor(modelItem => item.PersonType.type)
             </td>

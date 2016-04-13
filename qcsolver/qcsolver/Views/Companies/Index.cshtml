@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Add new company", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.companyName)
@@ -39,38 +39,39 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.companyName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contactNumber)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.contactEmail)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.address)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.postalCode)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.city)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Country1.countryName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Province1.provinceName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.companyId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.companyId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.companyId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.companyName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactNumber)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.contactEmail)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.postalCode)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Country1.countryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Province1.provinceName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.companyId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.companyId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.companyId })
+            </td>
+        </tr>
+    }
 
 </table>

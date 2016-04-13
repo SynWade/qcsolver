@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Add certification", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.certificateName)
@@ -27,27 +27,28 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.certificateName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fileLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person1.firstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.certificateId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.certificateId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.certificateId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.certificateName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fileLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person1.firstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.certificateId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.certificateId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.certificateId })
+            </td>
+        </tr>
+    }
 </table>
 <div class="indexImages">
     <img src="~/Content/Images/Icons/certificate.png" alt="Certificate Icon" />

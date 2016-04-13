@@ -10,7 +10,7 @@
 <p>
     @Html.ActionLink("Add new license", "Create")
 </p>
-<table class="table">
+<table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
             @Html.DisplayNameFor(model => model.licenseName)
@@ -30,30 +30,31 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.licenseName)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.dateIssued)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.expirationDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.fileLocation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Person1.firstName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.licenseId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.licenseId }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.licenseId })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.licenseName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.dateIssued)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.expirationDate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fileLocation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Person1.firstName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.licenseId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.licenseId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.licenseId })
+            </td>
+        </tr>
+    }
 </table>
 <div class="indexImages">
     <img src="~/Content/Images/Icons/license.png" alt="License Icon" />
