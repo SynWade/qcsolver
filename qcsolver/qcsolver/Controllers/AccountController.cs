@@ -429,8 +429,9 @@ namespace qcsolver.Controllers
                 {
                     var id = Request["person"].ToString();
                     var contractor = db.People.Where(x => x.personId.ToString() == id).First();
-                    ViewBag.contractor = contractor;
-                    ViewBag.subcontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.First().constructionSite == contractor.AssignedWorkers.First().constructionSite).Where(x => x.AssignedSubContractors == null), "personId", "firstName");
+                    var constructionSiteId = contractor.AssignedWorkers.FirstOrDefault().constructionSite;
+                    ViewBag.contractorId = contractor.personId;
+                    ViewBag.subSontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.FirstOrDefault().constructionSite == constructionSiteId && x.AssignedSubContractors1.FirstOrDefault() == null), "personId", "firstName");
                     return View();
                 }
                 else
@@ -499,8 +500,8 @@ namespace qcsolver.Controllers
                 {
                     var id = Request["person"].ToString();
                     var person = db.People.Where(x => x.personId.ToString() == id).First();
-                    ViewBag.contractor = person;
-                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.FirstOrDefault().contractor == user.personId), "personId", "firstName");
+                    ViewBag.contractorId = person.personId;
+                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedSubContractors1.FirstOrDefault().contractor == person.personId), "personId", "firstName");
                     return View();
                 }
                 else
