@@ -7,7 +7,7 @@
         }
 
 
-        <h2 style="text-align:center; font-weight:bold">Welcome to QCsolver's OnSite </h2>
+        <h2 style="">Welcome to QCsolver's OnSite </h2>
         
             @if (Session["user"] == null)
             {
@@ -16,17 +16,17 @@
                     <div class="row">
                         <div class="col-sm-12">
                             <h3>Software and a Service</h3>
-                            <hr style="border: 1px double #337ab7;" />
+                            <hr />
                             <img class="homeLogo" src="~/Content/Images/QCLoginLogo.png" alt=" QCsolver Logo" />
-                            <hr style="border: 1px double #337ab7;" />
+                            <hr />
                             <br />
-                            <h4 style="text-align:center">
+                            <h4>
                                 Welcome to QCsolver's OnSite managing web application.
                             </h4>
-                            <h5 style="text-align:center"> 
+                            <h5> 
                                 Please sign in by using the top right icon. If you have no credentials or invalid credentials contact your system administrator.
                             </h5>
-                            <h5 style="text-align:center">
+                            <h5>
                                 QCsolver is a convenient and easy-to-use portal to monitor your organisation’s risk. Our QCsolver portal will ensure that your vendors and contractors are current and qualified, while adhering to legislation.
                             </h5>
                             <br />
@@ -36,21 +36,21 @@
                                 <div class="row row-centered">
                                     <div class="col-md-4 col-centered">
                                         <p>
-                                            <i class="fa fa-folder-open" style="font-size:5em"></i>
+                                            <i class="fa fa-folder-open" id="iconF"></i>
                                             <br /><br />
                                             QCsolver helps you manage your organisation’s certificates and documents using customized categories.
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-centered">
                                         <p>
-                                            <i class="fa fa-calendar" style="font-size:5em; padding-left:35%;"></i>
+                                            <i class="fa fa-calendar" id="iconCal"></i>
                                             <br /><br />
                                             Keep track of expiration dates and the status on your certificates to ensure that everything is up to date.
                                         </p>
                                     </div>
                                     <div class="col-md-4 col-centered">
                                         <p>
-                                            <i class="fa fa-database" style="font-size:5em; padding-left:82%;"></i>
+                                            <i class="fa fa-database" id="iconDB"></i>
                                             <br /><br />
                                             With QCsolver, your organisation is able to access all evaluations of the vendors that you use, in one database.
                                             Tracking the performance of your vendors using evaluations is key in any business relationship.
@@ -66,36 +66,36 @@
                             <div class="row">
                                 <div class="col-md-8">
                                     <h3>Getting started</h3>
-                                    <hr style="border: 1px double #337ab7;" />
-                                    <p style="text-align:center">
+                                    <hr />
+                                    <p>
                                         On the left hand side you will find a menu that will help you with your everyday tasks as well as your productivity and time efficiency.<br />
-                                        <i class="fa fa-arrow-left" style="font-size:3em; padding-right:100%"></i>
+                                        <i class="fa fa-arrow-left" id="iconAL"></i>
                                         The QCSOLVER SYSTEM is a fully accessible cloud based software and service designed to assist clients and contractors in managing pre-qualifications and performance.
                                     </p>
-                                    <p style="text-align:center">
+                                    <p>
                                         QCsolver hopes that this web application will improve your performance withing your company.
                                     </p>
                                 </div>
                                 <div class="col-md-12">
-                                    <hr style="border: 1px double #337ab7;" />
+                                    <hr />
                                     <h4>Your role as a user is:</h4>
-                                    <h3 style="font-weight:bold;">@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
+                                    <h3>@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
                                     <div class="userIconRole">
                                         @if (((Person)Session["user"]).PersonType.type == "master")
                                         {
-                                            <i class="fa fa-user-secret" style="font-size:35em; float:right;"></i>
+                                            <i class="fa fa-user-secret" id="userIco"></i>
                                         }
                                         else if (((Person)Session["user"]).PersonType.type == "admin")
                                         {
-                                            <i class="fa fa-users" style="font-size:35em; float:right;"></i>
+                                            <i class="fa fa-users"></i>
                                         }
                                         else if (((Person)Session["user"]).PersonType.type == "supervisor")
                                         {
-                                            <i class="fa fa-user-plus" style="font-size:35em; float:right;"></i>
+                                            <i class="fa fa-user-plus"></i>
                                         }
                                         else if ((((Person)Session["user"]).PersonType.type == "contractor") || (((Person)Session["user"]).PersonType.type == "subcontractor"))
                                         {
-                                            <i class="fa fa-user" style="font-size:35em; float:right;"></i>
+                                            <i class="fa fa-user"></i>
                                         }
                                     </div>
                                 </div>

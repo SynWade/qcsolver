@@ -186,7 +186,7 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            var person = db.People.FirstOrDefault(i => i.email == "MolsonLife@gmail.ca");
+            var person = db.People.FirstOrDefault(i => i.email == "TAndrews@gmail.ca");
             Session["user"] = person;
             if (Session["user"] != null)
             {

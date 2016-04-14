@@ -9,72 +9,74 @@
 <div>
     <h4>Company</h4>
     <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.companyName)
-        </dt>
+    <form class="form-inline">
+        <div class="form-group">
+            <label>
+                @Html.DisplayNameFor(model => model.companyName)
+            </label>
 
-        <dd>
-            @Html.DisplayFor(model => model.companyName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.companyName)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.contactNumber)
+            </label>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contactNumber)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.contactNumber)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.contactEmail)
+            </label>
 
-        <dd>
-            @Html.DisplayFor(model => model.contactNumber)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.contactEmail)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.address)
+            </label>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.contactEmail)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.address)
+            </dd>
+        </div>
+        <div class="form-group" style="padding-left:10%">
+            <label>
+                @Html.DisplayNameFor(model => model.postalCode)
+            </label>
 
-        <dd>
-            @Html.DisplayFor(model => model.contactEmail)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.postalCode)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.city)
+            </label>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.address)
-        </dt>
+            <dd>
+                @Html.DisplayFor(model => model.city)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.Country1.countryName)
+            </label>
 
-        <dd>
-            @Html.DisplayFor(model => model.address)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Country1.countryName)
+            </dd>
+                <br />
+            <label>
+                @Html.DisplayNameFor(model => model.Province1.provinceName)
+            </label>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.postalCode)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.postalCode)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.city)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.city)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Country1.countryName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Country1.countryName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Province1.provinceName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Province1.provinceName)
-        </dd>
-
-    </dl>
+            <dd>
+                @Html.DisplayFor(model => model.Province1.provinceName)
+            </dd>
+        </div>
+    </form>
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.companyId }) |

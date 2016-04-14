@@ -268,6 +268,7 @@
     <Content Include="Content\Images\QCLoginLogo.png" />
     <Content Include="Content\Images\smimg.png" />
     <Content Include="Content\Images\whiteBox.png" />
+    <Content Include="Content\indexStyle.css" />
     <Content Include="Content\Login.css" />
     <Content Include="Content\Master-SideBar.css" />
     <Content Include="Content\Profile.css" />
