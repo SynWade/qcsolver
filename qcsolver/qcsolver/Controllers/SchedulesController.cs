@@ -23,8 +23,9 @@ namespace qcsolver.Controllers
                 if (Request["person"] != null)
                 {
                     var personId = Request["person"].ToString();
+                    var person = db.People.Where(x => x.personId.ToString() == personId).First();
                     var schedules = db.Schedules.Where(c => c.person.ToString() == personId);
-                    if (schedules != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > schedules.First().Person1.PersonType.personTypeId))
+                    if (schedules != null && (user.PersonType.type == "master" || user.PersonType.personTypeId < person.PersonType.personTypeId || user.personId == person.personId))
                     {
                         return View(schedules);
                     }

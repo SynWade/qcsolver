@@ -98,9 +98,12 @@
 <h4>Personal option links</h4>
     <nav class="linksUnderPic">
         <hr />
-            <span>@Html.ActionLink("Certificates", "Index", "Certificates", new { person = Model.personId }, null)</span><br />
-            <span>@Html.ActionLink("Download Contract", "ViewContract", "Account", new { person=Model.personId}, null)</span><br />
-            <span>@Html.ActionLink("Licenses", "Index", "Licenses", new { person = Model.personId }, null)</span><br />
-            <span>@Html.ActionLink("Timestamps", "Index", "Timestamps")</span><br />
-            <span>@Html.ActionLink("Schedules", "Index", "Schedules")</span>
+            @if (Model.PersonType.personTypeId > 2)
+            {
+                <span>@Html.ActionLink("Certificates", "Index", "Certificates", new { person = Model.personId }, null)</span><br />
+                <span>@Html.ActionLink("Download Contract", "ViewContract", "Account", new { person = Model.personId }, null)</span><br />
+                <span>@Html.ActionLink("Licenses", "Index", "Licenses", new { person = Model.personId }, null)</span><br />
+                <span>@Html.ActionLink("Timestamps", "Index", "Timestamps", new { person = Model.personId }, null)</span><br />
+                <span>@Html.ActionLink("Schedules", "Index", "Schedules", new { person = Model.personId }, null)</span>
+            }
     </nav>

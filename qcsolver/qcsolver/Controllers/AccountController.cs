@@ -186,7 +186,7 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            var person = db.People.FirstOrDefault(i => i.email == "MolsonLife@gmail.ca");
+            var person = db.People.FirstOrDefault(i => i.email == "TAndrews@gmail.ca");
             Session["user"] = person;
             if (Session["user"] != null)
             {
@@ -299,10 +299,31 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                if (((Person)Session["user"]).PersonType.type != "subcontractor" && ((Person)Session["user"]).PersonType.type != "contractor")
+                var user = ((Person)Session["user"]);
+                if (user.PersonType.type != "subcontractor" && user.PersonType.type != "contractor")
                 {
-                    ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
-                    ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                    if (user.PersonType.type == "admin")
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 1), "personTypeId", "type");
+                    }
+                    else if (user.PersonType.type == "supervisor")
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 3), "personTypeId", "type");
+                    }
+                    else
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                    }
+
+                    if (user.PersonType.type != "master")
+                    {
+                        ViewBag.company = new SelectList(db.Companies.Where(x => x.companyId == user.company), "companyId", "companyName");
+                    }
+                    else
+                    {
+                        ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                    }
+
                     ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
                     ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
                 }
@@ -327,73 +348,102 @@ namespace qcsolver.Controllers
         {
             try
             {
-                if (ModelState.IsValid)
+                if(((Person)Session["user"]) != null)
                 {
-                    var folder = Server.MapPath("~/Content/Users/" + model.email);
-                    if (!Directory.Exists(folder))
+                    var user = ((Person)Session["user"]);
+
+                    if (ModelState.IsValid)
                     {
-                        Directory.CreateDirectory(folder);
-                    }
-                    folder = Server.MapPath("~/Content/Users/" + model.email + "/Certificates");
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-                    folder = Server.MapPath("~/Content/Users/" + model.email + "/Licenses");
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-                    folder = Server.MapPath("~/Content/Users/" + model.email + "/Profile");
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-                    folder = Server.MapPath("~/Content/Users/" + model.email + "/Contract");
-                    if (!Directory.Exists(folder))
-                    {
-                        Directory.CreateDirectory(folder);
-                    }
-                    if (profilePic != null)
-                    {
-                        //If filename is too long, shorten it
-                        var fileName = Path.GetFileName(profilePic.FileName);
-                        if (fileName.Length > 60)
+                        var folder = Server.MapPath("~/Content/Users/" + model.email);
+                        if (!Directory.Exists(folder))
                         {
-                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                            Directory.CreateDirectory(folder);
+                        }
+                        folder = Server.MapPath("~/Content/Users/" + model.email + "/Certificates");
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+                        folder = Server.MapPath("~/Content/Users/" + model.email + "/Licenses");
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+                        folder = Server.MapPath("~/Content/Users/" + model.email + "/Profile");
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+                        folder = Server.MapPath("~/Content/Users/" + model.email + "/Contract");
+                        if (!Directory.Exists(folder))
+                        {
+                            Directory.CreateDirectory(folder);
+                        }
+                        if (profilePic != null)
+                        {
+                            //If filename is too long, shorten it
+                            var fileName = Path.GetFileName(profilePic.FileName);
+                            if (fileName.Length > 60)
+                            {
+                                fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                            }
+
+                            var path = Path.Combine(Server.MapPath("~/Content/Users/" + model.email + "/Profile"), fileName);
+                            profilePic.SaveAs(path);
+                            model.pictureLocation = fileName;
+                        }
+                        else
+                        {
+                            //model.pictureLocation = "~/Content/Images/BuildFrame.jpg";
+                        }
+                        //Saves image files, then saves their path in database
+                        if (contract != null)
+                        {
+                            var fileName = Path.GetFileName(contract.FileName);
+                            if (fileName.Length > 60)
+                            {
+                                fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                            }
+                            var path = Path.Combine(Server.MapPath("~/Content/Users/" + model.email + "/Contract"), fileName);
+                            contract.SaveAs(path);
+                            model.contractLocation = fileName;
                         }
 
-                        var path = Path.Combine(Server.MapPath("~/Content/Users/" + model.email + "/Profile"), fileName);
-                        profilePic.SaveAs(path);
-                        model.pictureLocation = fileName;
+                        db.People.Add(model);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Account");
+                    }
+
+                    if (((Person)Session["user"]).PersonType.type == "admin")
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 1), "personTypeId", "type");
+                    }
+                    else if (((Person)Session["user"]).PersonType.type == "supervisor")
+                    {
+                        ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 2), "personTypeId", "type");
                     }
                     else
                     {
-                        //model.pictureLocation = "~/Content/Images/BuildFrame.jpg";
+                        ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
                     }
-                    //Saves image files, then saves their path in database
-                    if (contract != null)
+                    if (user.PersonType.type != "master")
                     {
-                        var fileName = Path.GetFileName(contract.FileName);
-                        if (fileName.Length > 60)
-                        {
-                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
-                        }
-                        var path = Path.Combine(Server.MapPath("~/Content/Users/" + model.email + "/Contract"), fileName);
-                        contract.SaveAs(path);
-                        model.contractLocation = fileName;
+                        ViewBag.company = new SelectList(db.Companies.Where(x => x.companyId == user.company), "companyId", "companyName");
+                    }
+                    else
+                    {
+                        ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
                     }
 
-                    db.People.Add(model);
-                    db.SaveChanges();
-                    return RedirectToAction("Index", "Account");
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                    // If we got this far, something failed, redisplay form
+                    return View(model);
                 }
-                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
-                ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
-                ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
-                ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
-                // If we got this far, something failed, redisplay form
-                return View(model);
+                else
+                {
+                    return RedirectToAction("Login", "Account");
+                }
             }
             catch (DbEntityValidationException dbEx)
             {
@@ -431,7 +481,7 @@ namespace qcsolver.Controllers
                     var contractor = db.People.Where(x => x.personId.ToString() == id).First();
                     var constructionSiteId = contractor.AssignedWorkers.FirstOrDefault().constructionSite;
                     ViewBag.contractorId = contractor.personId;
-                    ViewBag.subSontractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.FirstOrDefault().constructionSite == constructionSiteId && x.AssignedSubContractors1.FirstOrDefault() == null), "personId", "firstName");
+                    ViewBag.subContractor = new SelectList(db.People.Where(x => x.PersonType.type == "subcontractor" && x.AssignedWorkers.FirstOrDefault().constructionSite == constructionSiteId && x.AssignedSubContractors1.FirstOrDefault() == null), "personId", "firstName");
                     return View();
                 }
                 else
@@ -452,22 +502,15 @@ namespace qcsolver.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> AssignSubContractor(AssignedSubContractor assigned)
         {
-            if (ModelState.IsValid)
+            if (Session["user"] != null)
             {
-                if (Session["user"] != null)
+                if (((Person)Session["user"]).PersonType.type != "subcontractor")
                 {
-                    if (((Person)Session["user"]).PersonType.type != "subcontractor")
+                    if (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.Person.AssignedWorkers.First().constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor))
                     {
-                        if (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.Person.AssignedWorkers.First().constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor))
-                        {
-                            db.AssignedSubContractors.Add(assigned);
-                            db.SaveChanges();
-                            return RedirectToAction("Index", "Account");
-                        }
-                        else
-                        {
-                            return View(assigned);
-                        }
+                        db.AssignedSubContractors.Add(assigned);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Account");
                     }
                     else
                     {
@@ -476,9 +519,14 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Account");
+                    return View(assigned);
                 }
             }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View(assigned);
         }
 
@@ -522,23 +570,16 @@ namespace qcsolver.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> UnAssignSubContractor(AssignedSubContractor assigned)
         {
-            if (ModelState.IsValid)
+            if (Session["user"] != null)
             {
-                if (Session["user"] != null)
+                if (((Person)Session["user"]).PersonType.type != "subcontractor")
                 {
-                    if (((Person)Session["user"]).PersonType.type != "subcontractor")
+                    if (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.Person.AssignedWorkers.First().constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor))
                     {
-                        if (((Person)Session["user"]).PersonType.type == "master" || (((Person)Session["user"]).PersonType.type == "admin" && ((Person)Session["user"]).company == assigned.Person.company) || (((Person)Session["user"]).PersonType.type == "supervisor" && ((Person)Session["user"]).AssignedWorkers.First().constructionSite == assigned.Person.AssignedWorkers.First().constructionSite) || (((Person)Session["user"]).PersonType.type == "contractor" && ((Person)Session["user"]).personId == assigned.contractor))
-                        {
-                            var toDelete = db.AssignedSubContractors.Where(x => x.contractor == assigned.contractor && x.subContractor == assigned.subContractor).First();
-                            db.AssignedSubContractors.Remove(toDelete);
-                            db.SaveChanges();
-                            return RedirectToAction("Index", "Account");
-                        }
-                        else
-                        {
-                            return View(assigned);
-                        }
+                        var toDelete = db.AssignedSubContractors.Where(x => x.contractor == assigned.contractor && x.subContractor == assigned.subContractor).First();
+                        db.AssignedSubContractors.Remove(toDelete);
+                        db.SaveChanges();
+                        return RedirectToAction("Index", "Account");
                     }
                     else
                     {
@@ -547,9 +588,14 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    return RedirectToAction("Login", "Account");
+                    return View(assigned);
                 }
             }
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
+
             return View(assigned);
         }
 
@@ -566,7 +612,7 @@ namespace qcsolver.Controllers
                 {
                     var personId = Request["person"].ToString();
                     var person = db.People.Where(c => c.personId.ToString() == personId).First();
-                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId < user.PersonType.personTypeId || user.personId == person.personId))
                     {
                         Response.ContentType = "Application/pdf";
                         Response.AppendHeader("Content-Disposition", "attachment; filename=" + person.contractLocation);
@@ -601,16 +647,37 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
-                ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                var user = ((Person)Session["user"]);
+                if (user.PersonType.type == "admin")
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 1), "personTypeId", "type");
+                }
+                else if (user.PersonType.type == "supervisor")
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 3), "personTypeId", "type");
+                }
+                else
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
+                }
+
+                if (user.PersonType.type != "master")
+                {
+                    ViewBag.company = new SelectList(db.Companies.Where(x => x.companyId == user.company), "companyId", "companyName");
+                }
+                else
+                {
+                    ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                }
+
                 ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
                 ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
-                Person user = (Person)Session["user"];
+
                 if (Request["person"] != null)
                 {
                     var personId = Request["person"].ToString();
                     var person = db.People.Where(c => c.personId.ToString() == personId).First();
-                    if (person != null && (user.PersonType.type == "master" || person.PersonType.personTypeId > user.PersonType.personTypeId))
+                    if (person != null && (user.PersonType.type == "master" || (person.PersonType.personTypeId > user.PersonType.personTypeId && person.company == user.company)))
                     {
                         ViewBag.person = person;
                         return View(person);
@@ -640,54 +707,79 @@ namespace qcsolver.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Edit(Person person, HttpPostedFileBase profilePic, HttpPostedFileBase contract)
         {
-            if (ModelState.IsValid)
+            //var editedPerson = db.People.Where(x => x.personId == person.personId).First();
+            if (((Person)Session["user"]) != null)
             {
-                if (profilePic != null)
+                var user = ((Person)Session["user"]);
+                if (ModelState.IsValid)
                 {
-                    //If filename is too long, shorten it
-                    var fileName = Path.GetFileName(profilePic.FileName);
-                    if (fileName.Length > 60)
+                    if (profilePic != null)
                     {
-                        fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                        //If filename is too long, shorten it
+                        var fileName = Path.GetFileName(profilePic.FileName);
+                        if (fileName.Length > 60)
+                        {
+                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                        }
+                        System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + person.email + "/Profile");
+                        /*
+                        foreach (FileInfo file in myDirInfo.GetFiles())
+                        {
+                            file.Delete();
+                        }*/
+                        var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Profile"), fileName);
+                        profilePic.SaveAs(path);
+                        person.pictureLocation = fileName;
                     }
-                    System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + person.email + "/Profile");
 
-                    foreach (FileInfo file in myDirInfo.GetFiles())
+                    //Saves image files, then saves their path in database
+                    if (contract != null)
                     {
-                        file.Delete();
+                        var fileName = Path.GetFileName(contract.FileName);
+                        if (fileName.Length > 60)
+                        {
+                            fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
+                        }
+
+                        System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + person.email + "/Contract");
+                        /*
+                        foreach (FileInfo file in myDirInfo.GetFiles())
+                        {
+                            file.Delete();
+                        }*/
+                        var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Contract"), fileName);
+                        contract.SaveAs(path);
+                        person.contractLocation = fileName;
                     }
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Profile"), fileName);
-                    profilePic.SaveAs(path);
-                    person.pictureLocation = fileName;
+
+                    db.Entry(person).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
                 }
 
-                //Saves image files, then saves their path in database
-                if (contract != null)
+                if (((Person)Session["user"]).PersonType.type == "admin")
                 {
-                    var fileName = Path.GetFileName(contract.FileName);
-                    if (fileName.Length > 60)
-                    {
-                        fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
-                    }
-
-                    System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + person.email + "/Contract");
-
-                    foreach (FileInfo file in myDirInfo.GetFiles())
-                    {
-                        file.Delete();
-                    }
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Contract"), fileName);
-                    contract.SaveAs(path);
-                    person.contractLocation = fileName;
+                    ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 1), "personTypeId", "type");
+                }
+                else if (((Person)Session["user"]).PersonType.type == "supervisor")
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes.Where(x => x.personTypeId > 2), "personTypeId", "type");
+                }
+                else
+                {
+                    ViewBag.type = new SelectList(db.PersonTypes, "personTypeId", "type");
                 }
 
-                db.Entry(person).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                ViewBag.company = new SelectList(db.Companies, "companyId", "companyName");
+                ViewBag.country = new SelectList(db.Countries, "countryId", "countryName");
+                ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName");
+                // If we got this far, something failed, redisplay form
+                return View(person);
             }
-
-            // If we got this far, something failed, redisplay form
-            return View(person);
+            else
+            {
+                return RedirectToAction("Login", "Account");
+            }
         }
 
         //
@@ -737,7 +829,7 @@ namespace qcsolver.Controllers
             db.SaveChanges();
 
             System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + person.email);
-
+            /*
             foreach (FileInfo file in myDirInfo.GetFiles())
             {
                 file.Delete();
@@ -745,7 +837,7 @@ namespace qcsolver.Controllers
             foreach (DirectoryInfo dir in myDirInfo.GetDirectories())
             {
                 dir.Delete(true);
-            }
+            }*/
             return RedirectToAction("Index");
         }
 

@@ -16,25 +16,16 @@
             @Html.DisplayNameFor(model => model.companyName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.contactNumber)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.contactEmail)
-        </th>
-        <th>
             @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.postalCode)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.city)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Country1.countryName)
+            @Html.DisplayNameFor(model => model.Province1.provinceName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Province1.provinceName)
+            @Html.DisplayNameFor(model => model.Country1.countryName)
         </th>
         <th></th>
     </tr>
@@ -46,30 +37,21 @@
                 @Html.DisplayFor(modelItem => item.companyName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.contactNumber)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.contactEmail)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.postalCode)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.city)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Country1.countryName)
-            </td>
-            <td>
                 @Html.DisplayFor(modelItem => item.Province1.provinceName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.companyId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.companyId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.companyId })
+                @Html.DisplayFor(modelItem => item.Country1.countryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { company = item.companyId }) |
+                @Html.ActionLink("Details", "Details", new { company = item.companyId }) |
+                @Html.ActionLink("Delete", "Delete", new { company = item.companyId })
             </td>
         </tr>
     }

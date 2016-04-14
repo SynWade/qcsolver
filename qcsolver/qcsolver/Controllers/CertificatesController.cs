@@ -24,8 +24,9 @@ namespace qcsolver.Controllers
                 if (Request["person"] != null)
                 {
                     var personId = Request["person"].ToString();
+                    var person = db.People.Where(x => x.personId.ToString() == personId).First();
                     var certificates = db.Certificates.Where(c => c.person.ToString() == personId);
-                    if (user.PersonType.type == "master" || user.PersonType.personTypeId > certificates.First().Person1.PersonType.personTypeId)
+                    if (user.PersonType.type == "master" || user.PersonType.personTypeId < person.PersonType.personTypeId || user.personId == person.personId)
                     {
                         return View(certificates);
                     }

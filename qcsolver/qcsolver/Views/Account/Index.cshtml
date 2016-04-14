@@ -70,9 +70,9 @@ else if (((Person)Session["user"]).PersonType.type == "contractor")
                 @Html.DisplayFor(modelItem => item.PersonType.type)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.personId }) |
+                @Html.ActionLink("Edit", "Edit", new { person = item.personId }) |
                 @Html.ActionLink("Profile", "Profile", new { person = item.personId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.personId })
+                @Html.ActionLink("Delete", "Delete", new { person = item.personId })
             </td>
         </tr>
     }
