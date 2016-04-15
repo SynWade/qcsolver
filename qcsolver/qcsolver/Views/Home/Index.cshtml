@@ -65,7 +65,7 @@
                             else
                             {
                             <div class="row">
-                                <div class="col-md-8">
+                                <div class="col-md-12">
                                     <h3>Getting started</h3>
                                     <hr />
                                     <p>
@@ -79,7 +79,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <hr />
-                                    <h4>Your role as a user is:</h4>
+                                    <h4 id="usrRole">Your role as a user is:</h4><br />
                                     <h3>@((((Person)Session["user"]).PersonType.type.ToUpper()))</h3>
                                     <div class="userIconRole">
                                         @if (((Person)Session["user"]).PersonType.type == "master")
