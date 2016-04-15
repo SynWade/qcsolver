@@ -13,25 +13,22 @@
 <table class="table table-striped table-bordered table-condensed table-hover">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.address)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.startDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.endDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.city)
+            @Html.DisplayNameFor(model => model.constructionSiteName)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Company1.companyName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Country1.countryName)
+            @Html.DisplayNameFor(model => model.address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.city)
         </th>
         <th>
             @Html.DisplayNameFor(model => model.Province1.provinceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Country1.countryName)
         </th>
         <th></th>
     </tr>
@@ -40,30 +37,27 @@
     {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.address)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.startDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.endDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.city)
+                @Html.DisplayFor(modelItem => item.constructionSiteName)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Company1.companyName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Country1.countryName)
+                @Html.DisplayFor(modelItem => item.address)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.city)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Province1.provinceName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.constructionSiteId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.constructionSiteId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.constructionSiteId })
+                @Html.DisplayFor(modelItem => item.Country1.countryName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { constructionSite = item.constructionSiteId }) |
+                @Html.ActionLink("Details", "Details", new { constructionSite = item.constructionSiteId }) |
+                @Html.ActionLink("Delete", "Delete", new { constructionSite = item.constructionSiteId })
             </td>
         </tr>
     }

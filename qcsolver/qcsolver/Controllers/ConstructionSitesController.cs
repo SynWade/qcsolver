@@ -125,6 +125,9 @@ namespace qcsolver.Controllers
                 {
                     var id = Request["constructionSite"].ToString();
                     var constructionSite = db.ConstructionSites.Include(c => c.Country1).Include(c => c.Province1).Where(c => c.constructionSiteId.ToString() == id).First();
+                    ViewBag.company = new SelectList(db.Companies, "companyId", "companyName", constructionSite.company);
+                    ViewBag.country = new SelectList(db.Countries, "countryId", "countryName", constructionSite.country);
+                    ViewBag.province = new SelectList(db.Provinces, "provinceId", "provinceName", constructionSite.province);
                     return View(constructionSite);
                 }
                 else

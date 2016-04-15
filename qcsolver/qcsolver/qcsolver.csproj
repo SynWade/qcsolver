@@ -419,10 +419,7 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Timestamps\Create.cshtml" />
-    <Content Include="Views\Timestamps\Delete.cshtml" />
     <Content Include="Views\Timestamps\Details.cshtml" />
-    <Content Include="Views\Timestamps\Edit.cshtml" />
     <Content Include="Views\Timestamps\Index.cshtml" />
   </ItemGroup>
   <ItemGroup />

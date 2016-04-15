@@ -43,9 +43,9 @@
                 @Html.DisplayFor(modelItem => item.Person1.firstName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.certificateId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.certificateId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.certificateId })
+                @Html.ActionLink("Edit", "Edit", new { certificate = item.certificateId }) |
+                @Html.ActionLink("Details", "Details", new { certificate = item.certificateId }) |
+                @Html.ActionLink("Delete", "Delete", new { certificate = item.certificateId })
             </td>
         </tr>
     }

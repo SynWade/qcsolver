@@ -53,13 +53,12 @@ namespace qcsolver.Controllers
             if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["license"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var licenseId = Request["license"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.company) || user.personId == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.personId)
                     {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        var license = db.Licenses.Where(c => c.licenseId.ToString() == licenseId).First();
                         return View(license);
                     }
                     else
@@ -69,16 +68,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
-                        return View(license);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
@@ -98,6 +88,7 @@ namespace qcsolver.Controllers
                     var personId = Request["person"].ToString();
                     if (user.PersonType.type == "master" || user.PersonType.personTypeId > db.People.Where(c => c.personId.ToString() == personId).First().personId)
                     {
+                        ViewBag.person = new SelectList(db.People, "personId", "firstName");
                         return View();
                     }
                     else
@@ -107,6 +98,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
+                    ViewBag.person = new SelectList(db.People, "personId", "firstName");
                     return View();
                 }
             }
@@ -153,13 +145,13 @@ namespace qcsolver.Controllers
             if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["license"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var licenseId = Request["license"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.company) || user.personId == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.personId)
                     {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        var license = db.Licenses.Where(c => c.licenseId.ToString() == licenseId).First();
+                        ViewBag.person = new SelectList(db.People.Where(x => x.PersonType.personTypeId > 2), "personId", "firstName");
                         return View(license);
                     }
                     else
@@ -169,16 +161,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
-                        return View(license);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
@@ -276,13 +259,12 @@ namespace qcsolver.Controllers
             if (Session["user"] != null)
             {
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["license"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["license"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Licenses.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var licenseId = Request["license"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.company) || user.personId == db.Licenses.Where(c => c.licenseId.ToString() == licenseId).FirstOrDefault().Person1.personId)
                     {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person.ToString() == personId).Where(c => c.licenseId.ToString() == licenseId).First();
+                        var license = db.Licenses.Where(c => c.licenseId.ToString() == licenseId).First();
                         return View(license);
                     }
                     else
@@ -292,16 +274,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["license"] != null && (user.PersonType.personTypeId == db.Licenses.Where(c => c.licenseId.ToString() == Request["license"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var licenseId = Request["license"].ToString();
-                        var license = db.Licenses.Where(c => c.person == user.personId).Where(c => c.licenseId.ToString() == licenseId).First();
-                        return View(license);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else

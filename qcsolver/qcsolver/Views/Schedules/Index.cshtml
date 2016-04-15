@@ -19,10 +19,10 @@
             @Html.DisplayNameFor(model => model.duration)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.ConstructionSite1.address)
+            @Html.DisplayNameFor(model => model.ConstructionSite1.constructionSiteName)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Person1.firstName)
+            Name
         </th>
         <th></th>
     </tr>
@@ -37,15 +37,15 @@
                 @Html.DisplayFor(modelItem => item.duration)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ConstructionSite1.address)
+                @Html.DisplayFor(modelItem => item.ConstructionSite1.constructionSiteName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Person1.firstName)
+                @Html.DisplayFor(modelItem => item.Person1.firstName), @Html.DisplayFor(modelItem => item.Person1.lastName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.scheduleId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.scheduleId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.scheduleId })
+                @Html.ActionLink("Edit", "Edit", new { schedule = item.scheduleId }) |
+                @Html.ActionLink("Details", "Details", new { schedule = item.scheduleId }) |
+                @Html.ActionLink("Delete", "Delete", new { schedule = item.scheduleId })
             </td>
         </tr>
     }

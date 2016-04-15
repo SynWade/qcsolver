@@ -7,7 +7,7 @@
 @using qcsolver.Models;
 <link type="text/css" href="~/Content/Profile.css" rel="stylesheet">
 <h2>@(((Person)ViewBag.person).firstName + " " + ((Person)ViewBag.person).lastName)'s Profile</h2>
-<span>@Html.ActionLink("Change account information", "Edit", "Account")</span>
+<span>@Html.ActionLink("Change account information", "Edit", "Account", new { person = Model.personId }, null)</span>
 <hr style="border: 1px double #337ab7;">
 
     <img class="profileImage" src='~/Content/Users/@(((Person)ViewBag.person).email)/Profile/@(((Person)ViewBag.person).pictureLocation)' alt=" profile image" />
@@ -94,16 +94,16 @@
     </profile>
     @Html.ActionLink("Back to List", "Index")
 </div>
+@if (Model.PersonType.personTypeId > 2)
+{
     <hr />
-<h4>Personal option links</h4>
+    <h4>Personal option links</h4>
+    <hr />
     <nav class="linksUnderPic">
-        <hr />
-            @if (Model.PersonType.personTypeId > 2)
-            {
-                <span>@Html.ActionLink("Certificates", "Index", "Certificates", new { person = Model.personId }, null)</span><br />
-                <span>@Html.ActionLink("Download Contract", "ViewContract", "Account", new { person = Model.personId }, null)</span><br />
-                <span>@Html.ActionLink("Licenses", "Index", "Licenses", new { person = Model.personId }, null)</span><br />
-                <span>@Html.ActionLink("Timestamps", "Index", "Timestamps", new { person = Model.personId }, null)</span><br />
-                <span>@Html.ActionLink("Schedules", "Index", "Schedules", new { person = Model.personId }, null)</span>
-            }
+        <span>@Html.ActionLink("Certificates", "Index", "Certificates", new { person = Model.personId }, null)</span><br />
+        <span>@Html.ActionLink("Download Contract", "ViewContract", "Account", new { person = Model.personId }, null)</span><br />
+        <span>@Html.ActionLink("Licenses", "Index", "Licenses", new { person = Model.personId }, null)</span><br />
+        <span>@Html.ActionLink("Timestamps", "Index", "Timestamps", new { person = Model.personId }, null)</span><br />
+        <span>@Html.ActionLink("Schedules", "Index", "Schedules", new { person = Model.personId }, null)</span>
     </nav>
+}

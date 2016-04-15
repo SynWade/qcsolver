@@ -79,5 +79,10 @@
 <p>
     @Html.ActionLink("Edit", "Edit", new { company = Model.companyId }) |
     @Html.ActionLink("View Construction Sites", "Index", "ConstructionSites", new { company = Model.companyId }, null) |
+    @Html.ActionLink("View All Users", "Index", "Account", new { company = Model.companyId }, null) |
+    @Html.ActionLink("View Admins", "Index", "Account", new { company = Model.companyId, type = "admin" }, null) |
+    @Html.ActionLink("View Supervisors", "Index", "Account", new { company = Model.companyId, type = "supervisor" }, null) |
+    @Html.ActionLink("View Contractors", "Index", "Account", new { company = Model.companyId, type = "contractor" }, null) |
+    @Html.ActionLink("View Subcontractors", "Index", "Account", new { company = Model.companyId, type = "subcontractor" }, null) |
     @Html.ActionLink("Back to List", "Index")
 </p>

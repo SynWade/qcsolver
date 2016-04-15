@@ -52,15 +52,13 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["certificate"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var certificateId = Request["certificate"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.company) || user.personId == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.personId)
                     {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        var certificate = db.Certificates.Where(c => c.certificateId.ToString() == certificateId).First();
                         return View(certificate);
                     }
                     else
@@ -70,16 +68,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
-                        return View(certificate);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
@@ -93,13 +82,13 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
                 if (Request["person"] != null)
                 {
                     var personId = Request["person"].ToString();
                     if (user.PersonType.type == "master" || user.PersonType.personTypeId > db.People.Where(c => c.personId.ToString() == personId).First().personId)
                     {
+                        ViewBag.person = new SelectList(db.People, "personId", "firstName");
                         return View();
                     }
                     else
@@ -109,6 +98,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
+                    ViewBag.person = new SelectList(db.People, "personId", "firstName");
                     return View();
                 }
             }
@@ -154,15 +144,14 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["certificate"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var certificateId = Request["certificate"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.company) || user.personId == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.personId)
                     {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        var certificate = db.Certificates.Where(c => c.certificateId.ToString() == certificateId).First();
+                        ViewBag.person = new SelectList(db.People.Where(x => x.PersonType.personTypeId > 2), "personId", "firstName");
                         return View(certificate);
                     }
                     else
@@ -172,16 +161,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
-                        return View(certificate);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else
@@ -279,15 +259,13 @@ namespace qcsolver.Controllers
         {
             if (Session["user"] != null)
             {
-                ViewBag.person = new SelectList(db.People, "personId", "firstName");
                 Person user = (Person)Session["user"];
-                if (Request["person"] != null)
+                if (Request["certificate"] != null)
                 {
-                    var personId = Request["person"].ToString();
-                    if (Request["certificate"] != null && (user.PersonType.type == "master" || user.PersonType.personTypeId > db.Certificates.Where(c => c.person.ToString() == personId).First().Person1.PersonType.personTypeId))
+                    var certificateId = Request["certificate"].ToString();
+                    if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.company) || user.personId == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.personId)
                     {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person.ToString() == personId).Where(c => c.certificateId.ToString() == certificateId).First();
+                        var certificate = db.Certificates.Where(c => c.certificateId.ToString() == certificateId).First();
                         return View(certificate);
                     }
                     else
@@ -297,16 +275,7 @@ namespace qcsolver.Controllers
                 }
                 else
                 {
-                    if (Request["certificate"] != null && (user.PersonType.personTypeId == db.Certificates.Where(c => c.certificateId.ToString() == Request["certificate"].ToString()).First().Person1.PersonType.personTypeId))
-                    {
-                        var certificateId = Request["certificate"].ToString();
-                        var certificate = db.Certificates.Where(c => c.person == user.personId).Where(c => c.certificateId.ToString() == certificateId).First();
-                        return View(certificate);
-                    }
-                    else
-                    {
-                        return RedirectToAction("Index", "Home");
-                    }
+                    return RedirectToAction("Index", "Home");
                 }
             }
             else

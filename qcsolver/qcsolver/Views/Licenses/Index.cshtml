@@ -49,9 +49,9 @@
                 @Html.DisplayFor(modelItem => item.Person1.firstName)
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.licenseId }) |
-                @Html.ActionLink("Details", "Details", new { id = item.licenseId }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.licenseId })
+                @Html.ActionLink("Edit", "Edit", new { license = item.licenseId }) |
+                @Html.ActionLink("Details", "Details", new { license = item.licenseId }) |
+                @Html.ActionLink("Delete", "Delete", new { license = item.licenseId })
             </td>
         </tr>
     }
