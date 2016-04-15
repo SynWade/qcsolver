@@ -1,0 +1,40 @@
+﻿hr{
+    border: 1px double #337ab7;
+}
+
+h2{
+    text-align:center;
+    font-weight:bold
+}
+
+h3{
+    font-weight:bold;
+}
+
+h4, h5, p{
+    text-align:center;
+}
+
+#iconF{
+    font-size:5em;
+}
+
+#iconCal{
+    font-size:5em;
+    padding-left:35%;
+}
+
+#iconDB{
+    font-size:5em;
+    padding-left:82%;
+}
+
+#iconAL{
+    font-size:3em;
+    padding-right:100%
+}
+
+#usrMast, usrAdm, usrSup, usrContSub{
+    font-size:33em;
+    float:right;
+}
