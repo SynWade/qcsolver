@@ -186,8 +186,8 @@ namespace qcsolver.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
-            var person = db.People.FirstOrDefault(i => i.email == "gregorygeorge@hotmail.com");
-            Session["user"] = person;
+            //var person = db.People.FirstOrDefault(i => i.email == "gregorygeorge@hotmail.com");
+            //Session["user"] = person;
             if (Session["user"] != null)
             {
                 return RedirectToAction("Index", "Home");
@@ -677,7 +677,7 @@ namespace qcsolver.Controllers
                 {
                     var personId = Request["person"].ToString();
                     var person = db.People.Where(c => c.personId.ToString() == personId).First();
-                    if (person != null && (user.PersonType.type == "master" || (person.PersonType.personTypeId > user.PersonType.personTypeId && person.company == user.company)))
+                    if (person != null && (user.PersonType.type == "master" || (person.PersonType.personTypeId < user.PersonType.personTypeId && person.company == user.company) || person.personId < user.personId))
                     {
                         ViewBag.person = person;
                         return View(person);

@@ -17,11 +17,12 @@ h4, h5, p{
 
 #iconF{
     font-size:5em;
+    padding-right:65%;
 }
 
 #iconCal{
     font-size:5em;
-    padding-left:35%;
+    padding-left:5%;
 }
 
 #iconDB{
@@ -34,7 +35,11 @@ h4, h5, p{
     padding-right:100%
 }
 
-#usrMast, usrAdm, usrSup, usrContSub{
+#usrMast, #usrAdm, #usrSup, #usrContSub{
     font-size:33em;
     float:right;
+}
+
+#usrRole{
+    float:left;
 }

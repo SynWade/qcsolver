@@ -61,19 +61,11 @@
                     <li>@Html.ActionLink("Supervisors", "Index", "Account", new { type = "supervisor", company = ((Person)Session["user"]).company }, null)</li>
                 }
                 
-                
-                
-                
-                //FROM HERE DOWN WE NEED TO HAVE THE LINKS WORKING!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-
-
                 else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "supervisor")
                 {
                     <link type="text/css" href="~/Content/Supervisor-SideBar.css" rel="stylesheet">
                     <li>@Html.ActionLink("Contractors", "Index", "Account", new { type = "contractor", constructionSite = ((Person)Session["user"]).AssignedWorkers.First().constructionSite }, null)</li>
                     <li>@Html.ActionLink("OnSite", "Index", "Account", new { onsite = true, constructionSite = ((Person)Session["user"]).AssignedWorkers.First().constructionSite }, null)</li>
-                    <li>@Html.ActionLink("Tasks - N/A Ln-77", "Index", "Account"@*, new { type = "supervisor" }, null*@)</li>
                 }
                 else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "contractor")
                 {
@@ -88,11 +80,11 @@
                 else if (Session["user"] != null && ((Person)Session["user"]).PersonType.type == "subcontractor")
                 {
                     <link type="text/css" href="~/Content/Subcontractor-SideBar.css" rel="stylesheet">
-    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
-    <li>@Html.ActionLink("Download Contract", "ViewContract", "Account")</li>
-    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
-    <li>@Html.ActionLink("Timestamps", "Index", "Timestamps")</li>
-    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
+                    <li>@Html.ActionLink("Certificates", "Index", "Certificates")</li>
+                    <li>@Html.ActionLink("Download Contract", "ViewContract", "Account")</li>
+                    <li>@Html.ActionLink("Licenses", "Index", "Licenses")</li>
+                    <li>@Html.ActionLink("Timestamps", "Index", "Timestamps")</li>
+                    <li>@Html.ActionLink("Schedules", "Index", "Schedules")</li>
 
                 }
             </ul>
@@ -109,6 +101,7 @@
                 </li>
                 <!-- Application Name -->
                 <li>@Html.ActionLink("QCsolver's OnSite", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+
                 @*<li><input type="text" name="searchBar" class="form-control" placeholder="Search..." /></li>
                 <li><button type='submit' name='search' id='search-btn' class="btn btn-flat">
                     <i class="fa fa-search"></i></button></li>*@
