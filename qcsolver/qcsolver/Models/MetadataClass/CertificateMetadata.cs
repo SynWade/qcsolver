@@ -14,6 +14,8 @@ namespace qcsolver.Models
 
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
+            yield return ValidationResult.Success;
+            /*
             //checks if the required field is entered
             if (certificateName == null || certificateName.Trim() == "")
             {
@@ -52,6 +54,7 @@ namespace qcsolver.Models
                 person = person;
                 yield return new ValidationResult(string.Format("The person: {0} needs to be selected", person), new[] { "person" });
             }
+             */
         }
     }
 

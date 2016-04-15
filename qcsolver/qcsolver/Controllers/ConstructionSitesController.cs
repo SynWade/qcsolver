@@ -100,7 +100,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "constructionSiteId,address,startDate,endDate,city,company,country,province")] ConstructionSite constructionSite)
+        public ActionResult Create(ConstructionSite constructionSite)
         {
             if (ModelState.IsValid)
             {
@@ -146,7 +146,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "constructionSiteId,address,startDate,endDate,city,company,country,province")] ConstructionSite constructionSite)
+        public ActionResult Edit(ConstructionSite constructionSite)
         {
             if (ModelState.IsValid)
             {

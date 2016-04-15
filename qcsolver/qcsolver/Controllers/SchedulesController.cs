@@ -116,7 +116,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "scheduleId,startDateTime,duration,person,constructionSite")] Schedule schedule)
+        public ActionResult Create(Schedule schedule)
         {
             if (ModelState.IsValid)
             {
@@ -167,7 +167,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "scheduleId,startDateTime,duration,person,constructionSite")] Schedule schedule)
+        public ActionResult Edit(Schedule schedule)
         {
             if (ModelState.IsValid)
             {

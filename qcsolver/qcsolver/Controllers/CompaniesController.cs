@@ -135,8 +135,9 @@ namespace qcsolver.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "companyId,companyName,contactNumber,contactEmail,address,postalCode,city,country,province")] Company company)
+        public ActionResult Edit(Company company)
         {
             if (ModelState.IsValid)
             {

@@ -113,7 +113,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "licenseId,licenseName,dateIssued,expirationDate,fileLocation,person")] License license, HttpPostedFileBase licenseFile)
+        public ActionResult Create(License license, HttpPostedFileBase licenseFile)
         {
             if (ModelState.IsValid)
             {
@@ -125,8 +125,8 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
-
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + license.Person1.email + "/Licenses"), fileName);
+                    var person = db.People.Where(x => x.personId == license.person).First();
+                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Licenses"), fileName);
                     licenseFile.SaveAs(path);
                     license.fileLocation = fileName;
                 }
@@ -175,7 +175,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "licenseId,licenseName,dateIssued,expirationDate,fileLocation,person")] License license, HttpPostedFileBase licenseFile)
+        public ActionResult Edit(License license, HttpPostedFileBase licenseFile)
         {
             if (ModelState.IsValid)
             {                //Saves image files, then saves their path in database
@@ -186,15 +186,16 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
-
+                    /*
                     System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + license.Person1.email + "/Licenses");
 
                     foreach (FileInfo file in myDirInfo.GetFiles())
                     {
                         if (file.FullName == license.fileLocation)
                             file.Delete();
-                    }
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + license.Person1.email + "/Licenses"), fileName);
+                    }*/
+                    var person = db.People.Where(x => x.personId == license.person).First();
+                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Licenses"), fileName);
                     licenseFile.SaveAs(path);
                     license.fileLocation = fileName;
                 }
@@ -289,12 +290,13 @@ namespace qcsolver.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             License license = db.Licenses.Find(id);
+            /*
             System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + license.Person1.email + "/Licenses");
             foreach (FileInfo file in myDirInfo.GetFiles())
             {
                 if (file.FullName == license.fileLocation)
                     file.Delete();
-            }
+            }*/
             db.Licenses.Remove(license);
             db.SaveChanges();
             return RedirectToAction("Index");

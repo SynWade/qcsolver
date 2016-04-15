@@ -77,6 +77,11 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.constructionSiteId }) |
+    @Html.ActionLink("Edit", "Edit", new { constructionSite = Model.constructionSiteId }) |
+    @Html.ActionLink("View All Workers", "Index", "Account", new { constructionSite = Model.constructionSiteId }, null) |
+    @Html.ActionLink("View Workers Onsite", "Index", "Account", new { constructionSite = Model.constructionSiteId, onsite = true }, null) |
+    @Html.ActionLink("View All Supervisors", "Index", "Account", new { constructionSite = Model.constructionSiteId, type = "supervisor" }, null) |
+    @Html.ActionLink("View All Contractors", "Index", "Account", new { constructionSite = Model.constructionSiteId, type = "contractor" }, null) |
+    @Html.ActionLink("View All Subcontractors", "Index", "Account", new { constructionSite = Model.constructionSiteId, type = "subcontractor" }, null) |
     @Html.ActionLink("Back to List", "Index")
 </p>

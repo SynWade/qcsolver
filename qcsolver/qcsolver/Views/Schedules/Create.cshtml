@@ -7,7 +7,7 @@
 <h2>Add Event to Schedule</h2>
 
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "Schedules", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     

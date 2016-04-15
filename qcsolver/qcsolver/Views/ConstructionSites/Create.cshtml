@@ -7,7 +7,7 @@
 <h2>Add new site</h2>
 <hr style="border: 1px double #337ab7;">
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm("Create", "ConstructionSites", FormMethod.Post, new { enctype = "multipart/form-data" })) 
 {
     @Html.AntiForgeryToken()
     

@@ -45,6 +45,7 @@
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.certificateId }) |
+    @Html.ActionLink("Edit", "Edit", new { certificate = Model.certificateId }) |
+    @Html.ActionLink("View Certificate", "ViewCertificate", new { certificate = Model.certificateId, person = Model.Person1.personId }) |
     @Html.ActionLink("Back to List", "Index")
 </p>

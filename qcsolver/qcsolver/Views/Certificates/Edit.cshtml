@@ -7,7 +7,7 @@
 <h2>Edit Certificates</h2>
 <hr style="border: 1px double #337ab7;">
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Certificates", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     

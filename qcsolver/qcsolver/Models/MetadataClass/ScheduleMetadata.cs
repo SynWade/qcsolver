@@ -12,7 +12,8 @@ namespace qcsolver.Models
     {
         public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
         {
-
+            yield return ValidationResult.Success;
+            /*
             //checks if the start date time is selected
             if (startDateTime != null)
             {
@@ -40,6 +41,7 @@ namespace qcsolver.Models
                 constructionSite = constructionSite;
                 yield return new ValidationResult(string.Format("The construction site: {0} needs to be selected", constructionSite), new[] { "constructionSite" });
             }
+             * */
         }
     }
 

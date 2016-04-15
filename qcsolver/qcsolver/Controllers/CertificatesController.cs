@@ -8,6 +8,7 @@ using System.Web;
 using System.Web.Mvc;
 using qcsolver.Models;
 using System.IO;
+using System.Threading.Tasks;
 
 namespace qcsolver.Controllers
 {
@@ -113,7 +114,7 @@ namespace qcsolver.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate, HttpPostedFileBase certificateFile)
+        public ActionResult Create(Certificate certificate, HttpPostedFileBase certificateFile)
         {
             if (ModelState.IsValid)
             {
@@ -125,8 +126,8 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
-
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + certificate.Person1.email + "/Certificates"), fileName);
+                    var person = db.People.Where(x => x.personId == certificate.person).First();
+                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Certificates"), fileName);
                     certificateFile.SaveAs(path);
                     certificate.fileLocation = fileName;
                 }
@@ -151,7 +152,7 @@ namespace qcsolver.Controllers
                     if (user.PersonType.type == "master" || (user.PersonType.personTypeId < db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.PersonType.personTypeId && user.company == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.company) || user.personId == db.Certificates.Where(c => c.certificateId.ToString() == certificateId).FirstOrDefault().Person1.personId)
                     {
                         var certificate = db.Certificates.Where(c => c.certificateId.ToString() == certificateId).First();
-                        ViewBag.person = new SelectList(db.People.Where(x => x.PersonType.personTypeId > 2), "personId", "firstName");
+                        ViewBag.person = new SelectList(db.People.Where(x => x.personId == certificate.person), "personId", "firstName");
                         return View(certificate);
                     }
                     else
@@ -174,8 +175,9 @@ namespace qcsolver.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [AllowAnonymous]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "certificateId,certificateName,dateIssued,fileLocation,person")] Certificate certificate, HttpPostedFileBase certificateFile)
+        public async Task<ActionResult> Edit(Certificate certificate, HttpPostedFileBase certificateFile)
         {
             if (ModelState.IsValid)
             {
@@ -187,15 +189,16 @@ namespace qcsolver.Controllers
                     {
                         fileName = fileName.Substring(0, 55) + fileName.Substring(fileName.Length - 5, 5);
                     }
-
+                    /*
                     System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + certificate.Person1.email + "/Certificates");
 
                     foreach (FileInfo file in myDirInfo.GetFiles())
                     {
                         if(file.FullName == certificate.fileLocation)
                             file.Delete();
-                    }
-                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + certificate.Person1.email + "/Certificates"), fileName);
+                    }*/
+                    var person = db.People.Where(x => x.personId == certificate.person).First();
+                    var path = Path.Combine(Server.MapPath("~/Content/Users/" + person.email + "/Certificates"), fileName);
                     certificateFile.SaveAs(path);
                     certificate.fileLocation = fileName;
                 }
@@ -291,12 +294,12 @@ namespace qcsolver.Controllers
         {
             Certificate certificate = db.Certificates.Find(id);
             System.IO.DirectoryInfo myDirInfo = new DirectoryInfo("~/Content/Users/" + certificate.Person1.email + "/Certificates");
-
+            /*
             foreach (FileInfo file in myDirInfo.GetFiles())
             {
                 if (file.FullName == certificate.fileLocation)
                     file.Delete();
-            }
+            }*/
             db.Certificates.Remove(certificate);
             db.SaveChanges();
             return RedirectToAction("Index");

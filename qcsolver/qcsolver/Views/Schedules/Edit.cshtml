@@ -7,7 +7,7 @@
 <h2>Edit Schedule</h2>
 <hr style="border: 1px double #337ab7;">
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("Edit", "Schedules", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
     
